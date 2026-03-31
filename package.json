@@ -8,8 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "lint": "run-s lint:*",
-    "lint:oxlint": "oxlint . --fix",
+    "lint": "eslint ./src --ext .js",
+    "lint:watch": "nodemon --watch ./src --ext js --exec \"npm run lint\"",
     "lint:eslint": "eslint . --fix --cache"
   },
   "dependencies": {
