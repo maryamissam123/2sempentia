@@ -20,7 +20,11 @@ export default defineConfig([
       },
     },
     rules: {
-            semi: ["error", "always"],
+      semi: ["error", "always"],
+      "no-unused-vars": ["error", {
+      "vars": "all",
+      }],
+      eqeqeq: ["error", "always"],
     },
   },
 
