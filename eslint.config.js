@@ -19,7 +19,11 @@ export default defineConfig([
         ...globals.browser,
       },
     },
+    rules: {
+            semi: ["error", "always"],
+    },
   },
+
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
