@@ -4,7 +4,6 @@ import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import pluginCypress from 'eslint-plugin-cypress'
 import pluginVitest from '@vitest/eslint-plugin'
-import pluginOxlint from 'eslint-plugin-oxlint'
 
 export default defineConfig([
   {
@@ -37,6 +36,4 @@ export default defineConfig([
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-
-  ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 ])
