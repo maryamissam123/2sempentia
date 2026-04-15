@@ -9,13 +9,17 @@ export const useAuthStore = defineStore('auth', () => {
     const role = ref(null);
     const ready = ref(false);
 
-const login = async (email, password) => {
-  const { user } = await signInWithEmailAndPassword(auth, email, password)
-  const snap = await getDoc(doc(db, 'users', user.uid))
-  const userRole = snap.data()?.role
-  role.value = userRole
-  return userRole
-}
+    const login = async (email, password) => {
+        const { user } = await signInWithEmailAndPassword(auth, email, password)
+        const snap = await getDoc(doc(db, 'users', user.uid))
+        const userRole = snap.data()?.role
+        role.value = userRole
+        return userRole
+    };
+
+    const logout = async () => {
+        await signOut(auth)
+    };
 
     onAuthStateChanged(auth, async (user) => {
         if(user) {
@@ -28,8 +32,9 @@ const login = async (email, password) => {
     });
 
     return {
-        login,
         role,
-        ready
+        ready,
+        login,
+        logout
     };
 })
