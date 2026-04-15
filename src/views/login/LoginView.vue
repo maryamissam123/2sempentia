@@ -1,21 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth';
 
-const email = ref('');
+const email = ref('')
 const password = ref('')
-const authStore = useAuthStore();
-const router = useRouter();
+const authStore = useAuthStore()
+const router = useRouter()
 
 const login = async () => {
-    await authStore.login(email.value, password.value);
-    router.push({ name: 'customer-dashboard' });
+  const role = await authStore.login(email.value, password.value)
+  router.push({ name: `${role}-dashboard` })
 }
 </script>
 
 <template>
-    <input v-model="email" type="email">
-    <input v-model="password" type="password">
-    <button @click="login">Log ind</button>
+  <form @submit.prevent="login">
+    <input v-model="email" type="email" />
+    <input v-model="password" type="password" />
+    <button type="submit">Log ind</button>
+  </form>
 </template>
