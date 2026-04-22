@@ -29,10 +29,16 @@ console.log(auth.role);
 </script>
 
 <template>
-    <nav> 
-        <RouterLink v-for="tab in tabs" :key="tab.label" :to="tab.route">
-            <component :is="tab.icon"/>
-            {{ tab.label }}
-        </RouterLink>
-    </nav>
+  <nav class="tab-bar">
+    <RouterLink
+      v-for="tab in tabs"
+      :key="tab.route"
+      :to="tab.route"
+      class="tab-bar__item"
+      active-class="tab-bar__item--active"
+    >
+      <component :is="tab.icon" />
+      <span class="tab-bar__label">{{ tab.label }}</span>
+    </RouterLink>
+  </nav>
 </template>
