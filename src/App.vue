@@ -1,11 +1,18 @@
 <script setup>
-import TabBar from '@/components/TabBar.vue';
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import MobileLayout from '@/components/layout/MobileLayout.vue'
 
+const route = useRoute()
+
+const layout = computed(() => {
+  if (route.meta.layout === 'mobile') return MobileLayout
+  return 'div'
+})
 </script>
 
 <template>
-  <RouterView />
-  <TabBar />
+  <component :is="layout">
+    <RouterView />
+  </component>
 </template>
-
-<style scoped></style>

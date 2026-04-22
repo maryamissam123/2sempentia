@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '@/views/login/LoginView.vue';
-import { useAuthStore } from '@/stores/auth';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +11,7 @@ const router = createRouter({
     },
     {
       path: '/customer',
-      meta: { role: 'customer' },
+      meta: { role: 'customer', layout: 'mobile' },
       children: [
         {
           path: '',
@@ -53,7 +52,7 @@ const router = createRouter({
     },
     {
       path: '/manager',
-      meta: { role: 'manager' },
+      meta: { role: 'manager', layout: 'mobile' },
       children: [
         {
           path: '',
