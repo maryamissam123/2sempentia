@@ -12,9 +12,44 @@ const router = createRouter({
     },
     {
       path: '/customer',
-      name: 'customer-dashboard',
       meta: { role: 'customer' },
-      component: () => import('@/views/customer/DashboardView.vue')
+      children: [
+        {
+          path: '',
+          name: 'customer-dashboard',
+          component: () => import('@/views/customer/DashboardView.vue'),
+        },
+        {
+          path: 'process',
+          name: 'customer-process',
+          component: () => import('@/views/customer/ProcessView.vue'),
+        },
+        {
+          path: 'process/:id',
+          name: 'customer-process-details',
+          component: () => import('@/views/customer/ProcessDetailsView.vue'),
+        },
+        {
+          path: 'chat-options',
+          name: 'customer-chat-options',
+          component: () => import('@/views/customer/ChatOptionsView.vue'),
+        },
+        {
+          path: 'chat',
+          name: 'customer-chat',
+          component: () => import('@/views/customer/ChatView.vue'),
+        },
+        {
+          path: 'faq',
+          name: 'customer-faq',
+          component: () => import('@/views/customer/FAQView.vue'),
+        },
+        {
+          path: 'documents',
+          name: 'customer-documents',
+          component: () => import('@/views/customer/DocumentsView.vue'),
+        },
+      ]
     },
     {
       path: '/manager',
@@ -22,48 +57,6 @@ const router = createRouter({
       meta: { role: 'manager' },
       component: () => import('@/views/manager/ManagerDashboardView.vue')
     },
-
-
-
-
-
-    /*
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: DashboardView,
-    },
-    {
-      path: '/process',
-      name: 'process',
-      component: () => import('@/views/customer/ProcessView.vue'),
-    },
-    {
-      path: '/process/:id',
-      name: 'process-details',
-      component: () => import('@/views/customer/ProcessDetailsView.vue'),
-    },
-    {
-      path: '/chat-options',
-      name: 'chat-options',
-      component: () => import('@/views/customer/ChatOptionsView.vue'),
-    },
-    {
-      path: '/chat',
-      name: 'chat',
-      component: () => import('@/views/customer/ChatView.vue'),
-    },
-    {
-      path: '/faq',
-      name: 'faq',
-      component: () => import('@/views/customer/FAQView.vue'),
-    },
-    {
-      path: '/documents',
-      name: 'documents',
-      component: () => import('@/views/customer/DocumentsView.vue'),
-    },
-    */
   ],
 
   
