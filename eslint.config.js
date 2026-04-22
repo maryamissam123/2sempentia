@@ -1,9 +1,9 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
-import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import pluginCypress from 'eslint-plugin-cypress'
-import pluginVitest from '@vitest/eslint-plugin'
+import { defineConfig, globalIgnores } from 'eslint/config';
+import globals from 'globals';
+import js from '@eslint/js';
+import pluginVue from 'eslint-plugin-vue';
+import pluginCypress from 'eslint-plugin-cypress';
+import pluginVitest from '@vitest/eslint-plugin';
 
 export default defineConfig([
   {
@@ -44,4 +44,4 @@ export default defineConfig([
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-])
+]);

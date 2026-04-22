@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LoginView from '@/views/login/LoginView.vue'
+import LoginView from '@/views/login/LoginView.vue';
 import { useAuthStore } from '@/stores/auth';
 
 const router = createRouter({
@@ -76,11 +76,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  const { role, ready } = useAuthStore()
-  if (!ready) return true
-  if (to.name === 'login' && role) return { name: `${role}-dashboard` }
-  if (to.name !== 'login' && !role) return { name: 'login' }
-  if (to.meta.role && to.meta.role !== role) return { name: `${role}-dashboard` }
-})
+  const { role, ready } = useAuthStore();
+  if (!ready) return true;
+  if (to.name === 'login' && role) return { name: `${role}-dashboard` };
+  if (to.name !== 'login' && !role) return { name: 'login' };
+  if (to.meta.role && to.meta.role !== role) return { name: `${role}-dashboard` };
+});
 
 export default router;
