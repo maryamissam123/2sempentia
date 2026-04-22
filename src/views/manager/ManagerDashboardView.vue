@@ -12,6 +12,6 @@ const logout = async () => {
 </script>
 
 <template>
-  <h1>Customer Dashboard</h1>
+  <h1>Manager Dashboard</h1>
   <button @click="logout">Log ud</button>
 </template>
