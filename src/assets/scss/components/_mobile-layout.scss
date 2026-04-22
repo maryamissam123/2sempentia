@@ -1,0 +1,18 @@
+
+.mobile-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+    padding-bottom: 80px;
+  }
+
+  &__tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

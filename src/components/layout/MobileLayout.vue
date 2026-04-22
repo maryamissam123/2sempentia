@@ -3,10 +3,10 @@ import TabBar from '@/components/TabBar.vue'
 </script>
 
 <template>
-  <div>
-    <main>
-      <RouterView />
+  <div class="mobile-layout">
+    <main class="mobile-layout__content">
+      <slot />
     </main>
-    <TabBar />
+    <TabBar class="mobile-layout__tabbar" />
   </div>
 </template>
