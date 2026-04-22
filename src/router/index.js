@@ -53,9 +53,49 @@ const router = createRouter({
     },
     {
       path: '/manager',
-      name: 'manager-dashboard',
       meta: { role: 'manager' },
-      component: () => import('@/views/manager/ManagerDashboardView.vue')
+      children: [
+        {
+          path: '',
+          name: 'manager-dashboard',
+          component: () => import('@/views/manager/ManagerDashboardView.vue')
+        },
+        {
+          path: 'projects',
+          name: 'manager-projects',
+          component: () => import('@/views/manager/ProjectsView.vue')
+        },
+        {
+          path: 'project/:id',
+          name: 'manager-project-details',
+          component: () => import('@/views/manager/ProjectDetailView.vue')
+        },
+        {
+          path: 'process',
+          name: 'manager-process',
+          component: () => import('@/views/manager/ProcessView.vue')
+        },
+        {
+          path: 'chat',
+          name: 'manager-chat',
+          component: () => import('@/views/manager/ChatView.vue')
+        },
+        {
+          path: 'chat-options',
+          name: 'manager-chat-options',
+          component: () => import('@/views/manager/ChatOptionsView.vue')
+        },
+        {
+          path: 'chat-list',
+          name: 'manager-chat-list',
+          component: () => import('@/views/manager/ChatListView.vue')
+        },
+        {
+          path: 'create-project',
+          name: 'manager-create-project',
+          component: () => import('@/views/manager/CreateProjectView.vue')
+        },
+      ]
     },
   ],
 
