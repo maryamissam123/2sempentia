@@ -16,6 +16,7 @@ const customerTabs = [
 const managerTabs = [
     { label: 'Hjem', route: '/manager', icon: Home },
     { label: 'Byggeforløb', route: '/manager/process', icon: TrendingUp },
+    { label: 'Dokumenter', route: '/manager/documents', icon: FileText },
     { label: 'Chat', route: '/manager/chat-options', icon: MessageSquareMore }
 ];
 
@@ -34,7 +35,4 @@ console.log(auth.role);
             {{ tab.label }}
         </RouterLink>
     </nav>
-
-    <p>role: {{ auth.role }}</p>
-<p>ready: {{ auth.ready }}</p>
 </template>

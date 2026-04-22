@@ -94,6 +94,11 @@ const router = createRouter({
           name: 'manager-create-project',
           component: () => import('@/views/manager/CreateProjectView.vue')
         },
+        {
+          path: 'documents',
+          name: 'manager-documents',
+          component: () => import('@/views/manager/DocumentsView.vue')
+        },
       ]
     },
   ],
