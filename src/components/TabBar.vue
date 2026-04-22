@@ -1,17 +1,19 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
 
 const tabs = [
-    { label: 'Hjem' },
-    { label: 'Byggeforløb' },
-    { label: 'Dokumenter' },
-    { label: 'Chat'}
+    { label: 'Hjem', route: '/customer' },
+    { label: 'Byggeforløb', route: '/customer/process' },
+    { label: 'Dokumenter', route: '/customer/documents' },
+    { label: 'Chat', route: '/customer/chat-options'}
 ];
 </script>
 
 <template>
     <nav> 
-        <button v-for="tab in tabs" :key="tab.label">
+        <RouterLink v-for="tab in tabs" :key="tab.label" :to="tab.route">
             {{ tab.label }}
-        </button>
+        </RouterLink>
     </nav>
 </template>

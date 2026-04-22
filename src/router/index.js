@@ -62,12 +62,4 @@ const router = createRouter({
   
 });
 
-router.beforeEach((to) => {
-  const { role, ready } = useAuthStore();
-  if (!ready) return true;
-  if (to.name === 'login' && role) return { name: `${role}-dashboard` };
-  if (to.name !== 'login' && !role) return { name: 'login' };
-  if (to.meta.role && to.meta.role !== role) return { name: `${role}-dashboard` };
-});
-
 export default router;
