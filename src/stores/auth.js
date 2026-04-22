@@ -10,15 +10,15 @@ export const useAuthStore = defineStore('auth', () => {
     const ready = ref(false);
 
     const login = async (email, password) => {
-        const { user } = await signInWithEmailAndPassword(auth, email, password)
-        const snap = await getDoc(doc(db, 'users', user.uid))
-        const userRole = snap.data()?.role
-        role.value = userRole
-        return userRole
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        const userRole = snap.data()?.role;
+        role.value = userRole;
+        return userRole;
     };
 
     const logout = async () => {
-        await signOut(auth)
+        await signOut(auth);
     };
 
     onAuthStateChanged(auth, async (user) => {
@@ -37,4 +37,4 @@ export const useAuthStore = defineStore('auth', () => {
         login,
         logout
     };
-})
+});
