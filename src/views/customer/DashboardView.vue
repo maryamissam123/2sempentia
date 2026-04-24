@@ -2,9 +2,21 @@
 </script>
 
 <template>
-    <h1>Dashboard</h1>
-    <RouterLink to="/process">Process</RouterLink>
-    <RouterLink to="/chat-options">Chat</RouterLink>
-    <RouterLink to="/documents">Documents</RouterLink>
-
+  <div class="dashboard">
+    <RouterLink to="/customer/process" class="dashboard__card">
+      Nuværende fase
+    </RouterLink>
+    <RouterLink to="/customer/process" class="dashboard__card">
+      Næste fase
+    </RouterLink>
+    <RouterLink to="/customer/process" class="dashboard__card">
+      Se byggeforløb
+    </RouterLink>
+    <RouterLink to="/customer/chat-options" class="dashboard__card">
+      Chat
+    </RouterLink>
+    <RouterLink to="/customer/documents" class="dashboard__card">
+      Dokumenter
+    </RouterLink>
+  </div>
 </template>
