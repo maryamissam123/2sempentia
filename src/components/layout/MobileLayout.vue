@@ -5,7 +5,7 @@ import TopBar from '@/components/TopBar.vue'
 
 <template>
   <div class="mobile-layout">
-    <TopBar />
+    <TopBar :left-icons="['settings']" :right-icons="['notifications']" />
     <main class="mobile-layout__content">
       <slot />
     </main>

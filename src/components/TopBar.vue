@@ -1,21 +1,42 @@
 <script setup>
 import { useRoute } from 'vue-router';
-import { Settings, Bell } from '@lucide/vue';
+import { ArrowLeft, Settings, Search, Bell } from '@lucide/vue';
+
+defineProps({
+  leftIcons: { type: Array, default: () => [] },
+  rightIcons: { type: Array, default: () => [] }
+});
 
 const route = useRoute();
+
+const icons = {
+  back: ArrowLeft,
+  settings: Settings,
+  search: Search,
+  notifications: Bell,
+};
+
 </script>
 
 <template>
   <header class="top-bar">
     <div class="top-bar__row">
-      <button class="top-bar__icon">
-        <Settings />
+      <button
+        v-for="name in leftIcons"
+        :key="name"
+        class="top-bar__icon"
+       >
+        <component :is="icons[name]" />
       </button>
 
       <div class="top-bar__spacer"></div>
 
-      <button class="top-bar__icon">
-        <Bell />
+      <button
+        v-for="name in rightIcons"
+        :key="name"
+        class="top-bar__icon"
+      >
+				<component :is="icons[name]" />
       </button>
     </div>
 
