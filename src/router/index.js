@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { watch } from 'vue';
 import LoginView from '@/views/login/LoginView.vue';
+import { useAuthStore } from '@/stores/auth';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -88,7 +90,7 @@ const router = createRouter({
         {
           path: 'chat',
           name: 'manager-chat',
-          meta: { title: 'Chat', layout: 'detai' },
+          meta: { title: 'Chat', layout: 'detail' },
           component: () => import('@/views/manager/ChatView.vue')
         },
         {
@@ -118,8 +120,22 @@ const router = createRouter({
       ]
     },
   ],
+});
 
-  
+router.beforeEach(async (to) => {
+  const auth = useAuthStore();
+
+  // Vent til auth er klar
+  if (!auth.ready) {
+    await new Promise(resolve => {
+      const unwatch = watch(() => auth.ready, (isReady) => {
+        if (isReady) {
+          unwatch();
+          resolve();
+        }
+      });
+    });
+  }
 });
 
 export default router;
