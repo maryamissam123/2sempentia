@@ -12,8 +12,8 @@ export const useProjectStore = defineStore('project', () => {
 		projects.value = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   };
 
-	async function fetchProject() {
-		const snap = await getDocs(doc(db, 'projects', id));
+	async function fetchProject(id) {
+		const snap = await getDoc(doc(db, 'projects', id));
 		project.value = { id: snap.id, ...snap.data() }
 	}
 
