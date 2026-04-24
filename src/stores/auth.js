@@ -6,12 +6,14 @@ import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase';
 
 export const useAuthStore = defineStore('auth', () => {
+    const user = ref(null);
     const role = ref(null);
     const ready = ref(false);
 
     const login = async (email, password) => {
-        const { user } = await signInWithEmailAndPassword(auth, email, password);
-        const snap = await getDoc(doc(db, 'users', user.uid));
+        const { user: u } = await signInWithEmailAndPassword(auth, email, password);
+        user.value = u;
+        const snap = await getDoc(doc(db, 'users', u.uid));
         const userRole = snap.data()?.role;
         role.value = userRole;
         return userRole;
@@ -21,9 +23,10 @@ export const useAuthStore = defineStore('auth', () => {
         await signOut(auth);
     };
 
-    onAuthStateChanged(auth, async (user) => {
-        if(user) {
-            const snap = await getDoc(doc(db, 'users', user.uid));
+    onAuthStateChanged(auth, async (u) => {
+        user.value = u;
+        if(u) {
+            const snap = await getDoc(doc(db, 'users', u.uid));
             role.value = snap.data()?.role;
         } else {
             role.value = null;
@@ -32,6 +35,7 @@ export const useAuthStore = defineStore('auth', () => {
     });
 
     return {
+        user,
         role,
         ready,
         login,
