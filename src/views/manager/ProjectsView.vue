@@ -11,6 +11,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Manager Projects</h1>
-	<pre>{{ store.projects }}</pre>
+  <div class="projects">
+		<div
+			v-for="project in store.projects"
+			:key="project.id"
+			class="project__card"
+		>
+			<h3>{{ project.name }}</h3>
+			<p>{{ project.address }}</p>
+		</div>
+	</div>
 </template>
