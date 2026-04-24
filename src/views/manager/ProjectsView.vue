@@ -12,13 +12,14 @@ onMounted(() => {
 
 <template>
   <div class="projects">
-		<div
+		<RouterLink
 			v-for="project in store.projects"
 			:key="project.id"
+			:to="`/manager/projects/${project.id}`"
 			class="project__card"
 		>
 			<h3>{{ project.name }}</h3>
 			<p>{{ project.address }}</p>
-		</div>
+		</RouterLink>
 	</div>
 </template>
