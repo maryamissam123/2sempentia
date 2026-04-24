@@ -1,0 +1,22 @@
+.top-bar {
+  border: 1px solid black;
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__spacer {
+    flex: 1;
+  }
+
+  &__icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__title {
+    margin: 0;
+  }
+}
