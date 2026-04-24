@@ -16,6 +16,7 @@ const router = createRouter({
         {
           path: '',
           name: 'customer-dashboard',
+          meta: { title: 'Kunde Dashboard' },
           component: () => import('@/views/customer/DashboardView.vue'),
         },
         {
