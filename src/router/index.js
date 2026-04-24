@@ -22,6 +22,7 @@ const router = createRouter({
         {
           path: 'process',
           name: 'customer-process',
+          meta: { title: 'Byggeforløb', layout: 'detail' },
           component: () => import('@/views/customer/ProcessView.vue'),
         },
         {
