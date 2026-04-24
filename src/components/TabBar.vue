@@ -10,7 +10,7 @@ const customerTabs = [
     { label: 'Hjem', route: '/customer', icon: Home },
     { label: 'Byggeforløb', route: '/customer/process', icon: TrendingUp },
     { label: 'Dokumenter', route: '/customer/documents', icon: FileText },
-    { label: 'Chat Hej', route: '/customer/chat-options', icon: MessageSquareMore }
+    { label: 'Chat', route: '/customer/chat-options', icon: MessageSquareMore }
 ];
 
 const managerTabs = [
