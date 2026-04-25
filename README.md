@@ -1,61 +1,111 @@
-# my-first-pinia-project
+# Milton Huse Byggeportal
+En webapplikation udviklet i samarbejde med Pentia og Digital Konceptudvikling.
+Applikationen giver private kunder mulighed for at følge deres eget byggeprojekt hos Milton Huse i realtid med statusopdateringer, billeder og kommunikation med byggeleder.
 
-This template should help get you started developing with Vue 3 in Vite.
+## Teknologi
 
-## Recommended IDE Setup
+| Teknologi | Version | Beskrivelse |
+|-----------|---------|-------------|
+| Vue.js | ^3.5.30 | Frontend framework |
+| Vue Router | ^5.0.3 | Routing og route guards |
+| Pinia | ^3.0.4 | State management |
+| Firebase | ^12.11.0 | Auth, Firestore, Storage |
+| Vite | ^7.3.1 | Build tool |
+| Sass | ^1.98.0 | CSS preprocessor |
+| Vitest | ^4.0.18 | Unit tests |
+| Cypress | ^15.13.0 | E2E tests |
+| ESLint | ^10.0.3 | Linting |
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Links
 
-## Recommended Browser Setup
+- **Demo**: [Firebase Hosting](#)
+- **GitHub Repository**: [Link](#)
+- **Dokumentation**: [Link](#)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Login til demo
 
-## Customize configuration
+- **Email**: 
+- **Adgangskode**: 
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Installation
 
-## Project Setup
+### 1. Installer afhængigheder
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 2. Konfigurer Firebase
+
+Opret en Firebase-projekt og tilføj dine konfigurationer i `src/firebase.js`:
+
+```javascript
+const firebaseConfig = {
+  apiKey: "DIN_API_KEY",
+  authDomain: "dit-projekt.firebaseapp.com",
+  projectId: "dit-projekt",
+  storageBucket: "dit-projekt.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:abcdef"
+};
+```
+
+### 3. Start udviklingsserver
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Applikationen kører nu på `http://localhost:5173`
 
-```sh
-npm run build
+## Tilgængelige scripts
+
+| Kommando | Beskrivelse |
+|----------|-------------|
+| `npm run dev` | Start udviklingsserver med hot-reload |
+| `npm run build` | Build og minificer til produktion |
+| `npm run preview` | Preview produktionsbuild lokalt |
+| `npm run deploy` | Build og deploy til Firebase Hosting |
+| `npm run test:unit` | Kør unit tests med Vitest |
+| `npm run test:e2e:dev` | Kør E2E tests mod dev-server |
+| `npm run lint` | Lint alle JS og Vue filer |
+
+## Projektstruktur
+
+```
+src/
+├── assets/scss/          # SCSS stylesheets
+│   ├── abstracts/       # Variabler og mixins
+│   └── components/     # Komponent-specifikke styles
+├── components/          # Genbrugelige Vue komponenter
+│   ├── layout/         # Layout komponenter
+│   └── *.vue           # Basis komponenter
+├── router/              # Vue Router konfiguration
+├── stores/              # Pinia stores
+│   ├── auth.js         # Auth store
+│   └── project.js     # Project store
+├── views/               # Side-komponenter
+│   ├── customer/       # Kunde-visninger
+│   ├── login/          # Login-visninger
+│   └── manager/        # Manager-visninger
+├── App.vue              # Root komponent
+├── firebase.js          # Firebase konfiguration
+└── main.js              # App entry point
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Udvikling
+
+### Kør tests
 
 ```sh
+# Unit tests
 npm run test:unit
-```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
+# E2E tests (mod dev-server)
 npm run test:e2e:dev
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
+### Lint kode
 
 ```sh
 npm run lint
