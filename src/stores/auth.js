@@ -21,6 +21,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     const logout = async () => {
         await signOut(auth);
+        user.value = null; // nulstiller når brugeren logger ud
+        role.value = null;
     };
 
     const createCustomer = async ({ name, email, password, projectNumber}) => {
@@ -55,6 +57,10 @@ export const useAuthStore = defineStore('auth', () => {
 
     const createManager = async ({ name, email, password, employeeNumber }) => {
         const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
+        const whitelistSnap = await getDoc(whitelistRef); // Tjekker om medarbejdernummeret findes i whitelist collection
+            if (!whitelistSnap.exists()) {
+            throw new Error('Medarbejdernummer findes ikke');
+        };
 
 
         const { user: u } = await createUserWithEmailAndPassword(auth, email, password);

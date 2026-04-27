@@ -9,8 +9,9 @@ export const useProjectStore = defineStore('project', () => {
 	const project = ref(null);
 
   async function fetchProjects() {
-		const auth = useAuthStore();
-		const field = auth.role === 'manager' ? 'managerId' : 'customerId';
+  	const auth = useAuthStore();
+  		if (!auth.user) return; // guard (fejlhåndtering hvis der ikke er en user)
+  	const field = auth.role === 'manager' ? 'managerId' : 'customerId';
 
 		const q = query(
 			collection(db, 'projects'),
