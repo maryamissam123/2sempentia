@@ -12,6 +12,11 @@ const router = createRouter({
       component: LoginView,
     },
     {
+      path: '/create/customer',
+      name: 'create-customer',
+      component: () => import('@/views/login/CreateUserView.vue'),
+    },
+    {
       path: '/customer',
       meta: { role: 'customer', layout: 'mobile' },
       children: [
@@ -122,10 +127,9 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to) => {
+router.beforeEach(async () => {
   const auth = useAuthStore();
 
-  // Vent til auth er klar
   if (!auth.ready) {
     await new Promise(resolve => {
       const unwatch = watch(() => auth.ready, (isReady) => {

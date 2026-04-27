@@ -6,7 +6,7 @@ import { useAuthStore } from './auth';
 
 export const useProjectStore = defineStore('project', () => {
 	const projects = ref([]);
-	const project = ref(null)
+	const project = ref(null);
 
   async function fetchProjects() {
 		const auth = useAuthStore();

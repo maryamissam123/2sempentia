@@ -20,4 +20,6 @@ const login = async () => {
     <input v-model="password" type="password" />
     <button type="submit">Log ind</button>
   </form>
+
+  <RouterLink to="/create/customer">Opret konto</RouterLink>
 </template>
