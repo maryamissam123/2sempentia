@@ -15,7 +15,7 @@ onMounted(() => {
 		<RouterLink
 			v-for="project in store.projects"
 			:key="project.id"
-			:to="`/manager/projects/${project.id}`"
+			:to="{ name: 'manager-project-detail', params: { id: project.id } }"
 			class="project__card"
 		>
 			<h3>{{ project.name }}</h3>
