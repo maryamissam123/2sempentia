@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, query, where, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { useAuthStore } from './auth';
 
@@ -26,5 +26,27 @@ export const useProjectStore = defineStore('project', () => {
 		project.value = { id: snap.id, ...snap.data() };
 	};
 
-  return { projects, project, fetchProjects, fetchProject };
+	async function createProject({projectNumber, projectName, projectAddress, phases}) {
+		const auth = useAuthStore();
+
+		const projectRef = await addDoc(collection(db, 'projects'), {
+			projectNumber,
+			projectName,
+			projectAddress,
+			status: 'igangværende',
+			managerId: auth.user.uid,
+			customerId: null
+		});
+
+		for (const phase of phases) {
+			await addDoc(collection(db, 'projects', projectRef.id, 'phases'), {
+				name: phase.name,
+				order: phase.order,
+				completed: false
+			});
+		};
+		return projectRef.id;
+	};
+
+  return { projects, project, fetchProjects, fetchProject, createProject };
 });
