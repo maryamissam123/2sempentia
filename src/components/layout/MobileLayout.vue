@@ -1,6 +1,6 @@
 <script setup>
-import TabBar from '@/components/TabBar.vue'
-import TopBar from '@/components/TopBar.vue'
+import TabBar from '@/components/TabBar.vue';
+import TopBar from '@/components/TopBar.vue';
 </script>
 
 <template>

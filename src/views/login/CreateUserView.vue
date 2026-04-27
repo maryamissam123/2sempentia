@@ -7,7 +7,7 @@ const auth = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 
-const role = computed(() => route.query.role)
+const role = computed(() => route.query.role);
 
 const name = ref('');
 const email = ref('');

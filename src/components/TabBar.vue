@@ -4,7 +4,7 @@ import { computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { Home, TrendingUp, FileText, MessageSquareMore } from '@lucide/vue';
 
-const auth = useAuthStore()
+const auth = useAuthStore();
 
 const customerTabs = [
     { label: 'Hjem', route: '/customer', icon: Home },

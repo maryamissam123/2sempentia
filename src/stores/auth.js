@@ -51,7 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
 
         role.value = 'customer';
         return 'customer';
-    }
+    };
 
     const createManager = async ({ name, email, password, employeeNumber }) => {
         const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
@@ -71,7 +71,7 @@ export const useAuthStore = defineStore('auth', () => {
 
         role.value = 'manager';
         return 'manager';
-    }
+    };
 
     onAuthStateChanged(auth, async (u) => {
         user.value = u;
