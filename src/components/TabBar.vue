@@ -24,8 +24,6 @@ const tabs = computed(() =>
   auth.role === 'manager' ? managerTabs : customerTabs
 );
 
-console.log(auth.role);
-
 </script>
 
 <template>

@@ -25,6 +25,7 @@ const icons = {
         v-for="name in leftIcons"
         :key="name"
         class="top-bar__icon"
+        @click="name === 'back' ? $router.back() : null"
        >
         <component :is="icons[name]" />
       </button>
@@ -35,6 +36,7 @@ const icons = {
         v-for="name in rightIcons"
         :key="name"
         class="top-bar__icon"
+        @click="name === 'back' ? $router.back() : null"
       >
 				<component :is="icons[name]" />
       </button>
