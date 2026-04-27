@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 import { ref } from 'vue';
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, getDoc, setDoc, query, collection, where, getDocs, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, query, collection, where, getDocs, updateDoc, deleteDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
         await signOut(auth);
     };
 
-    const createUser = async ({ name, email, password, projectNumber}) => {
+    const createCustomer = async ({ name, email, password, projectNumber}) => {
         const q = query(
             collection(db, 'projects'),
             where('projectNumber', '==', projectNumber)
@@ -53,6 +53,26 @@ export const useAuthStore = defineStore('auth', () => {
         return 'customer';
     }
 
+    const createManager = async ({ name, email, password, employeeNumber }) => {
+        const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
+
+
+        const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
+        user.value = u;
+
+        await setDoc(doc(db, 'users', u.uid), {
+            name,
+            email,
+            employeeNumber,
+            role: 'manager',
+        });
+
+        await deleteDoc(whitelistRef);
+
+        role.value = 'manager';
+        return 'manager';
+    }
+
     onAuthStateChanged(auth, async (u) => {
         user.value = u;
         if(u) {
@@ -70,6 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
         ready,
         login,
         logout,
-        createUser
+        createCustomer,
+        createManager
     };
 });

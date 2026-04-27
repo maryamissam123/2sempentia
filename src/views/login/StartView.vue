@@ -2,5 +2,6 @@
 </script>
 
 <template>
-    <div></div>
+    <RouterLink :to="{ path: 'create-user', query: { role: 'customer' } }">Opret Customer</RouterLink>
+    <RouterLink :to="{ path: 'create-user', query: { role: 'manager' } }">Opret Manager</RouterLink>
 </template>
