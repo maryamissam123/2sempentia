@@ -43,7 +43,7 @@ function createUser() {
 		<input v-model="name" placeholder="Navn">
 		<input v-model="email" type="email" placeholder="Email">
 		<input v-model="password" type="password" placeholder="Kode">
-		<input v-model="idNumber" placeholder="id nummer">
+		<input v-model="idNumber" :placeholder="role === 'manager' ? 'Medarbejdernummer' : 'Projektnummer' ">
 
 		<button @click="createUser">Opret konto</button>
 	</div>

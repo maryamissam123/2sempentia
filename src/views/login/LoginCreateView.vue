@@ -10,6 +10,11 @@ const role = computed(() => route.query.role);
 <template>
     <h1>{{ role === 'customer' ? 'Customer' : 'Manager'}}</h1>
 
-    <RouterLink :to="{ path: 'login', query: { role } }">Login ind</RouterLink>
-    <RouterLink :to="{ path: 'create-user', query: { role } }">Opret Bruger</RouterLink>
+    <div class="test">
+      <RouterLink :to="{ path: 'login', query: { role } }">Login ind</RouterLink>
+    </div>
+
+		<div class="test">
+    	<RouterLink :to="{ path: 'create-user', query: { role } }">Opret Bruger</RouterLink>
+		</div>
 </template>
