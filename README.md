@@ -37,7 +37,7 @@ npm install
 
 ### 2. Konfigurer Firebase
 
-Opret en Firebase-projekt og tilføj dine konfigurationer i `src/firebase.js`:
+Opret en Firebase-projekt og tilføj dine konfigurationer i `.env`:
 
 ```javascript
 const firebaseConfig = {
