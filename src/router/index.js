@@ -137,7 +137,7 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async () => {
+router.beforeEach(async (to) => {
   const auth = useAuthStore();
 
   if (!auth.ready) {
@@ -147,6 +147,11 @@ router.beforeEach(async () => {
           unwatch();
           resolve();
         }
+        // Guard: Hvis ruten er public, tillad adgang. Hvis ikke, tjek om der er en user. Hvis der er en user, tjek om rollen matcher rute-rollen.
+      const publicRoutes = ['start-view', 'login', 'login-create', 'create-user'];
+        if (publicRoutes.includes(to.name)) return true;
+        if (!auth.user) return { name: 'login' };
+        if (to.meta.role && to.meta.role !== auth.role) return { name: `${auth.role}-dashboard` };
       });
     });
   }
