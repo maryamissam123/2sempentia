@@ -2,20 +2,34 @@
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useProjectStore } from '@/stores/project';
+import { usePhaseStore } from '@/stores/phase';
+import { Key } from 'lucide-vue-next';
 
 const route = useRoute();
-const store = useProjectStore();
+const projectStore = useProjectStore();
+const phaseStore = usePhaseStore();
 
 onMounted(() => {
-  store.fetchProject(route.params.id);
+  projectStore.fetchProject(route.params.id);
+  phaseStore.fetchPhases(route.params.id);
 });
 </script>
 
 <template>
-  <div>
-    <h2>{{ store.project?.name }}</h2>
-    <p>{{ store.project?.address }}</p>
-    <p>Projektnummer: {{ store.project?.projectNumber }}</p>
-    <p>Status: {{ store.project?.status }}</p>
+  <div class="test">
+    <h2>{{ projectStore.project?.name }}</h2>
+    <p>{{ projectStore.project?.address }}</p>
+    <p>Projektnummer: {{ projectStore.project?.projectNumber }}</p>
+    <p>Status: {{ projectStore.project?.status }}</p>
+  </div>
+
+  <div class="test">
+    <h2>Faser</h2>
+    <ul>
+      <li v-for="phase in phaseStore.phases" :key="phase.id">
+        {{ phase.name }} {{ phase.completed ? 'Afsluttet' : 'Igangværende' }}
+      </li>
+    </ul>
+
   </div>
 </template>
