@@ -11,8 +11,8 @@ const router = useRouter();
 
 const selectedPhases = ref([]);
 const projectNumber = ref('');
-const projectName = ref('');
-const projectAddress = ref('');
+const name = ref('');
+const address = ref('');
 
 onMounted(() => {
   phaseStore.fetchStandardPhases();
@@ -34,8 +34,8 @@ function isSelected(phase) {
 function handleCreate() {
 	const id = projectStore.createProject({
 		projectNumber: projectNumber.value,
-		projectName: projectName.value,
-		projectAddress: projectAddress.value,
+		name: name.value,
+		address: address.value,
 		phases: selectedPhases.value
 	});
 	router.push(`/manager/projects/${id}`);
@@ -45,8 +45,8 @@ function handleCreate() {
 <template>
   <h1>Manager Create Project</h1>
 	<input v-model="projectNumber" placeholder="Projektnummer">
-	<input v-model="projectName" placeholder="Projektnavn">
-	<input v-model="projectAddress" placeholder="Projekt Adresse">
+	<input v-model="name" placeholder="Projektnavn">
+	<input v-model="address" placeholder="Projekt Adresse">
 
 	<h3>Vælg faser</h3>
 	<div 

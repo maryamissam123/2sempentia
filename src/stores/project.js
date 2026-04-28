@@ -27,13 +27,13 @@ export const useProjectStore = defineStore('project', () => {
 		project.value = { id: snap.id, ...snap.data() };
 	};
 
-	async function createProject({projectNumber, projectName, projectAddress, phases}) {
+	async function createProject({projectNumber, name, address, phases}) {
 		const auth = useAuthStore();
 
 		const projectRef = await addDoc(collection(db, 'projects'), {
 			projectNumber,
-			projectName,
-			projectAddress,
+			name,
+			address,
 			status: 'igangværende',
 			managerId: auth.user.uid,
 			customerId: null
