@@ -3,7 +3,6 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useProjectStore } from '@/stores/project';
 import { usePhaseStore } from '@/stores/phase';
-import { Key } from 'lucide-vue-next';
 
 const route = useRoute();
 const projectStore = useProjectStore();
