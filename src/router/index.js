@@ -97,9 +97,9 @@ const router = createRouter({
           component: () => import('@/views/manager/ProjectDetailView.vue')
         },
         {
-          path: 'process',
+          path: 'projects/:projectId/phases/:id',
           name: 'manager-process',
-          meta: { title: 'Byggeforløb' },
+          meta: { title: 'Byggeforløb', layout: 'detail' },
           component: () => import('@/views/manager/ProcessView.vue')
         },
         {

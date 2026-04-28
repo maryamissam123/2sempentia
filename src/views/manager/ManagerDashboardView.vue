@@ -9,9 +9,6 @@
     <RouterLink :to="{ name: 'manager-chat-options' }" class="dashboard__card">
       Chat
     </RouterLink>
-    <RouterLink :to="{ name: 'manager-process' }" class="dashboard__card">
-      Byggeforløb
-    </RouterLink>
     <RouterLink :to="{ name: 'manager-documents' }" class="dashboard__card">
       Dokumenter
     </RouterLink>

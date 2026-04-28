@@ -11,6 +11,7 @@ const phaseStore = usePhaseStore();
 onMounted(() => {
   projectStore.fetchProject(route.params.id);
   phaseStore.fetchPhases(route.params.id);
+  console.log('phases:', phaseStore.phases);
 });
 </script>
 
@@ -24,11 +25,13 @@ onMounted(() => {
 
   <div class="test">
     <h2>Faser</h2>
-    <ul>
-      <li v-for="phase in phaseStore.phases" :key="phase.id">
-        {{ phase.name }} {{ phase.completed ? 'Afsluttet' : 'Igangværende' }}
-      </li>
-    </ul>
+    <RouterLink
+      v-for="phase in phaseStore.phases"
+      :key="phase.id"
+      :to="{ name: 'manager-process', params: { projectId: projectStore.project.id, id: phase.id } }"
+    >
+      {{ phase.name }}
+    </RouterLink>
 
   </div>
 </template>
