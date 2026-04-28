@@ -1,24 +1,38 @@
 @use '../abstracts/variables' as v;
 
 .login-page {
-  background-color: v.$color-bg;
+  background-color: v.$color-bg-neutral; 
+  font-family: v.$font-main; 
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 2rem;
   position: relative;
   overflow: hidden;
+  color: v.$color-black;
 
+  // Linjer
   &::before {
     content: '';
     position: absolute;
-    top: 0; left: 20%; bottom: 0;
-    width: 1px; background: rgba(0,0,0,0.1);
+    top: 0; left: 18.5%; bottom: 0;
+    width: 1px; 
+    background: rgba(0, 69, 82, 0.15); // Primær farve med lav opacity
+    z-index: 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 15.5%; left: 0; right: 0;
+    height: 1px; 
+    background: rgba(0, 69, 82, 0.15);
+    z-index: 0;
   }
 
   .login-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 375px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,88 +41,149 @@
 }
 
 .login-header {
-  margin-top: 4rem;
-  margin-bottom: 6rem;
-  .logo { width: 120px; }
+  margin-top: 8vh;
+  margin-bottom: 4vh;
+  .logo { 
+    width: 110px; 
+    height: auto; 
+    display: block;
+  }
 }
 
-// Menu Knapper
+// STARTVIEW MENU
 .menu-options {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 22px;
 
   .menu-btn {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 1.5rem;
+    justify-content: center;
+    width: 100%;
+    height: 140px;
     border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1.2rem;
+    border-radius: 15px;
     cursor: pointer;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    
-    .icon-box { margin-right: 1.5rem; font-size: 2rem; }
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.1s ease;
 
-    &--house { background-color: v.$color-yellow; }
-    &--manager { background-color: v.$color-blue-gray; }
+    &:active { transform: scale(0.97); }
+
+    .icon-box { 
+      margin-bottom: 12px;
+        img { width: 40px; height: 40px; }
+    }
+
+    span {
+      font-size: v.$font-size-title; 
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    &--house { background-color: v.$color-complementary; } 
+    &--manager { background-color: v.$color-accent; } 
     &--admin { background-color: v.$color-white; }
   }
 }
 
+// LOGINCREATEVIEW & LOGINVIEW 
 .view-indicator {
-  width: 100%;
-  background-color: v.$color-yellow;
-  padding: 0.8rem;
+  width: 100vw; 
+  padding: 1.1rem 0;
   text-align: center;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-bottom: 10rem;
-  
-  &--white { background-color: v.$color-white; margin-bottom: 2rem; }
+  font-size: v.$font-size-title;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10vh;
+
+  &--yellow { 
+    background-color: v.$color-complementary; 
+    margin-bottom: 8vh; 
+  }
+  &--white { 
+    background-color: v.$color-white; 
+    margin-bottom: 6vh; 
+  }
 }
 
+.auth-options, .login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  .btn {
+    width: 100%;
+    height: 70px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: none;
+    font-family: v.$font-main;
+    font-size: v.$font-size-title;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    &--white { background-color: v.$color-white; color: v.$color-black; }
+    &--dark { background-color: v.$color-primary; color: v.$color-white; }
+  }
+}
+
+// Input styling  til LoginView 
 .input-group {
   width: 100%;
-  background: white;
+  height: 55px;
+  background: v.$color-white;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
+  padding: 0 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+
+  .input-icon { width: 30px; margin-right: 12px; }
+  .check-icon { width: 24px; margin-left: auto; }
 
   input {
     border: none;
     outline: none;
     width: 100%;
-    padding-left: 1rem;
-    &::placeholder { color: #ccc; }
+    font-family: v.$font-main;
+    font-size: v.$font-size-subtitle;
+    font-weight: 500;
+    color: v.$color-black;
+    &::placeholder { color: #BBB; letter-spacing: 0.05em; }
   }
 }
 
-.btn {
-  width: 100%;
-  padding: 1.2rem;
-  border-radius: 8px;
+.forgot-link {
+  background: none;
   border: none;
-  font-weight: bold;
+  font-size: v.$font-size-caption;
+  font-weight: 500;
+  text-decoration: underline;
+  text-align: left;
+  margin: -10px 0 35px 5px;
   cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  margin-bottom: 1rem;
-
-  &--white { background-color: v.$color-white; color: v.$color-dark-teal; }
-  &--dark { background-color: v.$color-dark-teal; color: white; }
+  text-transform: uppercase;
 }
 
-// Footer med tilbage-knap
+// FOOTER
 .login-footer {
-  margin-top: auto;
-  padding-bottom: 2rem;
+  margin-top: auto; 
+  padding-bottom: 4vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   
   .back-btn {
     background: none;
@@ -117,7 +192,32 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: bold;
+    gap: 5px;
+
+    .back-icon-house {
+      width: 38px;
+      height: 30px;
+      border: 2px solid v.$color-primary;
+      border-radius: 2px;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: -13px; left: 50%;
+        transform: translateX(-50%);
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 13px solid v.$color-primary;
+      }
+    }
+
+    span {
+      font-size: v.$font-size-caption;
+      font-weight: 500;
+      color: v.$color-primary;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
   }
 }

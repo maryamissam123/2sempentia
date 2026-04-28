@@ -1,15 +1,17 @@
-// farver
-$color-bg: #d9d9ce;
-$color-yellow: #fce181;
-$color-blue-gray: #96b7c0;
-$color-dark-teal: #00424a;
+// Farvepalet 
+$color-primary: #004552;
+$color-accent: #8eb5bf;
+$color-complementary: #ffe184;
 $color-white: #ffffff;
-$color-text-gray: #999;
+$color-bg-neutral: #dcd8cf;
+$color-black: #000000;
+$color-error: #f13737;
 
-// Typografi
-$font-family: 'Montserrat', sans-serif;
-$font-size-title: 26px;
-$font-size-subtitle: 15px;
-$font-size-body: 12px;
-$font-size-caption: 10px;
-$font-size-admin-title: 18px;
+// Typografi 
+$font-main: 'Montserrat', sans-serif;
+
+$font-size-title: 26px;      // Titler
+$font-size-admin-title: 18px; // Admin Titler 
+$font-size-subtitle: 15px;    // Undertitler
+$font-size-body: 12px;        // Body
+$font-size-caption: 10px;     // Billedtekster

@@ -17,7 +17,7 @@ const goToLogin = () => {
         <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
       </header>
 
-      <div class="view-indicator">
+      <div class="view-indicator view-indicator--yellow">
         {{ role === 'customer' ? 'MIT HUS' : 'LOG IND' }}
       </div>
 
