@@ -18,21 +18,21 @@ defineProps({
       <main class="menu-options">
         <RouterLink :to="{ path: 'login-create', query: { role: 'customer' } }" class="menu-btn menu-btn--house">
           <div class="icon-box">
-            <i class="icon-house"></i>
+            <img src="@/assets/icons/Kunde.png" alt="" />
           </div>
           <span>MIT HUS</span>
         </RouterLink>
 
         <button class="menu-btn menu-btn--manager" @click="$router.push('/login-create')">
           <div class="icon-box">
-            <i class="icon-manager"></i>
+            <img src="@/assets/icons/Byggeleder.png" alt="" />
           </div>
           <span>BYGGELEDER</span>
         </button>
 
         <button class="menu-btn menu-btn--admin" @click="$router.push('/login-create')">
           <div class="icon-box">
-            <i class="icon-admin"></i>
+            <img src="@/assets/icons/Filer.png" alt="" />
           </div>
           <span>ADMINISTRATOR</span>
         </button>
