@@ -1,11 +1,12 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 export const usePhaseStore = defineStore('phase', () => {
   const standardPhases = ref([]);
   const phases = ref([]);
+  const phase = ref(null);
 
   async function fetchStandardPhases() {
     const snap = await getDocs(collection(db, 'standardPhases'));
@@ -19,6 +20,11 @@ export const usePhaseStore = defineStore('phase', () => {
     .sort((a, b) => a.order - b.order);
   }
 
-return { standardPhases, phases, fetchStandardPhases, fetchPhases };
+  async function fetchPhase(projectId, phaseId) {
+    const snap = await getDoc(doc(db, 'projects', projectId, 'phases', phaseId));
+    phase.value = { id: snap.id, ...snap.data() };
+  };
+
+return { standardPhases, phases, phase, fetchStandardPhases, fetchPhases, fetchPhase };
 });
 

@@ -21,11 +21,13 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="test">
-		<ul>
-			<li v-for="phase in phaseStore.phases" :key="phase.id">
-				{{ phase.name }}
-			</li>
-		</ul>
+	<div>
+		<RouterLink
+			v-for="phase in phaseStore.phases"
+			:key="phase.id"
+			:to="{ name: 'customer-process-details', params: { id: phase.id } }"
+		>
+		{{ phase.name }}
+		</RouterLink>
 	</div>
 </template>
