@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useProjectStore } from '@/stores/project';
-
+import BaseCard from '@/components/BaseCard.vue';
 const store = useProjectStore();
 
 onMounted(() => {
@@ -28,4 +28,7 @@ onMounted(() => {
       Dokumenter
     </RouterLink>
   </div>
+  base card test:
+  <BaseCard />
+
 </template>

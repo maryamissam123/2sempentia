@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <div></div> 
+  <h1>Here is a BaseList component!</h1>
 </template>
