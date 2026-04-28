@@ -9,45 +9,34 @@ defineProps({
 </script>
 
 <template>
-	<div class="container">
-		<img src="/logo/milton.png" alt="Milton Logo" class="logo" />
-	<div class="roles">
-		<RouterLink :to="{ path: 'login-create', query: { role: 'customer' } }">Mit Hus</RouterLink>
-	</div>
+  <div class="login-page start-view">
+    <div class="login-container">
+      <header class="login-header">
+        <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
+      </header>
 
-	<div class="test">
-		<RouterLink :to="{ path: 'login-create', query: { role: 'manager' } }">Byggeleder</RouterLink>
-	</div>
+      <main class="menu-options">
+        <RouterLink :to="{ path: 'login-create', query: { role: 'customer' } }" class="menu-btn menu-btn--house">
+          <div class="icon-box">
+            <i class="icon-house"></i>
+          </div>
+          <span>MIT HUS</span>
+        </RouterLink>
 
-	<div class="test">
-		<RouterLink :to="{ path: 'login-create', query: { role: 'admin' } }">Administrator</RouterLink>
-	</div>
-	</div>
+        <button class="menu-btn menu-btn--manager" @click="$router.push('/login-create')">
+          <div class="icon-box">
+            <i class="icon-manager"></i>
+          </div>
+          <span>BYGGELEDER</span>
+        </button>
 
-	<button :class="['btn', variant]">
-    {{ label }}
-  </button>
+        <button class="menu-btn menu-btn--admin" @click="$router.push('/login-create')">
+          <div class="icon-box">
+            <i class="icon-admin"></i>
+          </div>
+          <span>ADMINISTRATOR</span>
+        </button>
+      </main>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #F5F3EE;
-}
-
-.logo {
-  width: 200px;
-  height: auto;
-  margin-bottom: 40px;
-}
-
-.roles {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-</style>

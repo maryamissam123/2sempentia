@@ -1,0 +1,123 @@
+@use '../abstracts/variables' as v;
+
+.login-page {
+  background-color: v.$color-bg;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; bottom: 0;
+    width: 1px; background: rgba(0,0,0,0.1);
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+}
+
+.login-header {
+  margin-top: 4rem;
+  margin-bottom: 6rem;
+  .logo { width: 120px; }
+}
+
+// Menu Knapper
+.menu-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    .icon-box { margin-right: 1.5rem; font-size: 2rem; }
+
+    &--house { background-color: v.$color-yellow; }
+    &--manager { background-color: v.$color-blue-gray; }
+    &--admin { background-color: v.$color-white; }
+  }
+}
+
+.view-indicator {
+  width: 100%;
+  background-color: v.$color-yellow;
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 10rem;
+  
+  &--white { background-color: v.$color-white; margin-bottom: 2rem; }
+}
+
+.input-group {
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 1rem;
+    &::placeholder { color: #ccc; }
+  }
+}
+
+.btn {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 1rem;
+
+  &--white { background-color: v.$color-white; color: v.$color-dark-teal; }
+  &--dark { background-color: v.$color-dark-teal; color: white; }
+}
+
+// Footer med tilbage-knap
+.login-footer {
+  margin-top: auto;
+  padding-bottom: 2rem;
+  
+  .back-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+}
