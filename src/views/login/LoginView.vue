@@ -31,14 +31,14 @@ const handleLogin = async () => {
 
       <main class="login-form">
         <div class="input-group">
-          <img src="@/assets/icons/email.png" class="input-icon" />
+          <img src="@/assets/icons/Email.png" class="input-icon" alt="email" />
           <input v-model="email" type="email" placeholder="*EMAIL" />
         </div>
 
         <div class="input-group">
-          <img src="@/assets/icons/Password.png" class="input-icon" />
+          <img src="@/assets/icons/Password.png" class="input-icon" alt="password" />
           <input v-model="password" type="password" placeholder="*ADGANGSKODE" />
-          <img src="@/assets/icons/Færdig.png" class="check-icon" v-if="password.length > 5" />
+          <img src="@/assets/icons/Færdig.png" class="check-icon" v-if="password.length > 5" alt="done" />
         </div>
 
         <button class="forgot-link">GLEMT DIN ADGANGSKODE?</button>
@@ -48,7 +48,7 @@ const handleLogin = async () => {
 
       <footer class="login-footer">
         <button class="back-btn" @click="$router.back()">
-          <img src="@/assets/icons/Home.png" alt="" />
+          <div class="back-icon-house"></div>
           <span>TILBAGE</span>
         </button>
       </footer>

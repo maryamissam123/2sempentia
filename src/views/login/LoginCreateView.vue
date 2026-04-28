@@ -8,6 +8,10 @@ const role = route.query.role || 'customer';
 const goToLogin = () => {
   router.push({ name: 'login', query: { role } });
 };
+
+const goToSignup = () => {
+  router.push({ name: 'create-user', query: { role } }); 
+};
 </script>
 
 <template>
@@ -18,17 +22,17 @@ const goToLogin = () => {
       </header>
 
       <div class="view-indicator view-indicator--yellow">
-        {{ role === 'customer' ? 'MIT HUS' : 'LOG IND' }}
+        {{ role === 'customer' ? 'MIT HUS' : 'BYGGELEDER' }}
       </div>
 
       <main class="auth-options">
         <button class="btn btn--white" @click="goToLogin">LOG IND</button>
-        <button class="btn btn--dark">OPRET KONTO</button>
+        <button class="btn btn--dark" @click="goToSignup">OPRET KONTO</button>
       </main>
 
       <footer class="login-footer">
         <button class="back-btn" @click="$router.push('/')">
-          <img src="@/assets/icons/Home.png" alt="" />
+          <div class="back-icon-house"></div>
           <span>TILBAGE</span>
         </button>
       </footer>
