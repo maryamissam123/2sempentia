@@ -1,20 +1,37 @@
 <script setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
+const router = useRouter();
 
-const role = computed(() => route.query.role);
+const role = route.query.role || 'customer';
+
+const goToLogin = () => {
+  router.push({ name: 'login', query: { role } });
+};
 </script>
 
 <template>
-    <h1>{{ role === 'customer' ? 'Customer' : 'Manager'}}</h1>
+  <div class="login-page">
+    <div class="login-container">
+      <header class="login-header">
+        <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
+      </header>
 
-    <div class="test">
-      <RouterLink :to="{ path: 'login', query: { role } }">Login ind</RouterLink>
+      <div class="view-indicator">
+        {{ role === 'customer' ? 'MIT HUS' : 'LOG IND' }}
+      </div>
+
+      <main class="auth-options">
+        <button class="btn btn--white" @click="goToLogin">LOG IND</button>
+        <button class="btn btn--dark">OPRET KONTO</button>
+      </main>
+
+      <footer class="login-footer">
+        <button class="back-btn" @click="$router.push('/')">
+          <img src="@/assets/icons/Home.png" alt="" />
+          <span>TILBAGE</span>
+        </button>
+      </footer>
     </div>
-
-		<div class="test">
-    	<RouterLink :to="{ path: 'create-user', query: { role } }">Opret Bruger</RouterLink>
-		</div>
+  </div>
 </template>
