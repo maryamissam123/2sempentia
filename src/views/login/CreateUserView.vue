@@ -85,7 +85,7 @@ async function createUser() {
 
       <footer class="login-footer">
         <button class="back-btn" @click="$router.back()">
-          <div class="back-icon-house"></div>
+		  <img src="@/assets/icons/Home.png" alt="" />
           <span>TILBAGE</span>
         </button>
       </footer>

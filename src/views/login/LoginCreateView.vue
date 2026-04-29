@@ -32,7 +32,7 @@ const goToSignup = () => {
 
       <footer class="login-footer">
         <button class="back-btn" @click="$router.push('/')">
-          <div class="back-icon-house"></div>
+          <img src="@/assets/icons/Home.png" alt="" />
           <span>TILBAGE</span>
         </button>
       </footer>
