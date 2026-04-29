@@ -108,7 +108,7 @@ const router = createRouter({
           component: () => import('@/views/manager/ProcessView.vue')
         },
         {
-          path: 'chat',
+          path: 'chat/:projectId',
           name: 'manager-chat',
           meta: { title: 'Chat', layout: 'detail' },
           component: () => import('@/views/manager/ChatView.vue')
