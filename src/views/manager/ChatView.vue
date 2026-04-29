@@ -14,9 +14,9 @@ onMounted(() => {
 });
 
 async function handleSend() {
-  if (!newMessage.value.trim()) return
-  await chatStore.sendMessage(projectId, newMessage.value)
-  newMessage.value = ''
+  if (!newMessage.value.trim()) return;
+  await chatStore.sendMessage(projectId, newMessage.value);
+  newMessage.value = '';
 }
 </script>
 

@@ -2,11 +2,9 @@
 import { ref, onMounted } from 'vue';
 import { useProjectStore } from '@/stores/project';
 import { useChatStore } from '@/stores/chat';
-import { useAuthStore } from '@/stores/auth';
 
 const projectStore = useProjectStore();
 const chatStore = useChatStore();
-const authStore = useAuthStore();
 
 const newMessage = ref('');
 const projectId = ref(null);
