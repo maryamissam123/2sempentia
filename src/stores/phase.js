@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { collection, getDocs, doc, getDoc, serverTimestamp, addDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 export const usePhaseStore = defineStore('phase', () => {
@@ -41,6 +41,14 @@ export const usePhaseStore = defineStore('phase', () => {
     await fetchComments(projectId, phaseId);
   };
 
+  async function completePhase(projectId, phaseId, completed) {
+    await updateDoc(
+      doc(db, 'projects', projectId, 'phases', phaseId),
+      { completed: !completed }
+    );
+    await fetchPhase(projectId, phaseId);
+  }
+
   return { 
     standardPhases, 
     phases, 
@@ -50,7 +58,8 @@ export const usePhaseStore = defineStore('phase', () => {
     fetchPhases, 
     fetchPhase, 
     fetchComments, 
-    addComment 
+    addComment,
+    completePhase
   };
 });
 
