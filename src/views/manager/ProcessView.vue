@@ -21,22 +21,30 @@ async function handleAddComment() {
 	await phaseStore.addComment(projectId, phaseId, newComment.value);
 	newComment.value = '';
 }
+
+async function handleComplete() {
+	await phaseStore.completePhase(projectId, phaseId, phaseStore.phase.completed);
+	await phaseStore.fetchPhase(projectId, phaseId);
+};
 </script>
 
 <template>
-	<h2>{{ phaseStore.phase?.name }}</h2>
-	<div>
-		<h3>Kommentarer</h3>
-		<ul>
-			<li v-for="comment in phaseStore.comments" :key="comment.id">
-				{{ comment.text }}
-			</li>
-		</ul>
-	</div>
+  <div>
+    <h2>{{ phaseStore.phase?.name }}</h2>
+    <p>Status: {{ phaseStore.phase?.completed ? 'Færdig' : 'Ikke færdig' }}</p>
 
-	<div>
-		<h3>Tilføj kommentar</h3>
-		<input v-model="newComment" placeholder="Skriv kommentar">
-		<button @click="handleAddComment">Tilføj</button>
-	</div>
+    <button @click="handleComplete">
+      {{ phaseStore.phase?.completed ? 'Markér som ikke færdig' : 'Markér som færdig' }}
+    </button>
+
+    <h3>Kommentarer</h3>
+    <ul>
+      <li v-for="comment in phaseStore.comments" :key="comment.id">
+        {{ comment.text }}
+      </li>
+    </ul>
+
+    <input v-model="newComment" placeholder="Skriv kommentar" />
+    <button @click="handleAddComment">Tilføj</button>
+  </div>
 </template>

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
-import { collection, getDocs, doc, getDoc, serverTimestamp, addDoc } from 'firebase/firestore';
+import { ref, computed } from "vue";
+import { collection, getDocs, doc, getDoc, serverTimestamp, addDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 export const usePhaseStore = defineStore('phase', () => {
@@ -41,16 +41,32 @@ export const usePhaseStore = defineStore('phase', () => {
     await fetchComments(projectId, phaseId);
   };
 
+  async function completePhase(projectId, phaseId, completed) {
+    await updateDoc(
+      doc(db, 'projects', projectId, 'phases', phaseId),
+      { completed: !completed }
+    );
+    await fetchPhase(projectId, phaseId);
+  };
+
+  const progress = computed(() => {
+    if (!phases.value.length) return 0;
+    const done = phases.value.filter(p => p.completed).length
+    return Math.round((done / phases.value.length) * 100);
+  })
+
   return { 
     standardPhases, 
     phases, 
     phase, 
-    comments, 
+    comments,
+    progress, 
     fetchStandardPhases, 
     fetchPhases, 
     fetchPhase, 
     fetchComments, 
-    addComment 
+    addComment,
+    completePhase
   };
 });
 

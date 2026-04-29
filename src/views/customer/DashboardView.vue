@@ -2,15 +2,26 @@
 import { onMounted } from 'vue';
 import { useProjectStore } from '@/stores/project';
 import BaseCard from '@/components/BaseCard.vue';
-const store = useProjectStore();
+import { usePhaseStore } from '@/stores/phase'
+import ProgressBar from '@/components/ProgressBar.vue'
 
-onMounted(() => {
-  store.fetchProjects();
-});
+const projectStore = useProjectStore()
+const phaseStore = usePhaseStore()
+
+onMounted(async () => {
+  await projectStore.fetchProjects()
+  const projectId = projectStore.projects[0]?.id
+  if (projectId) {
+    await phaseStore.fetchPhases(projectId)
+  }
+})
 </script>
 
 <template>
-  <h2>{{ store.projects[0]?.name }}</h2>
+  
+  <ProgressBar :value="phaseStore.progress" />
+
+  <h2>{{ projectStore.projects[0]?.name }}</h2>
   <div class="dashboard">
     <RouterLink to="/customer/process" class="dashboard__card">
       Nuværende fase
