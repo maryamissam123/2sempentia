@@ -7,14 +7,19 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+    path: '/', 
+    name: 'motion', 
+    component: () => import('@/views/login/MotionView.vue') 
+    },
+    {
+      path: '/start',
+      name: 'start-view',
+      component: () => import('@/views/login/StartView.vue'),
+    },
+    {
       path: '/login',
       name: 'login',
       component: LoginView,
-    },
-    {
-      path: '/',
-      name: 'start-view',
-      component: () => import('@/views/login/StartView.vue'),
     },
     {
       path: '/login-create',
@@ -136,25 +141,23 @@ const router = createRouter({
     },
   ],
 });
-
-router.beforeEach(async (to) => {
+  // Guard
+  router.beforeEach(async (to) => {
   const auth = useAuthStore();
+  const publicRoutes = ['motion', 'start-view', 'login', 'login-create', 'create-user'];
 
   if (!auth.ready) {
     await new Promise(resolve => {
-      const unwatch = watch(() => auth.ready, (isReady) => {
-        if (isReady) {
-          unwatch();
-          resolve();
-        }
-        // Guard: Hvis ruten er public, tillad adgang. Hvis ikke, tjek om der er en user. Hvis der er en user, tjek om rollen matcher rute-rollen.
-      const publicRoutes = ['start-view', 'login', 'login-create', 'create-user'];
-        if (publicRoutes.includes(to.name)) return true;
-        if (!auth.user) return { name: 'login' };
-        if (to.meta.role && to.meta.role !== auth.role) return { name: `${auth.role}-dashboard` };
-      });
+      const unwatch = watch(() => auth.ready, (val) => { if (val) { unwatch(); resolve(); } });
     });
   }
+
+  if (publicRoutes.includes(to.name)) return true;
+
+  if (!auth.user) return { name: 'login' };
 });
 
 export default router;
+
+
+

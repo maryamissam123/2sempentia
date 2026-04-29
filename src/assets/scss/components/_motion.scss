@@ -1,0 +1,50 @@
+.motion-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF; 
+  z-index: 9999;
+  overflow: hidden;
+  
+  animation: bgFadeToBeige 1.5s ease-in-out forwards;
+  animation-delay: 0.5s;
+
+  .motion-logo {
+    width: 150px;
+    height: auto;
+    animation: logoMoveUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.8s;
+  }
+
+  .bg-lines {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    &::before {
+      content: ''; position: absolute; top: 0; left: 18.5%; bottom: 0;
+      width: 1px; background: rgba(0, 69, 82, 0.15);
+    }
+    &::after {
+      content: ''; position: absolute; top: 15.5%; left: 0; right: 0;
+      height: 1px; background: rgba(0, 69, 82, 0.15);
+    }
+    animation: fadeIn 0.8s ease-in forwards;
+    animation-delay: 1.5s;
+  }
+}
+
+@keyframes bgFadeToBeige {
+  to { background-color: #DCD8CF; } // Slutter beige
+}
+
+@keyframes logoMoveUp {
+  to { transform: translateY(-35vh) scale(0.8); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
