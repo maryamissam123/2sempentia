@@ -6,6 +6,8 @@
 @use 'components/mobile-layout';
 @use 'components/login';
 @use 'components/motion';
+@use 'components/base-card';
+@use 'components/base-list';
 
 .test {
   border: 1px solid black;
