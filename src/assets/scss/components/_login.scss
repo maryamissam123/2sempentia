@@ -10,7 +10,7 @@
   overflow: hidden;
   color: v.$color-black;
 
-  // Baggrundslinjer (Tekniske streger)
+  // Baggrundslinjer
   &::before {
     content: '';
     position: absolute;
@@ -50,7 +50,7 @@
   }
 }
 
-// --- StartView Menu ---
+// StartView Menu
 .menu-options {
   width: 100%;
   display: flex;
@@ -69,14 +69,14 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: transform 0.1s ease;
-    text-decoration: none; // Fjerner lilla streg fra RouterLink
+    text-decoration: none;
     color: v.$color-black;
 
     &:active { transform: scale(0.97); }
 
     .icon-box { 
       margin-bottom: 12px;
-      img { width: 40px; height: 40px; }
+      img { width: 45px; height: auto; }
     }
 
     span {
@@ -92,7 +92,6 @@
   }
 }
 
-// --- Indikator barer ---
 .view-indicator {
   width: 100vw; 
   padding: 1.1rem 0;
@@ -101,7 +100,6 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 10vh;
 
   &--yellow { 
     background-color: v.$color-complementary; 
@@ -112,13 +110,13 @@
     margin-bottom: 6vh; 
   }
   &--dark-blue {
-    background-color: v.$color-primary; // #004552 fra dine billeder
+    background-color: v.$color-primary;
     color: v.$color-white;
     margin-bottom: 4vh;
   }
 }
 
-// --- Formularer & Knapper ---
+// Formularer & Knapper
 .auth-options, .login-form {
   width: 100%;
   display: flex;
@@ -144,7 +142,6 @@
     &--white { background-color: v.$color-white; color: v.$color-black; }
     &--dark { background-color: v.$color-primary; color: v.$color-white; }
     
-    // Specifik knap til CreateUser
     &--create {
       background-color: v.$color-primary;
       color: v.$color-white;
@@ -154,7 +151,6 @@
   }
 }
 
-// --- Input felter ---
 .input-group {
   width: 100%;
   height: 55px;
@@ -167,7 +163,7 @@
   position: relative;
 
   .input-icon { width: 30px; margin-right: 12px; }
-  .check-icon { width: 24px; margin-left: auto; }
+  .check-icon { width: 24px; margin-left: auto; } // Gule flueben
 
   input {
     border: none;
@@ -182,15 +178,10 @@
   }
 }
 
-// --- Specifik styling til OPRET KONTO siden ---
+// CreateUserView
 .create-user-view {
-  .login-form {
-    gap: 12px; // Tættere afstand som på billedet
-  }
-
-  .input-group {
-    height: 50px; // Lidt lavere for at få plads til alle felter
-  }
+  .login-form { gap: 12px; }
+  .input-group { height: 50px; }
 
   .create-helper-text {
     font-size: 8px;
@@ -200,37 +191,6 @@
     padding: 0 10px;
     margin: 5px 0 15px 0;
     text-transform: uppercase;
-  }
-
-  .create-footer {
-    margin-top: auto;
-    padding-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    .back-link {
-      background: none;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      gap: 2px;
-
-      .house-icon-wrapper img {
-        width: 45px; // Home.png ikon størrelse
-        height: auto;
-      }
-
-      .back-text {
-        font-size: 10px;
-        color: v.$color-primary;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-    }
   }
 }
 
@@ -246,29 +206,36 @@
   text-transform: uppercase;
 }
 
-// Standard Footer (til LoginView)
-.login-footer:not(.create-footer) {
+// Footer 
+.login-footer, .create-footer {
   margin-top: auto; 
-  padding-bottom: 4vh;
+  padding-bottom: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
   
-  .back-btn {
+  .back-btn, .back-link {
     background: none;
     border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    gap: 5px;
+    gap: 2px;
 
-    span {
-      font-size: v.$font-size-caption;
-      font-weight: 500;
+    img, .house-icon-wrapper img {
+      width: 45px; 
+      height: auto;
+      display: block;
+    }
+
+    span, .back-text {
+      font-size: 10px;
+      font-weight: 700;
       color: v.$color-primary;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      margin-top: -2px;
     }
   }
 }
