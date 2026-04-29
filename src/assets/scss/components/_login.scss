@@ -10,13 +10,13 @@
   overflow: hidden;
   color: v.$color-black;
 
-  // Linjer
+  // Baggrundslinjer (Tekniske streger)
   &::before {
     content: '';
     position: absolute;
     top: 0; left: 18.5%; bottom: 0;
     width: 1px; 
-    background: rgba(0, 69, 82, 0.15); // Primær farve med lav opacity
+    background: rgba(0, 69, 82, 0.15); 
     z-index: 0;
   }
   
@@ -50,7 +50,7 @@
   }
 }
 
-// StartView & LoginCreateView
+// --- StartView Menu ---
 .menu-options {
   width: 100%;
   display: flex;
@@ -69,14 +69,14 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: transform 0.1s ease;
-    text-decoration: none;
+    text-decoration: none; // Fjerner lilla streg fra RouterLink
     color: v.$color-black;
 
     &:active { transform: scale(0.97); }
 
     .icon-box { 
       margin-bottom: 12px;
-        img { width: 40px; height: 40px; }
+      img { width: 40px; height: 40px; }
     }
 
     span {
@@ -92,7 +92,7 @@
   }
 }
 
-// LoginCreateView & LoginView
+// --- Indikator barer ---
 .view-indicator {
   width: 100vw; 
   padding: 1.1rem 0;
@@ -111,8 +111,14 @@
     background-color: v.$color-white; 
     margin-bottom: 6vh; 
   }
+  &--dark-blue {
+    background-color: v.$color-primary; // #004552 fra dine billeder
+    color: v.$color-white;
+    margin-bottom: 4vh;
+  }
 }
 
+// --- Formularer & Knapper ---
 .auth-options, .login-form {
   width: 100%;
   display: flex;
@@ -137,10 +143,18 @@
 
     &--white { background-color: v.$color-white; color: v.$color-black; }
     &--dark { background-color: v.$color-primary; color: v.$color-white; }
+    
+    // Specifik knap til CreateUser
+    &--create {
+      background-color: v.$color-primary;
+      color: v.$color-white;
+      height: 60px;
+      margin-top: 10px;
+    }
   }
 }
 
-// Input styling  til LoginView 
+// --- Input felter ---
 .input-group {
   width: 100%;
   height: 55px;
@@ -163,7 +177,60 @@
     font-size: v.$font-size-subtitle;
     font-weight: 500;
     color: v.$color-black;
+    background: transparent;
     &::placeholder { color: #BBB; letter-spacing: 0.05em; }
+  }
+}
+
+// --- Specifik styling til OPRET KONTO siden ---
+.create-user-view {
+  .login-form {
+    gap: 12px; // Tættere afstand som på billedet
+  }
+
+  .input-group {
+    height: 50px; // Lidt lavere for at få plads til alle felter
+  }
+
+  .create-helper-text {
+    font-size: 8px;
+    line-height: 1.3;
+    text-align: center;
+    color: v.$color-black;
+    padding: 0 10px;
+    margin: 5px 0 15px 0;
+    text-transform: uppercase;
+  }
+
+  .create-footer {
+    margin-top: auto;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .back-link {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      gap: 2px;
+
+      .house-icon-wrapper img {
+        width: 45px; // Home.png ikon størrelse
+        height: auto;
+      }
+
+      .back-text {
+        font-size: 10px;
+        color: v.$color-primary;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
@@ -179,8 +246,8 @@
   text-transform: uppercase;
 }
 
-// Footer
-.login-footer {
+// Standard Footer (til LoginView)
+.login-footer:not(.create-footer) {
   margin-top: auto; 
   padding-bottom: 4vh;
   width: 100%;
@@ -195,24 +262,6 @@
     align-items: center;
     cursor: pointer;
     gap: 5px;
-
-    .back-icon-house {
-      width: 38px;
-      height: 30px;
-      border: 2px solid v.$color-primary;
-      border-radius: 2px;
-      position: relative;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        top: -13px; left: 50%;
-        transform: translateX(-50%);
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 13px solid v.$color-primary;
-      }
-    }
 
     span {
       font-size: v.$font-size-caption;

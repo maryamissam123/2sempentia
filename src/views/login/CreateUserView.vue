@@ -24,7 +24,7 @@ async function createUser() {
       password: password.value,
       projectNumber: idNumber.value
     });
-		router.push('/customer');
+    router.push('/customer');
   } else {
     await auth.createManager({
       name: name.value,
@@ -33,18 +33,18 @@ async function createUser() {
       employeeNumber: idNumber.value
     });
     router.push('/manager');
-	}
+  }
 }
 </script>
 
 <template>
-<div class="login-page">
+  <div class="login-page create-user-view">
     <div class="login-container">
       <header class="login-header">
         <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
       </header>
 
-      <div class="view-indicator view-indicator--dark">
+      <div class="view-indicator view-indicator--dark-blue">
         OPRET KONTO
       </div>
 
@@ -76,17 +76,19 @@ async function createUser() {
           <img src="@/assets/icons/Færdig.png" class="check-icon" v-if="idNumber.length > 2" />
         </div>
 
-        <p class="helper-text">
+        <p class="create-helper-text">
           DIT PROJEKTNUMMER ER ANGIVET I DIN MILTON HUSE-KONTRAKT. INDTASTNINGEN HJÆLPER OS MED AT SIKRE, AT DIN KONTO ER KNYTTET TIL DET KORREKTE HUS.
         </p>
 
-        <button class="btn btn--dark" @click="createUser">OPRET KONTO</button>
+        <button class="btn btn--create" @click="createUser">OPRET KONTO</button>
       </main>
 
-      <footer class="login-footer">
-        <button class="back-btn" @click="$router.back()">
-		  <img src="@/assets/icons/Home.png" alt="" />
-          <span>TILBAGE</span>
+      <footer class="create-footer">
+        <button class="back-link" @click="$router.back()">
+          <div class="house-icon-wrapper">
+             <img src="@/assets/icons/Home.png" alt="Tilbage" />
+          </div>
+          <span class="back-text">TILBAGE</span>
         </button>
       </footer>
     </div>

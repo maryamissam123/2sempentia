@@ -22,20 +22,18 @@ defineProps({
           </div>
           <span>MIT HUS</span>
         </RouterLink>
-
-        <button class="menu-btn menu-btn--manager" @click="$router.push('/login-create')">
-          <div class="icon-box">
-            <img src="@/assets/icons/Byggeleder.png" alt="" />
-          </div>
-          <span>BYGGELEDER</span>
-        </button>
-
-        <button class="menu-btn menu-btn--admin" @click="$router.push('/login-create')">
+		<RouterLink :to="{ path: 'login-create', query: { role: 'manager' } }" class="menu-btn menu-btn--manager">
+		  <div class="icon-box">
+			<img src="@/assets/icons/Byggeleder.png" alt="" />
+		  </div>
+		  <span>BYGGELEDER</span>
+        </RouterLink>
+        <RouterLink :to="{ path: 'login-create', query: { role: 'admin' } }" class="menu-btn menu-btn--admin">
           <div class="icon-box">
             <img src="@/assets/icons/Filer.png" alt="" />
           </div>
           <span>ADMINISTRATOR</span>
-        </button>
+        </RouterLink>
       </main>
     </div>
   </div>

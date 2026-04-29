@@ -13,7 +13,7 @@ const password = ref('');
 const handleLogin = async () => {
   const success = await authStore.login(email.value, password.value);
   if (success) {
-    router.push(route.query.role === 'manager' ? '/manager-dashboard' : '/customer-dashboard');
+    router.push(route.query.role === 'manager' ? '/manager' : '/customer');
   }
 };
 </script>
