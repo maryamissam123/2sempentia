@@ -38,7 +38,7 @@ const handleLogin = async () => {
         <div class="input-group">
           <img src="@/assets/icons/Password.png" class="input-icon" alt="password" />
           <input v-model="password" type="password" placeholder="*ADGANGSKODE" />
-          <img src="@/assets/icons/Færdig.png" class="check-icon" v-if="password.length > 5" alt="done" />
+          <img src="@/assets/icons/Done.png" class="check-icon" v-if="password.length > 5" alt="done" />
         </div>
 
         <button class="forgot-link">GLEMT DIN ADGANGSKODE?</button>
