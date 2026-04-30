@@ -1,20 +1,20 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useProjectStore } from '@/stores/project';
+import { usePhaseStore } from '@/stores/phase';
 import BaseCard from '@/components/BaseCard.vue';
-import { usePhaseStore } from '@/stores/phase'
-import ProgressBar from '@/components/ProgressBar.vue'
+import ProgressBar from '@/components/ProgressBar.vue';
 
-const projectStore = useProjectStore()
-const phaseStore = usePhaseStore()
+const projectStore = useProjectStore();
+const phaseStore = usePhaseStore();
 
 onMounted(async () => {
-  await projectStore.fetchProjects()
-  const projectId = projectStore.projects[0]?.id
+  await projectStore.fetchProjects();
+  const projectId = projectStore.projects[0]?.id;
   if (projectId) {
-    await phaseStore.fetchPhases(projectId)
+    await phaseStore.fetchPhases(projectId);
   }
-})
+});
 </script>
 
 <template>

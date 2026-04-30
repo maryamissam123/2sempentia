@@ -5,7 +5,7 @@ defineProps({
     required: true,
     validator: (v) => v >= 0 && v <= 100
   }
-})
+});
 </script>
 
 <template>
