@@ -19,9 +19,18 @@ onMounted(async () => {
 
 <template>
   
+  <section class="dashboard-header">      
+      <div class="dashboard-header__image-container">
+        <img 
+          src="@/assets/images/ProcessHouse.jpg" 
+          alt="Mit byggeprojekt" 
+          class="dashboard-header__image"
+        />
+      </div>
+    </section>
+
   <ProgressBar :value="phaseStore.progress" />
 
-  <h2>{{ projectStore.projects[0]?.name }}</h2>
   <div class="dashboard">
     <RouterLink to="/customer/process" class="dashboard__card">
       Nuværende fase

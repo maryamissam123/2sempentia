@@ -13,3 +13,30 @@
     color: inherit;
   }
 }
+
+dashboard-header {
+  background-color: #004552; // Milton Teal
+  padding: 20px 16px 40px; 
+  text-align: left;
+
+  &__title {
+    color: white;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  &__image-container {
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+}
