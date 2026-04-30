@@ -1,14 +1,59 @@
 .tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  background-color: #004552; 
   display: flex;
-  width: 100%;
-  border: 1px black solid;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px 10px 10px; 
+  box-sizing: border-box;
+  z-index: 100;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 
   &__item {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
+    flex: 1;
+
+    &--active {
+      color: #D4B36D; 
+      
+      svg {
+        color: #D4B36D;
+      }
+
+      .tab-bar__label {
+        font-weight: 600;
+      }
+    }
   }
+
+  &__icon-container {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: color 0.2s ease;
+    }
+  }
+
+  &__label {
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: none; // Matcher teksten på billedet
+  }
+}
+
+/* Fjern tap-highlight på mobil */
+.tab-bar__item {
+  -webkit-tap-highlight-color: transparent;
 }

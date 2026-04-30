@@ -34,7 +34,9 @@ const tabs = computed(() =>
       class="tab-bar__item"
       active-class="tab-bar__item--active"
     >
-      <component :is="tab.icon" />
+      <div class="tab-bar__icon-container">
+        <component :is="tab.icon" :size="28" :stroke-width="1.2" />
+      </div>
       <span class="tab-bar__label">{{ tab.label }}</span>
     </RouterLink>
   </nav>
