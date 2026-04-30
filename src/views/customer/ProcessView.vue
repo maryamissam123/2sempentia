@@ -18,9 +18,9 @@ onMounted(async () => {
 const getPhaseIcon = (name) => {
   const n = name.toLowerCase();
   if (n.includes('fundament')) return 'Foundation.png';
-  if (n.includes('vægge')) return 'Vægge.png';
-  if (n.includes('tag')) return 'Tag.png';
-  if (n.includes('vinduer')) return 'Vinduer.png';
+  if (n.includes('vægge')) return 'Wall.png';
+  if (n.includes('tag')) return 'Roof.png';
+  if (n.includes('vinduer')) return 'Window.png';
   return '';
 };
 </script>
