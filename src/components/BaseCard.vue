@@ -2,11 +2,12 @@
 defineProps({
   title: String,
   subtitle: String,
+  stack: { type: Boolean, default: false }
 });
 </script>
 
 <template>
-  <div class="base-card">
+  <div class="base-card" :class="{ 'base-card--stack': stack }">
     <div v-if="$slots.icon" class="base-card__icon">
       <slot name="icon" />
     </div>
