@@ -51,9 +51,9 @@ export const usePhaseStore = defineStore('phase', () => {
 
   const progress = computed(() => {
     if (!phases.value.length) return 0;
-    const done = phases.value.filter(p => p.completed).length
+    const done = phases.value.filter(p => p.completed).length;
     return Math.round((done / phases.value.length) * 100);
-  })
+  });
 
   return { 
     standardPhases, 
