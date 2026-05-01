@@ -10,7 +10,10 @@ defineProps({
 
 <template>
   <div class="progress-bar">
-    <div class="progress-bar__fill" :style="{ width: value + '%' }"></div>
+    <div 
+      class="progress-bar__fill" 
+      :style="{ width: value + '%' }"
+    ></div>
     <span class="progress-bar__label">{{ value }}%</span>
   </div>
 </template>
