@@ -38,12 +38,9 @@ const getPhaseIcon = (name) => {
               <img :src="`/src/assets/icons/${getPhaseIcon(item.name)}`" :alt="item.name" />
             </template>
             
-            <template #action>
-              <StatusBadge 
-                :status="item.status" 
-                :number="item.stepNumber" 
-              />
-            </template>
+          <template #action>
+            <StatusBadge :phase="item" />
+          </template>
           </BaseCard>
         </RouterLink>
       </template>
