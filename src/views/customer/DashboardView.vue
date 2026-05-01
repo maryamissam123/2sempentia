@@ -10,9 +10,9 @@ const projectStore = useProjectStore();
 const phaseStore = usePhaseStore();
 
 const dashboardLinks = [
-  { label: 'SE BYGGEFORLØB', route: '/customer/process', icon: 'ChartIcon.svg' },
-  { label: 'CHAT', route: '/customer/chat-options', icon: 'ChatIcon.svg' },
-  { label: 'FILER', route: '/customer/documents', icon: 'FilesIcon.svg' }
+  { label: 'SE BYGGEFORLØB', route: '/customer/process', icon: 'Process.png' },
+  { label: 'CHAT', route: '/customer/chat-options', icon: 'Chat.png' },
+  { label: 'FILER', route: '/customer/documents', icon: 'Files.png' }
 ];
 
 onMounted(async () => {
