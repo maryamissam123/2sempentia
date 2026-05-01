@@ -5,6 +5,7 @@ import { useProjectStore } from '@/stores/project';
 import BaseList from '@/components/BaseList.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import StatusBadge from '@/components/StatusBadge.vue';
+import ProgressBar from '@/components/ProgressBar.vue';
 
 const phaseStore = usePhaseStore();
 const projectStore = useProjectStore();
@@ -21,12 +22,19 @@ const getPhaseIcon = (name) => {
   if (n.includes('vægge')) return 'Wall.png';
   if (n.includes('tag')) return 'Roof.png';
   if (n.includes('vinduer')) return 'Window.png';
+  if (n.includes('dør')) return 'Door.png';
+  if (n.includes('interiør')) return 'Interior.png';
+  if (n.includes('nøgle')) return 'Key.png';
+
   return '';
 };
 </script>
 
 <template>
   <div class="process-page">
+
+    <ProgressBar :value="phaseStore.progress" />
+    
     <BaseList :items="phaseStore.phases">
       <template #item="{ item }">
         <RouterLink 
