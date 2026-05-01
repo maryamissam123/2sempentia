@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { Check, Hourglass, Lock } from '@lucide/vue'
+import { Check, Hourglass, Lock } from '@lucide/vue';
 
 const props = defineProps({
   phase: {
@@ -10,14 +10,14 @@ const props = defineProps({
 });
 
 const status = computed(() => {
-  return props.phase.completed ? 'done' : 'todo'
+  return props.phase.completed ? 'done' : 'todo';
 });
 
 const icons = {
   done: Check,
   active: Hourglass,
   todo: Lock,
-}
+};
 </script>
 
 <template>
