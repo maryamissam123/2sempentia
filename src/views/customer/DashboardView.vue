@@ -33,11 +33,13 @@ const dashboardLinks = [
 
     <div class="dashboard-content">
       <div class="dashboard-grid">
-        <RouterLink to="/customer/process" class="dashboard-card">
+        <RouterLink :to="{ name: 'customer-process-details', params: { id: phaseStore.currentPhase?.id } }" 
+        class="dashboard-card">
           <PhaseStackCard title="NUVÆRENDE FASE" :phase="phaseStore.currentPhase" />
         </RouterLink>
 
-        <RouterLink to="/customer/process" class="dashboard-card">
+        <RouterLink :to="{ name: 'customer-process-details', params: { id: phaseStore.nextPhase?.id } }"
+         class="dashboard-card">
           <PhaseStackCard title="NÆSTE FASE" :phase="phaseStore.nextPhase" />
         </RouterLink>
       </div>
