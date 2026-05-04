@@ -1,21 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useProjectStore } from '@/stores/project';
-import { useChatStore } from '@/stores/chat';
+import { ref, watch } from 'vue';
+import { useCustomerProject } from '@/composables/useCustomerProject';
 
-const projectStore = useProjectStore();
-const chatStore = useChatStore();
+const { projectId, chatStore, loadMessages } = useCustomerProject();
 
 const newMessage = ref('');
-const projectId = ref(null);
 
-onMounted(async () => {
-  await projectStore.fetchProjects();
-  projectId.value = projectStore.projects[0]?.id;
-  if(projectId.value) {
-    chatStore.fetchMessages(projectId.value);
-  };
-});
+watch(projectId, loadMessages);
 
 async function handleSend() {
   if(!newMessage.value.trim()) return;

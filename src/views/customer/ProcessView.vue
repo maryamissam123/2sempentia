@@ -1,20 +1,14 @@
 <script setup>
-import { onMounted } from 'vue';
-import { usePhaseStore } from '@/stores/phase';
-import { useProjectStore } from '@/stores/project';
+import { watch } from 'vue';
 import BaseList from '@/components/BaseList.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import StatusBadge from '@/components/StatusBadge.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
+import { useCustomerProject } from '@/composables/useCustomerProject'
 
-const phaseStore = usePhaseStore();
-const projectStore = useProjectStore();
+const { projectId, phaseStore, loadPhases } = useCustomerProject();
 
-onMounted(async () => {
-  await projectStore.fetchProjects();
-  const projectId = projectStore.projects[0]?.id;
-  if (projectId) await phaseStore.fetchPhases(projectId);
-});
+watch(projectId, loadPhases);
 
 const getPhaseIcon = (name) => {
   const n = name.toLowerCase();

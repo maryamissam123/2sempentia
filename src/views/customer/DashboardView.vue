@@ -1,27 +1,19 @@
 <script setup>
-import { onMounted } from 'vue';
-import { useProjectStore } from '@/stores/project';
-import { usePhaseStore } from '@/stores/phase';
+import { watch } from 'vue';
+import { useCustomerProject } from '@/composables/useCustomerProject';
 import BaseCard from '@/components/BaseCard.vue';
 import BaseList from '@/components/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 
-const projectStore = useProjectStore();
-const phaseStore = usePhaseStore();
+const { projectId, phaseStore, loadPhases } = useCustomerProject()
+
+watch(projectId, loadPhases)
 
 const dashboardLinks = [
   { label: 'SE BYGGEFORLØB', route: '/customer/process', icon: 'Process.png' },
   { label: 'CHAT', route: '/customer/chat-options', icon: 'Chat.png' },
   { label: 'FILER', route: '/customer/documents', icon: 'Files.png' }
 ];
-
-onMounted(async () => {
-  await projectStore.fetchProjects();
-  const projectId = projectStore.projects[0]?.id;
-  if (projectId) {
-    await phaseStore.fetchPhases(projectId);
-  }
-});
 </script>
 
 <template>
