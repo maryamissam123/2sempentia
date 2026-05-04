@@ -55,12 +55,22 @@ export const usePhaseStore = defineStore('phase', () => {
     return Math.round((done / phases.value.length) * 100);
   });
 
+  const currentPhase = computed(() =>
+    phases.value.find(p => !p.completed)
+  );
+
+  const nextPhase = computed(() =>
+    phases.value.filter(p => !p.completed)[1]
+  );
+
   return { 
     standardPhases, 
     phases, 
     phase, 
     comments,
     progress, 
+    currentPhase,
+    nextPhase,
     fetchStandardPhases, 
     fetchPhases, 
     fetchPhase, 

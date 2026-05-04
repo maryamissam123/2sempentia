@@ -1,9 +1,10 @@
 <script setup>
 import { watch } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
-import BaseCard from '@/components/BaseCard.vue';
-import BaseList from '@/components/BaseList.vue';
+import BaseCard from '@/components/base/BaseCard.vue';
+import BaseList from '@/components/base/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
+import PhaseStackCard from '@/components/cards/PhaseStackCard.vue'
 
 const { projectId, phaseStore, loadPhases } = useCustomerProject()
 
@@ -18,47 +19,29 @@ const dashboardLinks = [
 
 <template>
   <div class="dashboard-page">
-  <section class="dashboard-header">      
+    <section class="dashboard-header">
       <div class="dashboard-header__image-container">
-        <img 
-          src="@/assets/images/ProcessHouse.jpg" 
-          alt="Mit byggeprojekt" 
+        <img
+          src="@/assets/images/ProcessHouse.jpg"
+          alt="Mit byggeprojekt"
           class="dashboard-header__image"
         />
       </div>
     </section>
 
-  <ProgressBar :value="phaseStore.progress" />
+    <ProgressBar :value="phaseStore.progress" />
 
-  <div class="dashboard-content">
-      <!-- Nuværende og Næste fase -->
+    <div class="dashboard-content">
       <div class="dashboard-grid">
         <RouterLink to="/customer/process" class="dashboard-card">
-          <BaseCard 
-            stack 
-            title="NUVÆRENDE FASE" 
-            subtitle="Vinduersmontering"
-          >
-          <template #icon>
-              <img src="@/assets/icons/Window.png" alt="Vinduer" />
-            </template>
-          </BaseCard>
+          <PhaseStackCard title="NUVÆRENDE FASE" :phase="phaseStore.currentPhase" />
         </RouterLink>
 
         <RouterLink to="/customer/process" class="dashboard-card">
-          <BaseCard 
-            stack 
-            title="NÆSTE FASE" 
-            subtitle="Indvendig opbygning"
-          >
-            <template #icon>
-              <img src="@/assets/icons/Indoor.png" alt="Indretning" />
-            </template>
-          </BaseCard>
+          <PhaseStackCard title="NÆSTE FASE" :phase="phaseStore.nextPhase" />
         </RouterLink>
       </div>
 
-      <!-- Generiske Liste -->
       <BaseList :items="dashboardLinks" class="dashboard-list">
         <template #item="{ item }">
           <RouterLink :to="item.route" class="no-underline">

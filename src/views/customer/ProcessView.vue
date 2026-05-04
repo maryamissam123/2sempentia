@@ -1,7 +1,7 @@
 <script setup>
 import { watch } from 'vue';
-import BaseList from '@/components/BaseList.vue';
-import BaseCard from '@/components/BaseCard.vue';
+import BaseList from '@/components/base/BaseList.vue';
+import BaseCard from '@/components/base/BaseCard.vue';
 import StatusBadge from '@/components/StatusBadge.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import { useCustomerProject } from '@/composables/useCustomerProject'
