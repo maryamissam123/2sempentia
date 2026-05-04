@@ -1,15 +1,13 @@
 @use '../abstracts/variables' as v;
 
 .base-card {
-  background-color: v.$color-accent; 
+  background-color: v.$color-accent;
   border-radius: 8px;
   width: 100%;
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: v.$color-primary; 
+  color: v.$color-primary;
   text-decoration: none;
   transition: transform 0.1s ease, filter 0.1s ease;
 
@@ -20,7 +18,7 @@
 
   &__title {
     font-family: v.$font-main;
-    font-size: v.$font-size-subtitle; 
+    font-size: v.$font-size-subtitle;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -31,42 +29,60 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     img, svg {
-      width: 48px;
-      height: 48px;
       object-fit: contain;
     }
   }
 
   &__subtitle {
     font-family: v.$font-main;
-    font-size: v.$font-size-body; 
+    font-size: v.$font-size-body;
     font-weight: 500;
     margin: 0;
   }
 
   &--stack {
-    height: 220px; 
-    padding: 35px 15px; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 220px;
+    padding: 35px 15px;
     justify-content: space-between;
 
-    .base-card__icon img, 
+    .base-card__icon img,
     .base-card__icon svg {
-      width: 78px; 
+      width: 78px;
       height: 78px;
     }
   }
 
   &:not(.base-card--stack) {
-    height: 100px;
-    padding: 12px;
-    justify-content: center;
-    gap: 8px;
-    
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    padding: 12px 20px;
+    gap: 20px;
+
+    .base-card__icon {
+      flex-shrink: 0;
+
+      img, svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
     .base-card__title {
-      font-size: v.$font-size-subtitle; 
-      font-weight: 500;
+      flex: 1;
+    }
+
+    .base-card__action {
+      flex-shrink: 0;
+    }
+
+    .base-card__content {
+      flex: 1;
     }
   }
 }
