@@ -32,7 +32,7 @@ const tabs = computed(() =>
       :key="tab.route"
       :to="tab.route"
       class="tab-bar__item"
-      active-class="tab-bar__item--active"
+      exact-active-class="tab-bar__item--active"
     >
       <div class="tab-bar__icon-container">
         <component :is="tab.icon" :size="28" :stroke-width="1.2" />
