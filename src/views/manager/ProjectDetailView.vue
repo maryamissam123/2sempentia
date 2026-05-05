@@ -1,20 +1,12 @@
 <script setup>
-import { onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useProjectStore } from '@/stores/project';
-import { usePhaseStore } from '@/stores/phase';
+import { onMounted } from 'vue';
+import { useManagerProject } from '@/composables/useManagerProject';
 
-const route = useRoute();
-const projectStore = useProjectStore();
-const phaseStore = usePhaseStore();
+const { projectId, projectStore, loadProject, loadPhases } = useManagerProject();
 
-onMounted(async () => {
-  await projectStore.fetchProject(route.params.id);
-  phaseStore.fetchPhases(route.params.id);
-});
-
-watch(() => projectStore.project, (project) => {
-  if (project?.customerId) projectStore.fetchCustomer(project.customerId);
+onMounted(() => {
+  loadProject();
+  loadPhases();
 });
 </script>
 
@@ -37,7 +29,7 @@ watch(() => projectStore.project, (project) => {
     </section>
 
     <section class="project-detail__nav">
-      <RouterLink :to="{ name: 'manager-process', params: { projectId: route.params.id } }">
+      <RouterLink :to="{ name: 'manager-process', params: { projectId: projectId } }">
         Byggeforløb →
       </RouterLink>
       <RouterLink to="/manager/documents">

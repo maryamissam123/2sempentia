@@ -1,20 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { usePhaseStore } from '@/stores/phase';
+import { useManagerProject } from '@/composables/useManagerProject';
 
-const route = useRoute();
-const phaseStore = usePhaseStore();
+const { projectId, phaseStore, loadPhase } = useManagerProject();
 
 const newComment = ref('');
 
-const projectId = route.params.projectId;
-const phaseId = route.params.id;
-
-onMounted(() => {
-  phaseStore.fetchPhase(projectId, phaseId);
-	phaseStore.fetchComments(projectId, phaseId);
-});
+onMounted(loadPhase);
 
 async function handleAddComment() {
 	if (!newComment.value.trim()) return;
