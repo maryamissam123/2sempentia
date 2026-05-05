@@ -6,7 +6,7 @@ import BaseList from '@/components/base/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import PhaseStackCard from '@/components/cards/PhaseStackCard.vue'
 
-const { projectId, phaseStore, loadPhases } = useCustomerProject()
+const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject()
 
 watch(projectId, loadPhases)
 
@@ -22,7 +22,8 @@ const dashboardLinks = [
     <section class="dashboard-header">
       <div class="dashboard-header__image-container">
         <img
-          src="@/assets/images/ProcessHouse.jpg"
+          v-if="projectStore.projects[0]?.imageUrl"
+          :src="projectStore.projects[0].imageUrl"
           alt="Mit byggeprojekt"
           class="dashboard-header__image"
         />
