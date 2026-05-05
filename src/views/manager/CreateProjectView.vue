@@ -4,6 +4,7 @@ import { usePhaseStore } from '@/stores/phase';
 import { useProjectStore } from '@/stores/project';
 import { useRouter } from 'vue-router';
 import PhotoUpload from '@/components/PhotoUpload.vue';
+import BaseInput from '@/components/base/BaseInput.vue';
 
 const phaseStore = usePhaseStore();
 const projectStore = useProjectStore();
@@ -50,10 +51,9 @@ function handleCreate() {
 </script>
 
 <template>
-  <h1>Manager Create Project</h1>
-	<input v-model="projectNumber" placeholder="Projektnummer">
-	<input v-model="name" placeholder="Projektnavn">
-	<input v-model="address" placeholder="Projekt Adresse">
+	<BaseInput v-model="projectNumber" placeholder="Projektnummer" />
+	<BaseInput v-model="name" placeholder="Projektnavn" />
+	<BaseInput v-model="address" placeholder="Projekt Adresse" />
 
 	<PhotoUpload @uploaded="handleUploaded" />
 

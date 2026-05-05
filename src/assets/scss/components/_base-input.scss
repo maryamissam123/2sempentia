@@ -1,0 +1,35 @@
+// src/assets/scss/components/_base-input.scss
+@use '../abstracts/variables' as v;
+
+.base-input {
+  width: 100%;
+  height: 55px;
+  background: v.$color-white;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 12px;
+
+  &__icon {
+    width: 30px;
+    margin-right: 12px;
+  }
+
+  &__field {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: v.$font-main;
+    font-size: v.$font-size-subtitle;
+    font-weight: 500;
+    color: v.$color-black;
+    background: transparent;
+
+    &::placeholder {
+      color: #BBB;
+      letter-spacing: 0.05em;
+    }
+  }
+}
