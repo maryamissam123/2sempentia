@@ -7,6 +7,7 @@ import { useAuthStore } from './auth';
 export const useProjectStore = defineStore('project', () => {
 	const projects = ref([]);
 	const project = ref(null);
+	const customer = ref(null);
 
   async function fetchProjects() {
   	const auth = useAuthStore();
@@ -50,5 +51,11 @@ export const useProjectStore = defineStore('project', () => {
 		return projectRef.id;
 	};
 
-  return { projects, project, fetchProjects, fetchProject, createProject };
+	async function fetchCustomer(customerId) {
+		if (!customerId) return
+  	const snap = await getDoc(doc(db, 'users', customerId))
+  	customer.value = snap.exists() ? { id: snap.id, ...snap.data() } : null
+	};
+
+  return { projects, project, customer, fetchProjects, fetchProject, createProject, fetchCustomer };
 });
