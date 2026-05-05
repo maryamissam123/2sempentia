@@ -24,10 +24,18 @@ onMounted(() => {
 function togglePhase(phase) {
 	const index = selectedPhases.value.findIndex(p => p.id === phase.id);
 	if(index === -1) {
-		selectedPhases.value.push(phase);
+		selectedPhases.value.push({
+			...phase,
+			order: selectedPhases.value.length + 1
+		})
 	} else {
 		selectedPhases.value.splice(index, 1);
+		selectedPhases.value.forEach((p, i) => p.order = i + 1);
 	}
+};
+
+function getOrder(phase) {
+  return selectedPhases.value.find(p => p.id === phase.id)?.order
 };
 
 function handleUploaded(url) {
@@ -65,7 +73,10 @@ function handleCreate() {
 		:style="{ background: isSelected(phase) ? 'lightgreen' : 'white' }"
 		@click="togglePhase(phase)"
 	>
-		{{ phase.name }}
+	<span class="phase-option__name">{{ phase.name }}</span>
+  <span v-if="getOrder(phase)" class="phase-option__number">
+    {{ getOrder(phase) }}
+  </span>
 	</div>
 
 	<button @click="handleCreate">Opret Projekt</button>
