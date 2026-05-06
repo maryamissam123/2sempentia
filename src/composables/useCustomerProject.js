@@ -45,5 +45,5 @@ export function useCustomerProject() {
     loadPhases,
     loadPhase,
     loadMessages,
-  }
+  };
 }

@@ -10,13 +10,13 @@ onMounted(loadPhase);
 
 async function handleAddComment() {
 	if (!newComment.value.trim()) return;
-	await phaseStore.addComment(projectId, phaseId, newComment.value);
+	await phaseStore.addComment(projectId, newComment.value);
 	newComment.value = '';
 }
 
 async function handleComplete() {
-	await phaseStore.completePhase(projectId, phaseId, phaseStore.phase.completed);
-	await phaseStore.fetchPhase(projectId, phaseId);
+	await phaseStore.completePhase(projectId, phaseStore.phase.completed);
+	await phaseStore.fetchPhase(projectId);
 };
 </script>
 

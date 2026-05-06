@@ -1,11 +1,11 @@
 <script setup>
-import BaseCard from '@/components/base/BaseCard.vue'
-import PhaseIcon from '@/components/PhaseIcon.vue'
+import BaseCard from '@/components/base/BaseCard.vue';
+import PhaseIcon from '@/components/PhaseIcon.vue';
 
 defineProps({
   title: { type: String, required: true },
   phase: { type: Object, default: null }
-})
+});
 </script>
 
 <template>

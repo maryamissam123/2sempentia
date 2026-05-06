@@ -4,11 +4,11 @@ import { useCustomerProject } from '@/composables/useCustomerProject';
 import BaseCard from '@/components/base/BaseCard.vue';
 import BaseList from '@/components/base/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
-import PhaseStackCard from '@/components/cards/PhaseStackCard.vue'
+import PhaseStackCard from '@/components/cards/PhaseStackCard.vue';
 
-const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject()
+const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();
 
-watch(projectId, loadPhases)
+watch(projectId, loadPhases);
 
 const dashboardLinks = [
   { label: 'SE BYGGEFORLØB', route: '/customer/process', icon: 'Process.png' },

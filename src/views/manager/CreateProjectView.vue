@@ -27,7 +27,7 @@ function togglePhase(phase) {
 		selectedPhases.value.push({
 			...phase,
 			order: selectedPhases.value.length + 1
-		})
+		});
 	} else {
 		selectedPhases.value.splice(index, 1);
 		selectedPhases.value.forEach((p, i) => p.order = i + 1);
@@ -35,7 +35,7 @@ function togglePhase(phase) {
 };
 
 function getOrder(phase) {
-  return selectedPhases.value.find(p => p.id === phase.id)?.order
+  return selectedPhases.value.find(p => p.id === phase.id)?.order;
 };
 
 function handleUploaded(url) {

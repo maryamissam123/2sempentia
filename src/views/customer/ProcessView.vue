@@ -4,7 +4,7 @@ import BaseList from '@/components/base/BaseList.vue';
 import BaseCard from '@/components/base/BaseCard.vue';
 import StatusBadge from '@/components/StatusBadge.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
-import { useCustomerProject } from '@/composables/useCustomerProject'
+import { useCustomerProject } from '@/composables/useCustomerProject';
 
 const { projectId, phaseStore, loadPhases } = useCustomerProject();
 

@@ -52,9 +52,9 @@ export const useProjectStore = defineStore('project', () => {
 	};
 
 	async function fetchCustomer(customerId) {
-		if (!customerId) return
-  	const snap = await getDoc(doc(db, 'users', customerId))
-  	customer.value = snap.exists() ? { id: snap.id, ...snap.data() } : null
+		if (!customerId) return;
+  	const snap = await getDoc(doc(db, 'users', customerId));
+  	customer.value = snap.exists() ? { id: snap.id, ...snap.data() } : null;
 	};
 
   return { projects, project, customer, fetchProjects, fetchProject, createProject, fetchCustomer };
