@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useChatStore } from '@/stores/chat';
 
@@ -10,7 +10,11 @@ const newMessage = ref('');
 const projectId = route.params.projectId;
 
 onMounted(() => {
-  chatStore.fetchMessages(projectId);
+  chatStore.startListener(projectId);
+});
+
+onUnmounted(() => {
+  chatStore.stopListener();
 });
 
 async function handleSend() {

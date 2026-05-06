@@ -2,11 +2,17 @@
 import { ref, watch } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
 
-const { projectId, chatStore, loadMessages } = useCustomerProject();
+const { projectId, chatStore } = useCustomerProject();
 
 const newMessage = ref('');
 
-watch(projectId, loadMessages);
+watch(projectId, (id) => {
+  if (id) chatStore.startListener(id);
+});
+
+onUnmounted(() => {
+  chatStore.stopListener();
+});
 
 async function handleSend() {
   if(!newMessage.value.trim()) return;
