@@ -1,11 +1,30 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { collection, addDoc, getDocs, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, onSnapshot } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { useAuthStore } from './auth';
 
 export const useChatStore = defineStore('chat', () => {
   const messages = ref([]);
+  let stop = null;
+
+  function startListener(projectId) {
+    const q = query(collection(db, 'projects', projectId, 'messages'),
+      orderBy('createdAt')
+    );
+
+    stop = onSnapshot(q, (snap) => {
+      messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+    });
+  };
+
+  function stopListener() {
+    if (stop) {
+      stop()
+      stop = null
+    }
+    messages.value = []
+  }
 
   async function fetchMessages(projectId) {
     const q = query(collection(db, 'projects', projectId, 'messages'), orderBy('createdAt'));
@@ -25,5 +44,5 @@ export const useChatStore = defineStore('chat', () => {
     await fetchMessages(projectId);
   };
 
-  return { messages, fetchMessages, sendMessage };
+  return { messages, startListener, stopListener, fetchMessages, sendMessage };
 });
