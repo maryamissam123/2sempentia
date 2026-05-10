@@ -24,12 +24,22 @@
 }
 
 .dashboard-content {
-  padding: 16px;
+  padding: 20px 16px;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.no-underline {
+  text-decoration: none;
 }
