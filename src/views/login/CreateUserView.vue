@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import BackButton from '@/components/layout/BackButton.vue';
 
 const auth = useAuthStore();
 const route = useRoute();
@@ -83,13 +84,8 @@ async function createUser() {
         <button class="btn btn--create" @click="createUser">OPRET KONTO</button>
       </main>
 
-      <footer class="create-footer">
-        <button class="back-link" @click="$router.back()">
-          <div class="house-icon-wrapper">
-             <img src="@/assets/icons/Home.png" alt="Tilbage" />
-          </div>
-          <span class="back-text">TILBAGE</span>
-        </button>
+      <footer class="login-footer">
+        <BackButton />
       </footer>
     </div>
   </div>

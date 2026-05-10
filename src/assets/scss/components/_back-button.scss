@@ -1,0 +1,43 @@
+@use '@/assets/scss/abstracts/variables' as v;
+
+.back-button {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+  padding: 0;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+  }
+
+  &__icon-wrapper img {
+    width: 50px;
+    height: auto;
+    display: block;
+  }
+
+  &__text {
+    font-size: 10px;
+    font-weight: 700;
+    color: v.$color-primary;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+  }
+}

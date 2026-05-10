@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import BackButton from '@/components/layout/BackButton.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -47,10 +48,7 @@ const handleLogin = async () => {
       </main>
 
       <footer class="login-footer">
-        <button class="back-btn" @click="$router.back()">
-          <img src="@/assets/icons/Home.png" alt="" />
-          <span>TILBAGE</span>
-        </button>
+        <BackButton />
       </footer>
     </div>
   </div>

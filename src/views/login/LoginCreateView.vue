@@ -1,5 +1,7 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
+import BackButton from '@/components/layout/BackButton.vue';
+
 const route = useRoute();
 const router = useRouter();
 
@@ -31,10 +33,7 @@ const goToSignup = () => {
       </main>
 
       <footer class="login-footer">
-        <button class="back-btn" @click="$router.push('/')">
-          <img src="@/assets/icons/Home.png" alt="" />
-          <span>TILBAGE</span>
-        </button>
+        <BackButton to="/" />
       </footer>
     </div>
   </div>
