@@ -9,7 +9,7 @@ const iconMap = {
   tag: 'Roof.png',
   vinduer: 'Window.png',
   dør: 'Door.png',
-  interiør: 'Interior.png',
+  interiør: 'Indoor.png',
   nøgle: 'Key.png',
 };
 

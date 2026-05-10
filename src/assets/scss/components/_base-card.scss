@@ -35,6 +35,11 @@
     }
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__subtitle {
     font-family: v.$font-main;
     font-size: v.$font-size-body;
@@ -47,8 +52,24 @@
     align-items: center;
     text-align: center;
     height: 160px;
-    padding: 24px 20px;
-    justify-content: space-between;
+    padding: 16px 20px;
+    justify-content: center;
+    gap: 4px;
+
+    .base-card__title {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0;
+      order: 1;
+    }
+
+    .base-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      order: 2;
+      margin: 4px 0;
+    }
 
     .base-card__icon img,
     .base-card__icon svg {
@@ -56,15 +77,16 @@
       height: 64px;
     }
 
-    .base-card__title {
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 8px;
+    .base-card__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 3;
     }
 
     .base-card__subtitle {
       font-size: 13px;
-      margin-top: 4px;
+      margin: 0;
     }
   }
 

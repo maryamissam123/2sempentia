@@ -9,9 +9,10 @@ defineProps({
 </script>
 
 <template>
-  <BaseCard stack :title="title" :subtitle="phase?.name">
+  <BaseCard stack :title="title">
     <template #icon>
       <PhaseIcon :name="phase?.name" />
     </template>
+    <p class="phase-subtitle">{{ phase?.name }}</p>
   </BaseCard>
 </template>

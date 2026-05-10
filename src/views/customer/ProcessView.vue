@@ -17,7 +17,7 @@ const getPhaseIcon = (name) => {
   if (n.includes('tag')) return 'Roof.png';
   if (n.includes('vinduer')) return 'Window.png';
   if (n.includes('dør')) return 'Door.png';
-  if (n.includes('interiør')) return 'Interior.png';
+  if (n.includes('interiør')) return 'Indoor.png';
   if (n.includes('nøgle')) return 'Key.png';
 
   return '';
