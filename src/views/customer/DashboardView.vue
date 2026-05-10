@@ -5,6 +5,7 @@ import BaseCard from '@/components/base/BaseCard.vue';
 import BaseList from '@/components/base/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import PhaseStackCard from '@/components/cards/PhaseStackCard.vue';
+import dashboardImage from '@/assets/images/ProcessHouse.jpg';
 
 const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();
 
@@ -25,6 +26,12 @@ const dashboardLinks = [
           v-if="projectStore.projects[0]?.imageUrl"
           :src="projectStore.projects[0].imageUrl"
           alt="Mit byggeprojekt"
+          class="dashboard-header__image"
+        />
+        <img
+          v-else
+          :src="dashboardImage"
+          alt="Byggeprojekt"
           class="dashboard-header__image"
         />
       </div>
