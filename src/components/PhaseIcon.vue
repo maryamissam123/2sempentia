@@ -4,13 +4,9 @@ defineProps({
 });
 
 const iconMap = {
-  fundament: 'Foundation.png',
-  vægge: 'Wall.png',
+  fundament: 'Window.png',
+  vægge: 'Indoor.png',
   tag: 'Roof.png',
-  vinduer: 'Window.png',
-  dør: 'Door.png',
-  interiør: 'Indoor.png',
-  nøgle: 'Key.png',
 };
 
 function getIcon(name) {
