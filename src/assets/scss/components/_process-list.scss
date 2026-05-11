@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as v;
+
+.process-page {
+  .base-list {
+    gap: 12px;
+    padding: 20px 16px;
+  }
+
+  .base-card {
+    background-color: v.$color-accent;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 50px 1fr 55px;
+    align-items: center;
+    gap: 5px;
+    box-shadow: none;
+
+    .base-card__icon {
+      grid-column: 1;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 50px;
+        object-fit: contain;
+      }
+    }
+
+    .base-card__title,
+    .base-card__content {
+      grid-column: 2;
+    }
+
+    .base-card__content {
+      padding: 0;
+    }
+
+    .base-card__title {
+      font-family: v.$font-main;
+      font-size: v.$font-size-body;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      margin: 0;
+      color: v.$color-primary;
+    }
+
+    .base-card__action {
+      grid-column: 3;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: v.$color-complementary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .status-badge {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: v.$color-primary;
+      background-color: v.$color-complementary;
+      margin: 0;
+      padding: 0;
+      border: none;
+
+      svg {
+        width: 50px;
+        height: 20px;
+        stroke-width: 2;
+      }
+    }
+  }
+}
+
