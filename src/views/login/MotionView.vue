@@ -14,7 +14,7 @@ onMounted(() => {
 <template>
   <div class="motion-screen">
     <div class="motion-content">
-      <img src="@/assets/images/milton.png" alt="Milton Huse" class="motion-logo" />
+      <img src="/images/milton.png" alt="Milton Huse" class="motion-logo" />
     </div>
     <div class="bg-lines"></div>
   </div>

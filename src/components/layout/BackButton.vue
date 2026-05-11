@@ -22,7 +22,7 @@ function handleClick() {
 <template>
   <button class="back-button" @click="handleClick">
     <div class="back-button__icon-wrapper">
-      <img src="@/assets/icons/Home.png" alt="Tilbage" />
+      <img src="/icons/Home.png" alt="Tilbage" />
     </div>
     <span class="back-button__text">TILBAGE</span>
   </button>

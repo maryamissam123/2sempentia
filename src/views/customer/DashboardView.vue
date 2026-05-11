@@ -5,7 +5,7 @@ import BaseCard from '@/components/base/BaseCard.vue';
 import BaseList from '@/components/base/BaseList.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import PhaseStackCard from '@/components/cards/PhaseStackCard.vue';
-import dashboardImage from '@/assets/images/ProcessHouse.jpg';
+import dashboardImage from '/images/ProcessHouse.jpg';
 
 const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();
 
@@ -63,7 +63,7 @@ const dashboardLinks = [
           <RouterLink :to="item.route" class="no-underline">
             <BaseCard :title="item.label">
               <template #icon>
-                <img :src="`/src/assets/icons/${item.icon}`" :alt="item.label" />
+                <img :src="`/icons/${item.icon}`" :alt="item.label" />
               </template>
             </BaseCard>
           </RouterLink>

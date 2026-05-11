@@ -20,7 +20,7 @@ const goToSignup = () => {
   <div class="login-page">
     <div class="login-container">
       <header class="login-header">
-        <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
+        <img src="/images/milton.png" alt="Milton Huse" class="logo" />
       </header>
 
       <div class="view-indicator view-indicator--yellow">

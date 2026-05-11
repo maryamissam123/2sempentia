@@ -23,7 +23,7 @@ const handleLogin = async () => {
   <div class="login-page">
     <div class="login-container">
       <header class="login-header">
-        <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
+        <img src="/images/milton.png" alt="Milton Huse" class="logo" />
       </header>
 
       <div class="view-indicator view-indicator--white">
@@ -32,14 +32,14 @@ const handleLogin = async () => {
 
       <main class="login-form">
         <div class="input-group">
-          <img src="@/assets/icons/Email.png" class="input-icon" alt="email" />
+          <img src="/icons/Email.png" class="input-icon" alt="email" />
           <input v-model="email" type="email" placeholder="*EMAIL" />
         </div>
 
         <div class="input-group">
-          <img src="@/assets/icons/Password.png" class="input-icon" alt="password" />
+          <img src="/icons/Password.png" class="input-icon" alt="password" />
           <input v-model="password" type="password" placeholder="*ADGANGSKODE" />
-          <img src="@/assets/icons/Done.png" class="check-icon" v-if="password.length > 5" alt="done" />
+          <img src="/icons/Done.png" class="check-icon" v-if="password.length > 5" alt="done" />
         </div>
 
         <button class="forgot-link">GLEMT DIN ADGANGSKODE?</button>

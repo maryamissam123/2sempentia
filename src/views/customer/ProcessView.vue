@@ -37,7 +37,7 @@ const getPhaseIcon = (name) => {
         >
           <BaseCard :title="item.name">
             <template #icon>
-              <img :src="`/src/assets/icons/${getPhaseIcon(item.name)}`" :alt="item.name" />
+              <img :src="`/icons/${getPhaseIcon(item.name)}`" :alt="item.name" />
             </template>
             
           <template #action>

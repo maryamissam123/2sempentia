@@ -20,5 +20,5 @@ function getIcon(name) {
 </script>
 
 <template>
-  <img v-if="name" :src="`/src/assets/icons/${getIcon(name)}`" :alt="name" />
+  <img v-if="name" :src="`/icons/${getIcon(name)}`" :alt="name" />
 </template>

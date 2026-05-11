@@ -42,7 +42,7 @@ async function createUser() {
   <div class="login-page create-user-view">
     <div class="login-container">
       <header class="login-header">
-        <img src="@/assets/images/milton.png" alt="Milton Huse" class="logo" />
+        <img src="/images/milton.png" alt="Milton Huse" class="logo" />
       </header>
 
       <div class="view-indicator view-indicator--dark-blue">
@@ -64,17 +64,17 @@ async function createUser() {
 
         <div class="input-group">
           <input v-model="password" type="password" placeholder="*ADGANGSKODE" />
-          <img src="@/assets/icons/Done.png" class="check-icon" v-if="password.length > 5" />
+          <img src="/icons/Done.png" class="check-icon" v-if="password.length > 5" />
         </div>
 
         <div class="input-group">
           <input v-model="confirmPassword" type="password" placeholder="*BEKRÆFT ADGANGSKODE" />
-          <img src="@/assets/icons/Done.png" class="check-icon" v-if="confirmPassword === password && password !== ''" />
+          <img src="/icons/Done.png" class="check-icon" v-if="confirmPassword === password && password !== ''" />
         </div>
 
         <div class="input-group">
           <input v-model="idNumber" :placeholder="role === 'manager' ? '*MEDARBEJDERNUMMER' : '*PROJEKTNUMMER'" />
-          <img src="@/assets/icons/Done.png" class="check-icon" v-if="idNumber.length > 2" />
+          <img src="/icons/Done.png" class="check-icon" v-if="idNumber.length > 2" />
         </div>
 
         <p class="create-helper-text">
