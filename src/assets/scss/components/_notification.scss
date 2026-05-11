@@ -1,0 +1,20 @@
+@use "@/assets/scss/abstracts/variables" as v;
+
+.notification-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: v.$color-error;
+  color: v.$color-white;
+  font-size: v.$font-size-caption;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transform: translate(25%, 25%); 
+  z-index: 2;
+}

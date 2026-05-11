@@ -4,6 +4,7 @@ import BaseList from '@/components/base/BaseList.vue';
 import BaseCard from '@/components/base/BaseCard.vue';
 import StatusBadge from '@/components/StatusBadge.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
+import NotificationBadge from '@/components/base/NotificationBadge.vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
 
 const { projectId, phaseStore, loadPhases } = useCustomerProject();
@@ -37,7 +38,11 @@ const getPhaseIcon = (name) => {
         >
           <BaseCard :title="item.name">
             <template #icon>
+              <div class="icon-wrapper" style="position: relative; display: inline-block;">
               <img :src="`/icons/${getPhaseIcon(item.name)}`" :alt="item.name" />
+
+              <NotificationBadge :count="item.updates" />
+              </div>
             </template>
             
           <template #action>
