@@ -59,9 +59,13 @@ export const usePhaseStore = defineStore('phase', () => {
     phases.value.find(p => !p.completed)
   );
 
-  const nextPhase = computed(() =>
-    phases.value.filter(p => !p.completed)[1]
-  );
+  const nextPhase = computed(() => {
+  const currentIndex = phases.value.findIndex(p => !p.completed);
+  if (currentIndex !== -1 && phases.value[currentIndex + 1]) {
+    return phases.value[currentIndex + 1];
+  }
+  return null;
+});
 
   return { 
     standardPhases, 
