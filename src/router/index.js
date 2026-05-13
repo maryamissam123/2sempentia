@@ -102,7 +102,7 @@ const router = createRouter({
           component: () => import('@/views/manager/ProjectDetailView.vue')
         },
         {
-          path: 'projects/:projectId/phases/:id',
+          path: 'projects/:projectId/phases',
           name: 'manager-process',
           meta: { title: 'Byggeforløb', layout: 'detail' },
           component: () => import('@/views/manager/ProcessView.vue')
@@ -112,6 +112,12 @@ const router = createRouter({
           name: 'manager-chat',
           meta: { title: 'Chat', layout: 'detail' },
           component: () => import('@/views/manager/ChatView.vue')
+        },
+        {
+          path: 'projects/:projectId/phases/:id',
+          name: 'manager-process-details',
+          meta: { title: 'Fase Detaljer', layout: 'detail' },
+          component: () => import('@/views/manager/ProcessDetailsView.vue')
         },
         {
           path: 'chat-options',

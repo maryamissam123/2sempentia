@@ -37,12 +37,14 @@ export function useManagerProject() {
   };
 
   // Henter specifik fase
-    function loadPhase() {
-    if (projectId.value && route.params.id) {
-      phaseStore.fetchPhase(projectId.value, route.params.id);
-      phaseStore.fetchComments(projectId.value, route.params.id);
-    };
+function loadPhase() {
+  console.log('route.params:', route.params);
+  console.log('projectId.value:', projectId.value);
+  console.log('phaseId:', route.params.id);
+  if (projectId.value && route.params.id) {
+    phaseStore.fetchPhase(projectId.value, route.params.id);
   };
+};
 
   // Henter beskeder for projektet
   function loadMessages() {
