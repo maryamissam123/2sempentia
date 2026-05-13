@@ -24,6 +24,7 @@ async function handleFileChange(event) {
 
   // Send URL'en op til forælderen
   emit('uploaded', url);
+  uploading.value = false;
 }
 </script>
 

@@ -33,9 +33,10 @@ export const usePhaseStore = defineStore('phase', () => {
     .sort((a, b) => b.createdAt?.seconds - a.createdAt?.seconds);
   };
 
-  async function addComment(projectId, phaseId, text) {
+  async function addComment(projectId, phaseId, text, imageUrl = null) {
     await addDoc(collection(db, 'projects', projectId, 'phases', phaseId, 'comments'), {
       text,
+      imageUrl,
       createdAt: serverTimestamp(),
     });
     await fetchComments(projectId, phaseId);
