@@ -5,7 +5,9 @@ import NotificationBadge from '@/components/base/NotificationBadge.vue';
 
 defineProps({
   leftIcons: { type: Array, default: () => [] },
-  rightIcons: { type: Array, default: () => [] }
+  rightIcons: { type: Array, default: () => [] },
+  phaseIcon: { type: String, default: '' },
+  isCompleted: { type: Boolean, default: false }
 });
 
 const route = useRoute();
