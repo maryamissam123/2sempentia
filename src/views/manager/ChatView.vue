@@ -1,10 +1,13 @@
 <script setup>
 import { onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 import { useChatStore } from '@/stores/chat';
 import ChatInput from '@/components/base/ChatInput.vue';
+import ChatBubble from '@/components/base/ChatBubble.vue';
 
 const route = useRoute();
+const auth = useAuthStore();
 const chatStore = useChatStore();
 const projectId = route.params.projectId;
 
@@ -22,12 +25,13 @@ async function handleSend(text) {
 </script>
 
 <template>
-  <ul>
-  <li v-for="message in chatStore.messages" :key="message.id">
-    <h5>{{ message.senderName }}</h5>
-    <p>{{ message.text }}</p>
-  </li>
-</ul>
-
-<ChatInput @send="handleSend" />
+  <div class="chat">
+    <ChatBubble
+      v-for="message in chatStore.messages"
+      :key="message.id"
+      :message="message"
+      :is-own="message.senderId === auth.user?.uid"
+    />
+  </div>
+  <ChatInput @send="handleSend" />
 </template>
