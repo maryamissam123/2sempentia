@@ -1,6 +1,6 @@
 <!-- src/components/chat/ChatPanel.vue -->
 <script setup>
-import { onUnmounted, watch } from 'vue';
+import { onUnmounted, watch, nextTick, ref  } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { useChatStore } from '@/stores/chat';
 import ChatBubble from './ChatBubble.vue';
@@ -12,6 +12,7 @@ const props = defineProps({
 
 const auth = useAuthStore();
 const chatStore = useChatStore();
+const chatRef = ref(null);
 
 // Start lytter når projectId er klar, og stop hvis projektet skifter
 watch(() => props.projectId, (id) => {
@@ -19,18 +20,24 @@ watch(() => props.projectId, (id) => {
   if (id) chatStore.startListener(id);
 }, { immediate: true });
 
+// Scroll til bund når beskeder ændrer sig
+watch(() => chatStore.messages, async () => {
+  await nextTick()
+  document.body.scrollTop = document.body.scrollHeight
+})
+
 // Stop lytter når brugeren forlader chatten
 onUnmounted(() => chatStore.stopListener());
 
 // Sender beskeden via chat store
 function handleSend(text) {
-  if (props.projectId) chatStore.sendMessage(props.projectId, text)
-}
+  if (props.projectId) chatStore.sendMessage(props.projectId, text);
+};
 </script>
 
 <template>
   <!-- Viser alle beskeder som chatbobler -->
-  <div class="chat">
+  <div class="chat" ref="chatRef">
     <ChatBubble
       v-for="message in chatStore.messages"
       :key="message.id"
