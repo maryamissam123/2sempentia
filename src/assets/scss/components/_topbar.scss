@@ -6,6 +6,9 @@
   padding: 12px 16px;
   width: 100%;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   &__row {
     display: flex;
