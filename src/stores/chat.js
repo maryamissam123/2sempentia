@@ -35,10 +35,12 @@ export const useChatStore = defineStore('chat', () => {
 
   async function sendMessage(projectId, text) {
     const auth = useAuthStore();
+    console.log('auth.name:', auth.name)
+    console.log('auth.user:', auth.user)
     await addDoc(collection(db, 'projects', projectId, 'messages'), {
       text,
       senderId: auth.user.uid,
-      senderName: auth.role === 'manager' ? 'Byggeleder' : 'Kunde',
+      senderName: auth.name || (auth.role === 'manager' ? 'Byggeleder' : 'Kunde'),
       createdAt: serverTimestamp(),
     });
     await fetchMessages(projectId);

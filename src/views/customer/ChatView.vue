@@ -1,36 +1,10 @@
 <script setup>
-import { ref, watch, onUnmounted } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
+import ChatPanel from '@/components/chat/ChatPanel.vue';
 
-const { projectId, chatStore } = useCustomerProject();
-
-const newMessage = ref('');
-
-watch(projectId, (id) => {
-  if (id) chatStore.startListener(id);
-});
-
-onUnmounted(() => {
-  chatStore.stopListener();
-});
-
-async function handleSend() {
-  if(!newMessage.value.trim()) return;
-  await chatStore.sendMessage(projectId.value, newMessage.value);
-  newMessage.value = '';
-}
+const { projectId } = useCustomerProject();
 </script>
 
 <template>
-    <h1>Chat med byggelederen</h1>
-
-    <ul>
-      <li v-for="message in chatStore.messages" :key="message.id">
-        <h5>{{ message.senderName }}</h5>
-        <p>{{ message.text }}</p>
-      </li>
-    </ul>
-
-    <input v-model="newMessage" placeholder="Skriv besked">
-    <button @click="handleSend">Send</button>
+  <ChatPanel :project-id="projectId" />
 </template>
