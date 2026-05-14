@@ -6,60 +6,61 @@ import { doc, getDoc, setDoc, query, collection, where, getDocs, updateDoc, dele
 import { auth, db } from '@/firebase';
 
 export const useAuthStore = defineStore('auth', () => {
-    const user = ref(null);
-    const role = ref(null);
-    const ready = ref(false);
+  const user = ref(null);
+  const role = ref(null);
+  const name = ref(null) 
+  const ready = ref(false);
 
     const login = async (email, password) => {
-        const { user: u } = await signInWithEmailAndPassword(auth, email, password);
-        user.value = u;
-        const snap = await getDoc(doc(db, 'users', u.uid));
-        const userRole = snap.data()?.role;
-        role.value = userRole;
-        return userRole;
+      const { user: u } = await signInWithEmailAndPassword(auth, email, password);
+      user.value = u;
+      const snap = await getDoc(doc(db, 'users', u.uid));
+      const data = snap.data();
+      role.value = data?.role;
+      name.value = data?.name;
+      return data?.role;
     };
 
     const logout = async () => {
-        await signOut(auth);
-        user.value = null; // nulstiller når brugeren logger ud
-        role.value = null;
+      await signOut(auth);
+      user.value = null; // nulstiller når brugeren logger ud
+      role.value = null;
     };
 
     const createCustomer = async ({ name, email, password, projectNumber}) => {
-        const q = query(
-            collection(db, 'projects'),
-            where('projectNumber', '==', projectNumber)
-        );
-        const snap = await getDocs(q);
+      const q = query(
+        collection(db, 'projects'),
+        where('projectNumber', '==', projectNumber));
+      const snap = await getDocs(q);
 
-        if (snap.empty) {
-            throw new Error('Projektnummer findes ikke');
-        };
+      if (snap.empty) {
+        throw new Error('Projektnummer findes ikke');
+      };
 
-        const projectDoc = snap.docs[0];
+      const projectDoc = snap.docs[0];
 
-        const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
-        user.value = u;
+      const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
+      user.value = u;
 
-        await setDoc(doc(db, 'users', u.uid), {
-            name,
-            email,
-            role: 'customer',
-        });
+      await setDoc(doc(db, 'users', u.uid), {
+        name,
+        email,
+        role: 'customer',
+      });
 
-        await updateDoc(projectDoc.ref, {
-            customerId: u.uid
-        });
+      await updateDoc(projectDoc.ref, {
+        customerId: u.uid
+      });
 
-        role.value = 'customer';
-        return 'customer';
+      role.value = 'customer';
+      return 'customer';
     };
 
     const createManager = async ({ name, email, password, employeeNumber }) => {
-        const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
-        const whitelistSnap = await getDoc(whitelistRef); // Tjekker om medarbejdernummeret findes i whitelist collection
-            if (!whitelistSnap.exists()) {
-            throw new Error('Medarbejdernummer findes ikke');
+      const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
+      const whitelistSnap = await getDoc(whitelistRef); // Tjekker om medarbejdernummeret findes i whitelist collection
+        if (!whitelistSnap.exists()) {
+        throw new Error('Medarbejdernummer findes ikke');
         };
 
 
@@ -67,10 +68,10 @@ export const useAuthStore = defineStore('auth', () => {
         user.value = u;
 
         await setDoc(doc(db, 'users', u.uid), {
-            name,
-            email,
-            employeeNumber,
-            role: 'manager',
+          name,
+          email,
+          employeeNumber,
+          role: 'manager',
         });
 
         await deleteDoc(whitelistRef);
@@ -80,23 +81,25 @@ export const useAuthStore = defineStore('auth', () => {
     };
 
     onAuthStateChanged(auth, async (u) => {
-        user.value = u;
-        if(u) {
-            const snap = await getDoc(doc(db, 'users', u.uid));
-            role.value = snap.data()?.role;
-        } else {
-            role.value = null;
-        }
-        ready.value = true;
+      user.value = u
+      if (u) {
+        const snap = await getDoc(doc(db, 'users', u.uid));
+        const data = snap.data();
+        console.log('user data:', data);
+        role.value = data?.role;
+        name.value = data?.name;
+      };
+      ready.value = true
     });
 
     return {
-        user,
-        role,
-        ready,
-        login,
-        logout,
-        createCustomer,
-        createManager
+      user,
+      role,
+      name,
+      ready,
+      login,
+      logout,
+      createCustomer,
+      createManager
     };
 });
