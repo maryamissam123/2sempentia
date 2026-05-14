@@ -1,12 +1,11 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useChatStore } from '@/stores/chat';
+import ChatInput from '@/components/base/ChatInput.vue';
 
 const route = useRoute();
 const chatStore = useChatStore();
-
-const newMessage = ref('');
 const projectId = route.params.projectId;
 
 onMounted(() => {
@@ -17,11 +16,9 @@ onUnmounted(() => {
   chatStore.stopListener();
 });
 
-async function handleSend() {
-  if (!newMessage.value.trim()) return;
-  await chatStore.sendMessage(projectId, newMessage.value);
-  newMessage.value = '';
-}
+async function handleSend(text) {
+  await chatStore.sendMessage(projectId, text);
+};
 </script>
 
 <template>
@@ -32,6 +29,5 @@ async function handleSend() {
   </li>
 </ul>
 
-<input v-model="newMessage" placeholder="Skriv besked">
-<button @click="handleSend">Send</button>
+<ChatInput @send="handleSend" />
 </template>
