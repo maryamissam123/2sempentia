@@ -50,7 +50,7 @@ const router = createRouter({
         {
           path: 'process/:id',
           name: 'customer-process-details',
-          meta: { title: 'Byggeforløb Detaljer', layout: 'detail' },
+          meta: { title: 'VÆGGE', layout: 'detail', },
           component: () => import('@/views/customer/ProcessDetailsView.vue'),
         },
         {
