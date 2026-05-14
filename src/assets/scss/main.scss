@@ -1,33 +1,7 @@
-@use 'base/reset';
+// src/assets/scss/main.scss
 @use 'abstracts/variables' as v;
-
-@use 'components/tabbar';
-@use 'components/topbar';
-@use 'components/dashboard';
-@use 'components/mobile-layout';
-@use 'components/login';
-@use 'components/motion';
-@use 'components/base-card';
-@use 'components/base-list';
-@use 'components/progress-bar';
-@use 'components/base-input';
-@use 'components/back-button';
-@use 'components/process-list';
-@use 'components/notification';
-@use 'components/chat-input';
-@use 'components/process-details';
-@use 'components/chat-bubble';
-
-.test {
-  border: 1px solid black;
-  padding: 16px;
-  margin: 4px;
-	font-size: 25px;
-}
-
-.status-badge {
-  border: 1px solid black;
-  padding: 4px 12px;
-  display: inline-block;
-}
+@use 'base/reset';
+@use 'layouts';
+@use 'components';
+@use 'pages';
 
