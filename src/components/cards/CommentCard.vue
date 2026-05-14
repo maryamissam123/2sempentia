@@ -6,7 +6,6 @@ defineProps({
   }
 });
 
-// Formaterer Firebase timestamp til en pæn dansk dato (f.eks. 10.3.2026)
 const formatDate = (timestamp) => {
   if (!timestamp) return '';
   const date = timestamp.toDate();
