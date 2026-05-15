@@ -44,5 +44,14 @@ export const useChatStore = defineStore('chat', () => {
     await fetchMessages(projectId);
   };
 
-  return { messages, startListener, stopListener, fetchMessages, sendMessage };
+  async function fetchLastMessage(projectId) {
+    const q = query(
+      collection(db, 'projects', projectId, 'messages'),
+      orderBy('createdAt', 'desc')
+    )
+    const snap = await getDocs(q)
+    return snap.docs[0]?.data() || null
+  }
+
+  return { messages, startListener, stopListener, fetchMessages, sendMessage, fetchLastMessage };
 });
