@@ -16,11 +16,14 @@ export const useProjectStore = defineStore('project', () => {
 
 		const q = query(
 			collection(db, 'projects'),
-			where(field, '==', auth.user.uid)
+			where(field, '==', auth.user.uid),
 		);
 
-		const snap = await getDocs(q);
-		projects.value = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+		const snap = await getDocs(q)
+			projects.value = snap.docs
+			.map(d => ({ id: d.id, ...d.data() }))
+			.sort((a, b) => (b.lastMessageAt?.seconds || 0) - (a.lastMessageAt?.seconds || 0))
+			
   };
 
 	async function fetchProject(id) {

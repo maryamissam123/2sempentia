@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, onSnapshot } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { useAuthStore } from './auth';
 
@@ -34,24 +34,22 @@ export const useChatStore = defineStore('chat', () => {
   }
 
   async function sendMessage(projectId, text) {
-    const auth = useAuthStore();
+    const auth = useAuthStore()
+    
+    // 1. Tilføj besked
     await addDoc(collection(db, 'projects', projectId, 'messages'), {
       text,
       senderId: auth.user.uid,
-      senderName: auth.name || (auth.role === 'manager' ? 'Byggeleder' : 'Kunde'),
+      senderName: auth.name,
       createdAt: serverTimestamp(),
-    });
-    await fetchMessages(projectId);
-  };
+    })
 
-  async function fetchLastMessage(projectId) {
-    const q = query(
-      collection(db, 'projects', projectId, 'messages'),
-      orderBy('createdAt', 'desc')
-    )
-    const snap = await getDocs(q)
-    return snap.docs[0]?.data() || null
+    // 2. Opdater projekt med seneste besked
+    await updateDoc(doc(db, 'projects', projectId), {
+      lastMessage: text,
+      lastMessageAt: serverTimestamp(),
+    })
   }
 
-  return { messages, startListener, stopListener, fetchMessages, sendMessage, fetchLastMessage };
+  return { messages, startListener, stopListener, fetchMessages, sendMessage,};
 });
