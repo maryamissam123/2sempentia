@@ -6,7 +6,7 @@ import PhotoUpload from '@/components/PhotoUpload.vue';
 const { projectId, phaseStore, loadPhase } = useManagerProject();
 
 const newComment = ref('');
-const newImageUrl = ref('')
+const newImageUrl = ref('');
 
 onMounted(loadPhase);
 
@@ -15,16 +15,16 @@ function handleUploaded(url) {
 };
 
 async function handleAddComment() {
-  if (!newComment.value.trim() && !newImageUrl.value) return
-  console.log('imageUrl bliver sendt:', newImageUrl.value)
+  if (!newComment.value.trim() && !newImageUrl.value) return;
+  console.log('imageUrl bliver sendt:', newImageUrl.value);
   await phaseStore.addComment(
     projectId.value,
     phaseStore.phase.id,
     newComment.value,
     newImageUrl.value
-  )
-  newComment.value = ''
-  newImageUrl.value = ''
+  );
+  newComment.value = '';
+  newImageUrl.value = '';
 }
 
 async function handleComplete() {

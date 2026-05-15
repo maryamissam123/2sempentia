@@ -22,9 +22,9 @@ watch(() => props.projectId, (id) => {
 
 // Scroll til bund når beskeder ændrer sig
 watch(() => chatStore.messages, async () => {
-  await nextTick()
-  document.body.scrollTop = document.body.scrollHeight
-})
+  await nextTick();
+  document.body.scrollTop = document.body.scrollHeight;
+});
 
 // Stop lytter når brugeren forlader chatten
 onUnmounted(() => chatStore.stopListener());

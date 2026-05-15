@@ -34,7 +34,7 @@ export const useChatStore = defineStore('chat', () => {
   }
 
   async function sendMessage(projectId, text) {
-    const auth = useAuthStore()
+    const auth = useAuthStore();
     
     // 1. Tilføj besked
     await addDoc(collection(db, 'projects', projectId, 'messages'), {
@@ -42,14 +42,14 @@ export const useChatStore = defineStore('chat', () => {
       senderId: auth.user.uid,
       senderName: auth.name,
       createdAt: serverTimestamp(),
-    })
+    });
 
     // 2. Opdater projekt med seneste besked
     await updateDoc(doc(db, 'projects', projectId), {
       lastMessage: text,
       lastMessageAt: serverTimestamp(),
-    })
-  }
+    });
+  };
 
   return { messages, startListener, stopListener, fetchMessages, sendMessage,};
 });
