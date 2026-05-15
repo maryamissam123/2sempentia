@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as v;
+
+.chat-options {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: v.$color-white; 
+  min-height: 100vh;
+
+  &__top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    height: 110px; 
+
+    .base-card {
+      height: 100%;
+      background-color: v.$color-accent; 
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      border: none;
+      box-shadow: none;
+
+      &__title {
+        color: v.$color-primary;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+
+  .chat-choice-card {
+    background-color: v.$color-accent;
+    border-radius: 8px;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    text-decoration: none;
+    min-height: 200px;
+
+    &__flow {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      svg {
+        width: 48px;
+        height: 48px;
+        color: v.$color-primary;
+      }
+
+      .arrow-yellow {
+        color: v.$color-accent;
+        width: 32px;
+      }
+
+      .milton-logo {
+        width: 100px; 
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    &__label {
+      color: v.$color-primary;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      max-width: 250px;
+      line-height: 1.4;
+    }
+  }
+}
+
+.no-underline {
+  text-decoration: none;
+}
