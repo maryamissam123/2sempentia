@@ -1,0 +1,36 @@
+// src/assets/scss/components/_chat-preview-card.scss
+@use '../abstracts/variables' as v;
+
+.chat-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: v.$color-white;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: v.$font-size-subtitle;
+    text-transform: uppercase;
+    color: v.$color-black;
+  }
+
+  &__message {
+    margin: 4px 0 0;
+    font-size: v.$font-size-body;
+    color: #999;
+  }
+}
