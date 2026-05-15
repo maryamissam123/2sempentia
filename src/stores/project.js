@@ -1,3 +1,4 @@
+// src/stores/project.js
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { collection, getDocs, doc, getDoc, query, where, addDoc } from 'firebase/firestore';
@@ -5,32 +6,34 @@ import { db } from '@/firebase';
 import { useAuthStore } from './auth';
 
 export const useProjectStore = defineStore('project', () => {
+	// ===== States =====
 	const projects = ref([]);
 	const project = ref(null);
 	const customer = ref(null);
 
+	// ===== Actions =====
+
+	// Henter alle projekter for bruger (manager eller customer)
   async function fetchProjects() {
   	const auth = useAuthStore();
-  		if (!auth.user) return; // guard (fejlhåndtering hvis der ikke er en user)
+  	if (!auth.user) return;
+
   	const field = auth.role === 'manager' ? 'managerId' : 'customerId';
+		const q = query(collection(db, 'projects'), where(field, '==', auth.user.uid));
+		const snap = await getDocs(q);
 
-		const q = query(
-			collection(db, 'projects'),
-			where(field, '==', auth.user.uid),
-		);
-
-		const snap = await getDocs(q)
-			projects.value = snap.docs
+		projects.value = snap.docs
 			.map(d => ({ id: d.id, ...d.data() }))
-			.sort((a, b) => (b.lastMessageAt?.seconds || 0) - (a.lastMessageAt?.seconds || 0))
-			
+			.sort((a, b) => (b.lastMessageAt?.seconds || 0) - (a.lastMessageAt?.seconds || 0));
   };
 
+	// Henter et specifikt projekt
 	async function fetchProject(id) {
 		const snap = await getDoc(doc(db, 'projects', id));
 		project.value = { id: snap.id, ...snap.data() };
 	};
 
+	// Opretter nyt projekt med tilhørende faser
 	async function createProject({projectNumber, name, address, imageUrl, phases}) {
 		const auth = useAuthStore();
 
@@ -51,14 +54,24 @@ export const useProjectStore = defineStore('project', () => {
 				completed: false
 			});
 		};
+
 		return projectRef.id;
 	};
 
+	// Henter informationer på kunde
 	async function fetchCustomer(customerId) {
 		if (!customerId) return;
   	const snap = await getDoc(doc(db, 'users', customerId));
   	customer.value = snap.exists() ? { id: snap.id, ...snap.data() } : null;
 	};
 
-  return { projects, project, customer, fetchProjects, fetchProject, createProject, fetchCustomer };
+  return { 
+		projects, 
+		project, 
+		customer, 
+		fetchProjects, 
+		fetchProject, 
+		createProject, 
+		fetchCustomer 
+	};
 });

@@ -6,39 +6,44 @@ import { doc, getDoc, setDoc, query, collection, where, getDocs, updateDoc, dele
 import { auth, db } from '@/firebase';
 
 export const useAuthStore = defineStore('auth', () => {
+  // ===== States =====
   const user = ref(null);
   const role = ref(null);
   const name = ref(null); 
   const ready = ref(false);
 
-    const login = async (email, password) => {
-      const { user: u } = await signInWithEmailAndPassword(auth, email, password);
-      user.value = u;
-      const snap = await getDoc(doc(db, 'users', u.uid));
-      const data = snap.data();
-      role.value = data?.role;
-      name.value = data?.name;
-      return data?.role;
-    };
+  // ===== Actions =====
 
-    const logout = async () => {
+  // Logger ind og henter brugerdata fra Firestore
+  async function login(email, password) {
+    const { user: u } = await signInWithEmailAndPassword(auth, email, password);
+    user.value = u;
+
+    const snap = await getDoc(doc(db, 'users', u.uid));
+    const data = snap.data();
+    role.value = data?.role;
+    name.value = data?.name;
+
+    return data?.role;
+  };
+
+    async function logout() {
       await signOut(auth);
-      user.value = null; // nulstiller når brugeren logger ud
+      user.value = null;
       role.value = null;
     };
 
-    const createCustomer = async ({ name, email, password, projectNumber}) => {
+    // Opretter ny customer og tilknytter dem til et eksisterende projekt
+    async function createCustomer({ name, email, password, projectNumber }) {
       const q = query(
         collection(db, 'projects'),
-        where('projectNumber', '==', projectNumber));
+        where('projectNumber', '==', projectNumber)
+      );
       const snap = await getDocs(q);
 
-      if (snap.empty) {
-        throw new Error('Projektnummer findes ikke');
-      };
+      if (snap.empty) throw new Error('Projektnummer findes ikke');
 
       const projectDoc = snap.docs[0];
-
       const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
       user.value = u;
 
@@ -56,32 +61,33 @@ export const useAuthStore = defineStore('auth', () => {
       return 'customer';
     };
 
-    const createManager = async ({ name, email, password, employeeNumber }) => {
+    // Opretter ny manager og fjerner deres medarbejdernummer fra whitelist
+    async function createManager({ name, email, password, employeeNumber }) {
       const whitelistRef = doc(db, 'employeeWhitelist', employeeNumber);
       const whitelistSnap = await getDoc(whitelistRef); // Tjekker om medarbejdernummeret findes i whitelist collection
-        if (!whitelistSnap.exists()) {
-        throw new Error('Medarbejdernummer findes ikke');
-        };
+      
+      if (!whitelistSnap.exists()) throw new Error('Medarbejdernummer findes ikke');
 
+      const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
+      user.value = u;
 
-        const { user: u } = await createUserWithEmailAndPassword(auth, email, password);
-        user.value = u;
+      await setDoc(doc(db, 'users', u.uid), {
+        name,
+        email,
+        employeeNumber,
+        role: 'manager',
+      });
 
-        await setDoc(doc(db, 'users', u.uid), {
-          name,
-          email,
-          employeeNumber,
-          role: 'manager',
-        });
+      await deleteDoc(whitelistRef);
 
-        await deleteDoc(whitelistRef);
-
-        role.value = 'manager';
-        return 'manager';
+      role.value = 'manager';
+      return 'manager';
     };
 
+    // Lytter på auth-state og synkroniserer med Firestore
     onAuthStateChanged(auth, async (u) => {
       user.value = u;
+
       if (u) {
         const snap = await getDoc(doc(db, 'users', u.uid));
         const data = snap.data();
@@ -89,6 +95,7 @@ export const useAuthStore = defineStore('auth', () => {
         role.value = data?.role;
         name.value = data?.name;
       };
+
       ready.value = true;
     });
 

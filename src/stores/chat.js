@@ -1,3 +1,4 @@
+// src/stores/chat.js
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, onSnapshot } from 'firebase/firestore';
@@ -5,11 +6,16 @@ import { db } from '@/firebase';
 import { useAuthStore } from './auth';
 
 export const useChatStore = defineStore('chat', () => {
+  // ===== States =====
   const messages = ref([]);
   let stop = null;
 
+  // ===== Actions =====
+
+  // Starter realtid-listener på beskeder for et projekt
   function startListener(projectId) {
-    const q = query(collection(db, 'projects', projectId, 'messages'),
+    const q = query(
+      collection(db, 'projects', projectId, 'messages'),
       orderBy('createdAt')
     );
 
@@ -18,6 +24,7 @@ export const useChatStore = defineStore('chat', () => {
     });
   };
 
+  // Stopper listeneren og rydder beskeder
   function stopListener() {
     if (stop) {
       stop()
@@ -26,6 +33,7 @@ export const useChatStore = defineStore('chat', () => {
     messages.value = []
   }
 
+  // Henter alle beskeder fra specifikt projekt
   async function fetchMessages(projectId) {
     const q = query(collection(db, 'projects', projectId, 'messages'), orderBy('createdAt'));
 
@@ -33,6 +41,7 @@ export const useChatStore = defineStore('chat', () => {
     messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   }
 
+  // Sender ny besked og opdaterer projektets seneste besked
   async function sendMessage(projectId, text) {
     const auth = useAuthStore();
     
@@ -51,5 +60,11 @@ export const useChatStore = defineStore('chat', () => {
     });
   };
 
-  return { messages, startListener, stopListener, fetchMessages, sendMessage,};
+  return { 
+    messages, 
+    startListener, 
+    stopListener, 
+    fetchMessages, 
+    sendMessage,
+  };
 });

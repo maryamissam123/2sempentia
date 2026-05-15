@@ -13,7 +13,7 @@ defineProps({
   <div class="chat-preview-card">
     <div class="chat-preview-card__image">
       <img v-if="imageUrl" :src="imageUrl" />
-      <Home v-else :size="32" />
+      <Home v-else :size="24" :stroke-width="1.5" />
     </div>
     <div class="chat-preview-card__content">
       <h3 class="chat-preview-card__name">{{ name }}</h3>
