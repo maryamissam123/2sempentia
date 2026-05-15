@@ -14,16 +14,16 @@ export const useChatStore = defineStore('chat', () => {
     );
 
     stop = onSnapshot(q, (snap) => {
-      messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     });
   };
 
   function stopListener() {
     if (stop) {
-      stop()
-      stop = null
+      stop();
+      stop = null;
     }
-    messages.value = []
+    messages.value = [];
   }
 
   async function fetchMessages(projectId) {
@@ -48,9 +48,9 @@ export const useChatStore = defineStore('chat', () => {
     const q = query(
       collection(db, 'projects', projectId, 'messages'),
       orderBy('createdAt', 'desc')
-    )
-    const snap = await getDocs(q)
-    return snap.docs[0]?.data() || null
+    );
+    const snap = await getDocs(q);
+    return snap.docs[0]?.data() || null;
   }
 
   return { messages, startListener, stopListener, fetchMessages, sendMessage, fetchLastMessage };

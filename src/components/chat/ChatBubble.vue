@@ -5,23 +5,23 @@ defineProps({
 });
 
 function formatTime(timestamp) {
-  if (!timestamp?.seconds) return ''
+  if (!timestamp?.seconds) return '';
   
-  const d = new Date(timestamp.seconds * 1000)
-  const now = new Date()
-  const yesterday = new Date(now)
-  yesterday.setDate(yesterday.getDate() - 1)
+  const d = new Date(timestamp.seconds * 1000);
+  const now = new Date();
+  const yesterday = new Date(now);
+  yesterday.setDate(yesterday.getDate() - 1);
   
-  const time = `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`
+  const time = `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`;
   
   // I dag
-  if (d.toDateString() === now.toDateString()) return time
+  if (d.toDateString() === now.toDateString()) return time;
   
   // I går
-  if (d.toDateString() === yesterday.toDateString()) return `I går ${time}`
+  if (d.toDateString() === yesterday.toDateString()) return `I går ${time}`;
   
   // Ellers dato + tid
-  return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${time}`
+  return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()} ${time}`;
 }
 </script>
 

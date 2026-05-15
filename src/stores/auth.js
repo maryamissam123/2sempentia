@@ -8,7 +8,7 @@ import { auth, db } from '@/firebase';
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null);
   const role = ref(null);
-  const name = ref(null) 
+  const name = ref(null); 
   const ready = ref(false);
 
     const login = async (email, password) => {
@@ -81,7 +81,7 @@ export const useAuthStore = defineStore('auth', () => {
     };
 
     onAuthStateChanged(auth, async (u) => {
-      user.value = u
+      user.value = u;
       if (u) {
         const snap = await getDoc(doc(db, 'users', u.uid));
         const data = snap.data();
@@ -89,7 +89,7 @@ export const useAuthStore = defineStore('auth', () => {
         role.value = data?.role;
         name.value = data?.name;
       };
-      ready.value = true
+      ready.value = true;
     });
 
     return {

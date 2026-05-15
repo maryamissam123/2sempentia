@@ -12,7 +12,7 @@ export function useManagerProject() {
   const phaseStore = usePhaseStore();
   const chatStore = useChatStore();
 
-  const customers = ref({})
+  const customers = ref({});
 
   // Henter projectId fra URL - da manager har flere projekter
   const projectId = computed(() => 
