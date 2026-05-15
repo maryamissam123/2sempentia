@@ -56,7 +56,7 @@ const router = createRouter({
         {
           path: 'chat-options',
           name: 'customer-chat-options',
-          meta: { title: 'Chat Muligheder' },
+          meta: { title: 'Chat' },
           component: () => import('@/views/customer/ChatOptionsView.vue'),
         },
         {

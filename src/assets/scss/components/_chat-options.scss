@@ -1,87 +1,68 @@
 @use '../abstracts/variables' as v;
 
-.chat-options {
-  padding: 20px 16px;
+.chat-options-page {
+  padding: v.$font-size-body;
+  background-color: v.$color-bg-neutral;
+  min-height: calc(100vh - 110px);
+}
+
+.chat-options-grid {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  background-color: v.$color-white; 
-  min-height: 100vh;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  gap: v.$font-size-body;
 
-  &__top-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    height: 110px; 
-
-    .base-card {
-      height: 100%;
-      background-color: v.$color-accent; 
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      border: none;
-      box-shadow: none;
-
-      &__title {
-        color: v.$color-primary;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 0.1em;
-      }
-    }
+  // De to øverste kort (FAQ og Chat)
+  .no-underline:nth-child(1),
+  .no-underline:nth-child(2) {
+    flex: 1; 
+    text-decoration: none;
+    width: calc(50% - 6px); 
   }
 
-  .chat-choice-card {
-    background-color: v.$color-accent;
-    border-radius: 8px;
-    padding: 32px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    text-decoration: none;
-    min-height: 200px;
-
-    &__flow {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      svg {
-        width: 48px;
-        height: 48px;
-        color: v.$color-primary;
-      }
-
-      .arrow-yellow {
-        color: v.$color-accent;
-        width: 32px;
-      }
-
-      .milton-logo {
-        width: 100px; 
-        height: auto;
-        object-fit: contain;
-      }
-    }
-
-    &__label {
-      color: v.$color-primary;
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      text-align: center;
-      max-width: 250px;
-      line-height: 1.4;
-    }
+  // De store kort (Byggeleder og Rådgiver)
+  .no-underline.full-width {
+    width: 100%; 
+    flex: none;
   }
 }
 
-.no-underline {
-  text-decoration: none;
+.card--top {
+  height: 85px;
+  background-color: v.$color-accent;
+  border-radius: v.$font-size-caption;
+}
+
+.card--choice {
+  min-height: 160px;
+  background-color: v.$color-accent;
+  border-radius: v.$font-size-caption;
+}
+
+.choice-flow {
+  display: flex;
+  align-items: center;
+  gap: v.$font-size-admin-title;
+  margin-bottom: v.$font-size-subtitle;
+
+  .icon-large {
+    width: 42px;
+    height: 42px;
+  }
+
+  .icon-logo {
+    height: 32px;
+  }
+
+  .arrow-yellow {
+    color: v.$color-complementary;
+  }
+}
+
+.choice-label {
+  color: v.$color-primary;
+  font-weight: 500;
+  font-size: v.$font-size-body;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }

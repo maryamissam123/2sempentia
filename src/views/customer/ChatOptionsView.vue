@@ -1,41 +1,55 @@
 <script setup>
 import { ArrowRight } from '@lucide/vue';
-import NotificationBadge from '@/components/base/NotificationBadge.vue';
-
+import BaseCard from '@/components/base/BaseCard.vue';
 </script>
 
 <template>
   <Topbar :rightIcons="['notifications']" />
 
-  <div class="chat-options">
-    <div class="chat-options__top-row">
-      <RouterLink :to="{ name: 'customer-faq' }" class="base-card no-underline">
-        <span class="base-card__title">FAQ</span>
+  <div class="chat-options-page">
+    <div class="chat-options-grid">
+      
+      <RouterLink :to="{ name: 'customer-faq' }" class="no-underline">
+        <BaseCard title="FAQ" class="card--top" />
       </RouterLink>
 
-      <div class="base-card" style="position: relative;">
-        <MessageSquare :size="40" color="#004552" />
-        <NotificationBadge :count="1" />
-      </div>
+      <RouterLink :to="{ name: 'customer-chat' }" class="no-underline">
+        <BaseCard class="card--top">
+          <template #icon>
+            <div class="icon-relative">
+              <img src="/icons/Chat.png" alt="Chat" class="icon-small" />
+            </div>
+          </template>
+        </BaseCard>
+      </RouterLink>
+
+      <RouterLink :to="{ name: 'customer-chat' }" class="no-underline full-width">
+        <BaseCard class="card--choice">
+          <template #default>
+            <div class="choice-flow">
+              <img src="/icons/Chat.png" alt="Chat" class="icon-large" />
+              <ArrowRight class="arrow-yellow" :size="30" stroke-width="3" />
+              <img src="/icons/Manager.png" alt="Byggeleder" class="icon-large" />
+            </div>
+            <span class="choice-label">Tale med byggeleder</span>
+          </template>
+        </BaseCard>
+      </RouterLink>
+
+      <RouterLink :to="{ name: 'customer-chat' }" class="no-underline full-width">
+        <BaseCard class="card--choice">
+          <template #default>
+            <div class="choice-flow">
+              <img src="/icons/Chat.png" alt="Chat" class="icon-large" />
+              <ArrowRight class="arrow-yellow" :size="30" stroke-width="3" />
+              <img src="/images/milton.png" alt="Milton" class="icon-logo" />
+            </div>
+            <span class="choice-label">Tale med din milton huse rådgiver</span>
+          </template>
+        </BaseCard>
+      </RouterLink>
+
     </div>
-
-    <RouterLink :to="{ name: 'customer-chat' }" class="chat-choice-card">
-      <div class="chat-choice-card__flow">
-        <MessageSquare :size="48" stroke-width="1.5" />
-        <ArrowRight class="arrow-yellow" :size="32" stroke-width="3" />
-        <Pencil :size="48" stroke-width="1.5" />
-      </div>
-      <span class="chat-choice-card__label">Tale med byggeleder</span>
-    </RouterLink>
-
-    <RouterLink :to="{ name: 'customer-chat' }" class="chat-choice-card">
-      <div class="chat-choice-card__flow">
-        <MessageSquare :size="48" stroke-width="1.5" />
-        <ArrowRight class="arrow-yellow" :size="32" stroke-width="3" />
-        <img src="/images/milton.png" class="milton-logo" alt="Milton" />
-      </div>
-      <span class="chat-choice-card__label">Tale med din milton huse rådgiver</span>
-    </RouterLink>
   </div>
 
   <Tabbar />
