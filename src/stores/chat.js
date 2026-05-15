@@ -20,17 +20,17 @@ export const useChatStore = defineStore('chat', () => {
     );
 
     stop = onSnapshot(q, (snap) => {
-      messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      messages.value = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     });
   };
 
   // Stopper listeneren og rydder beskeder
   function stopListener() {
     if (stop) {
-      stop()
-      stop = null
+      stop();
+      stop = null;
     }
-    messages.value = []
+    messages.value = [];
   }
 
   // Henter alle beskeder fra specifikt projekt
