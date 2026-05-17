@@ -84,6 +84,13 @@ export const useAuthStore = defineStore('auth', () => {
       return 'manager';
     };
 
+    // Opdaterer brugerens data i Firestore
+    async function updateUser(data) {
+      if (!user.value) return;
+      await updateDoc(doc(db, 'users', user.value.uid), data);
+      if (data.name !== undefined) name.value = data.name;
+    };
+
     // Lytter på auth-state og synkroniserer med Firestore
     onAuthStateChanged(auth, async (u) => {
       user.value = u;
@@ -107,6 +114,7 @@ export const useAuthStore = defineStore('auth', () => {
       login,
       logout,
       createCustomer,
-      createManager
+      createManager,
+      updateUser
     };
 });

@@ -1,29 +1,36 @@
 <script setup>
-import { RouterLink, useRoute } from 'vue-router'
-import { computed } from 'vue'
-import { useAuthStore } from '@/stores/auth'
-import { Home, TrendingUp, FileText, MessageSquareMore } from '@lucide/vue'
+import { RouterLink, useRoute } from 'vue-router';
+import { computed } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { Home, TrendingUp, FileText, MessageSquareMore } from '@lucide/vue';
 
-const auth = useAuthStore()
-const route = useRoute()
+const auth = useAuthStore();
+const route = useRoute();
+
+const customerTabs = [
+  { label: 'Hjem', to: { name: 'customer-dashboard' }, icon: Home, goto: null },
+  { label: 'Byggeforløb', to: { name: 'customer-process' }, icon: TrendingUp, goto: null },
+  { label: 'Dokumenter', to: { name: 'customer-documents' }, icon: FileText, goto: null },
+  { label: 'Chat', to: { name: 'customer-chat' }, icon: MessageSquareMore, goto: null },
+];
 
 const managerTabs = [
   { label: 'Hjem', to: { name: 'manager-dashboard' }, icon: Home, goto: null },
   { label: 'Byggeforløb', to: { name: 'manager-projects', query: { goto: 'process' } }, icon: TrendingUp, goto: 'process' },
   { label: 'Dokumenter', to: { name: 'manager-projects', query: { goto: 'documents' } }, icon: FileText, goto: 'documents' },
   { label: 'Chat', to: { name: 'manager-chat-list' }, icon: MessageSquareMore, goto: null },
-]
+];
 
 const tabs = computed(() =>
   auth.role === 'manager' ? managerTabs : customerTabs
-)
+);
 
 function isActive(tab) {
   if (tab.goto) {
-    return route.name === 'manager-projects' && route.query.goto === tab.goto
-  }
-  return route.name === tab.to.name
-}
+    return route.name === 'manager-projects' && route.query.goto === tab.goto;
+  };
+  return route.name === tab.to.name;
+};
 </script>
 
 <template>

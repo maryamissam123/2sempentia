@@ -77,6 +77,12 @@ const router = createRouter({
           meta: { title: 'Dokumenter' },
           component: () => import('@/views/customer/DocumentsView.vue'),
         },
+        {
+          path: 'settings',
+          name: 'customer-settings',
+          meta: { title: 'Indstillinger', layout: 'detail' },
+          component: () => import('@/views/customer/SettingsView.vue')
+        },
       ]
     },
     {
@@ -142,6 +148,12 @@ const router = createRouter({
           name: 'manager-documents',
           meta: { title: 'Dokumenter', layout: 'detail' },
           component: () => import('@/views/manager/DocumentsView.vue')
+        },
+        {
+          path: 'settings',
+          name: 'manager-settings',
+          meta: { title: 'Indstillinger', layout: 'detail' },
+          component: () => import('@/views/manager/SettingsView.vue')
         },
       ]
     },
