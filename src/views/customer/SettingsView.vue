@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import BaseInput from '@/components/base/BaseInput.vue';
+import BaseButton from '@/components/base/BaseButton.vue';
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -30,6 +31,6 @@ async function handleLogout() {
   <BaseInput v-model="name" placeholder="Navn" />
   <BaseInput v-model="email" placeholder="Email" disabled />
 
-  <button @click="handleSave">Gem</button>
-  <button @click="handleLogout">Log ud</button>
+  <BaseButton @click="handleSave">Gem</BaseButton>
+  <BaseButton variant="secondary" @click="handleLogout">Log ud</BaseButton>
 </template>
