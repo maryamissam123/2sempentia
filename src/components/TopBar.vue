@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth'
 import { ArrowLeft, Settings, Search, Bell, Check } from '@lucide/vue';
 import NotificationBadge from '@/components/base/NotificationBadge.vue';
 import { computed } from 'vue';
@@ -12,6 +13,7 @@ defineProps({
 
 const route = useRoute();
 const router = useRouter();
+const auth = useAuthStore();
 const { phaseStore } = useCustomerProject();
 
 const icons = {
@@ -25,6 +27,9 @@ const handleIconClick = (name) => {
   if (name === 'back') {
     router.back();
   }
+  if (name === 'settings') {
+    router.push({ name: auth.role === 'manager' ? 'manager-settings' : 'customer-settings' });
+  };
 };
 
 // Finder automatisk det rigtige ikon baseret på det nuværende fasenavn
