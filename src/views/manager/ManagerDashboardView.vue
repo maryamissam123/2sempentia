@@ -9,7 +9,7 @@
     <RouterLink :to="{ name: 'manager-chat-options' }" class="dashboard__card">
       Chat
     </RouterLink>
-    <RouterLink :to="{ name: 'manager-documents' }" class="dashboard__card">
+    <RouterLink :to="{ name: 'manager-projects', query: { goto: 'documents' } }" class="dashboard__card">
       Dokumenter
     </RouterLink>
     <RouterLink :to="{ name: 'manager-create-project' }" class="dashboard__card">

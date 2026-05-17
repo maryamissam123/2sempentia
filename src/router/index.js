@@ -138,9 +138,9 @@ const router = createRouter({
           component: () => import('@/views/manager/CreateProjectView.vue')
         },
         {
-          path: 'documents',
+          path: 'projects/:projectId/documents',
           name: 'manager-documents',
-          meta: { title: 'Dokumenter' },
+          meta: { title: 'Dokumenter', layout: 'detail' },
           component: () => import('@/views/manager/DocumentsView.vue')
         },
       ]

@@ -15,7 +15,8 @@ const customerTabs = [
 
 const managerTabs = [
     { label: 'Hjem', route: '/manager', icon: Home },
-    { label: 'Dokumenter', route: '/manager/documents', icon: FileText },
+    { label: 'Byggeforløb', route: { name: 'manager-projects', query: { goto: 'process' } }, icon: TrendingUp },
+    { label: 'Dokumenter', route: { name: 'manager-projects', query: { goto: 'documents' } }, icon: FileText },
     { label: 'Chat', route: '/manager/chat-options', icon: MessageSquareMore }
 ];
 
