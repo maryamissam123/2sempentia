@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { ChevronRight, ChevronUp } from '@lucide/vue';
-import BaseCard from '@/components/base/BaseCard.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
 import TabBar from '@/components/TabBar.vue';
 
 const faqs = ref([]);

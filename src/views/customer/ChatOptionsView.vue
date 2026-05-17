@@ -1,6 +1,6 @@
 <script setup>
 import { ArrowRight } from '@lucide/vue';
-import BaseCard from '@/components/base/BaseCard.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
 </script>
 
 <template>

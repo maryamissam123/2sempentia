@@ -1,6 +1,6 @@
 <script setup>
-import BaseCard from '@/components/base/BaseCard.vue';
-import PhaseIcon from '@/components/PhaseIcon.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
+import PhaseIcon from '@/components/phase/PhaseIcon.vue';
 
 defineProps({
   title: { type: String, required: true },

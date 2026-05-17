@@ -1,7 +1,7 @@
 <script setup>
-import BaseCard from '@/components/base/BaseCard.vue';
-import PhaseIcon from '@/components/PhaseIcon.vue';
-import StatusBadge from '@/components/StatusBadge.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
+import PhaseIcon from '@/components/phase/PhaseIcon.vue';
+import StatusBadge from '@/components/ui/StatusBadge.vue';
 
 defineProps({
   phase: { type: Object, required: true }

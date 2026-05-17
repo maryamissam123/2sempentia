@@ -2,7 +2,7 @@
 import { onMounted, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useCustomerProject } from '@/composables/useCustomerProject';
-import CommentCard from '@/components/cards/CommentCard.vue';
+import CommentCard from '@/components/phase/CommentCard.vue';
 
 const route = useRoute();
 const { projectId, phaseStore } = useCustomerProject();
