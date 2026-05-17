@@ -1,10 +1,10 @@
 <script setup>
 import { watch } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
-import BaseCard from '@/components/base/BaseCard.vue';
-import BaseList from '@/components/base/BaseList.vue';
-import ProgressBar from '@/components/ProgressBar.vue';
-import PhaseStackCard from '@/components/cards/PhaseStackCard.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
+import BaseList from '@/components/ui/BaseList.vue';
+import ProgressBar from '@/components/ui/ProgressBar.vue';
+import PhaseStackCard from '@/components/phase/PhaseStackCard.vue';
 import dashboardImage from '/images/ProcessHouse.jpg';
 
 const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();

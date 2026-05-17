@@ -1,10 +1,10 @@
 <script setup>
 import { watch } from 'vue';
-import BaseList from '@/components/base/BaseList.vue';
-import BaseCard from '@/components/base/BaseCard.vue';
-import StatusBadge from '@/components/StatusBadge.vue';
-import ProgressBar from '@/components/ProgressBar.vue';
-import NotificationBadge from '@/components/base/NotificationBadge.vue';
+import BaseList from '@/components/ui/BaseList.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
+import StatusBadge from '@/components/ui/StatusBadge.vue';
+import ProgressBar from '@/components/ui/ProgressBar.vue';
+import NotificationBadge from '@/components/ui/NotificationBadge.vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
 
 const { projectId, phaseStore, loadPhases } = useCustomerProject();

@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
-import BaseList from '@/components/base/BaseList.vue';
-import BaseCard from '@/components/base/BaseCard.vue';
+import BaseList from '@/components/ui/BaseList.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();

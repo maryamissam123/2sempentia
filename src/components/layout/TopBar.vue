@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth'
 import { ArrowLeft, Settings, Search, Bell, Check } from '@lucide/vue';
-import NotificationBadge from '@/components/base/NotificationBadge.vue';
+import NotificationBadge from '@/components/ui/NotificationBadge.vue';
 import { computed } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
 

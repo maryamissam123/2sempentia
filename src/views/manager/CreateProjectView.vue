@@ -4,7 +4,7 @@ import { usePhaseStore } from '@/stores/phase';
 import { useProjectStore } from '@/stores/project';
 import { useRouter } from 'vue-router';
 import PhotoUpload from '@/components/PhotoUpload.vue';
-import BaseInput from '@/components/base/BaseInput.vue';
+import BaseInput from '@/components/ui/BaseInput.vue';
 
 const phaseStore = usePhaseStore();
 const projectStore = useProjectStore();

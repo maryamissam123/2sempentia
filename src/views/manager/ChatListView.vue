@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
-import BaseList from '@/components/base/BaseList.vue';
+import BaseList from '@/components/ui/BaseList.vue';
 import ChatPreviewCard from '@/components/chat/ChatPreviewCard.vue';
 
 const { projectStore, customers, loadProjects, loadCustomersForProjects } = useManagerProject();

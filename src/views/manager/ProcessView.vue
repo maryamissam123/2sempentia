@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
-import BaseList from '@/components/base/BaseList.vue';
-import BaseCard from '@/components/base/BaseCard.vue';
-import ProgressBar from '@/components/ProgressBar.vue';
+import BaseList from '@/components/ui/BaseList.vue';
+import BaseCard from '@/components/ui/BaseCard.vue';
+import ProgressBar from '@/components/ui/ProgressBar.vue';
 
 const { projectId, phaseStore, loadPhases } = useManagerProject();
 

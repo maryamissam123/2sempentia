@@ -4,7 +4,7 @@ import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { ChevronRight, ChevronUp } from '@lucide/vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
-import TabBar from '@/components/TabBar.vue';
+import TabBar from '@/components/layout/TabBar.vue';
 
 const faqs = ref([]);
 const activeId = ref(null);
