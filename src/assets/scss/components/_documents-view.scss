@@ -1,0 +1,64 @@
+@use '../abstracts/variables' as v;
+
+.documents-page {
+  background-color: v.$color-bg-neutral;
+  min-height: calc(100vh - 140px);
+  padding: 20px 15px;
+}
+
+.documents-container {
+  display: flex;
+  flex-direction: column;
+  gap: v.$font-size-body; 
+}
+
+.document-link {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.document-card {
+  background-color: v.$color-accent;
+  border-radius: 10px;
+  border: none;
+  padding: 14px 16px;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.document-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .document-name {
+    color: v.$color-primary;
+    font-weight: 500;
+    font-size: v.$font-size-subtitle;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 85%;
+  }
+
+  .document-icon {
+    color: v.$color-primary;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+
+.no-documents {
+  text-align: center;
+  color: v.$color-primary;
+  font-size: v.$font-size-body;
+  margin-top: 40px;
+  opacity: 0.7;
+}
