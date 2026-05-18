@@ -2,6 +2,10 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import { useAuthStore } from './auth';
 
+/**
+ * Tests for auth store getters
+ * Sikrer at isAuthenticated reagerer korrekt på user state
+ */
 describe('auth store', () => {
   beforeEach(() => {
     setActivePinia(createPinia());

@@ -14,7 +14,12 @@ export const useAuthStore = defineStore('auth', () => {
 
   // ===== Getters =====
 
+  /**
+   * Returnerer true hvis brugeren er logget ind.
+   * Bruges af router-guard og UI til at vise log-ind/log-ud state.
+  */
   const isAuthenticated = computed(() => !!user.value);
+
   const isManager = computed(() => role.value === 'manager');
   const isCustomer = computed(() => role.value === 'customer');
 
