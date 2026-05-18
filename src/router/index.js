@@ -92,7 +92,7 @@ const router = createRouter({
         {
           path: '',
           name: 'manager-dashboard',
-          meta: { title: 'Manager Dashboard' },
+          meta: { title: 'BYGGELEDER' },
           component: () => import('@/views/manager/ManagerDashboardView.vue')
         },
         {
