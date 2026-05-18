@@ -13,18 +13,8 @@ const dashboardLinks = [
 </script>
 
 <template>
-  <div class="dashboard-page manager-dashboard">
-    <div class="dashboard-content">
-      
-      <div class="dashboard-grid">
-        <RouterLink 
-          v-for="card in dashboardLinks" 
-          :key="card.label"
-          :to="card.route"
-          class="dashboard-card"
-        >
-        </RouterLink>
-      </div>
+<div class="dashboard-page manager-dashboard-modifier">
+      <div class="dashboard-content">
 
       <BaseList :items="dashboardLinks" class="dashboard-list">
         <template #item="{ item }">
