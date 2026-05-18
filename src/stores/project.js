@@ -18,7 +18,7 @@ export const useProjectStore = defineStore('project', () => {
   	const auth = useAuthStore();
   	if (!auth.user) return;
 
-  	const field = auth.role === 'manager' ? 'managerId' : 'customerId';
+  	const field = auth.isManager ? 'managerId' : 'customerId';
 		const q = query(collection(db, 'projects'), where(field, '==', auth.user.uid));
 		const snap = await getDocs(q);
 

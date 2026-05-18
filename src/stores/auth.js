@@ -1,6 +1,6 @@
 // src/stores/auth.js
 import { defineStore } from "pinia";
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, setDoc, query, collection, where, getDocs, updateDoc, deleteDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase';
@@ -11,6 +11,12 @@ export const useAuthStore = defineStore('auth', () => {
   const role = ref(null);
   const name = ref(null); 
   const ready = ref(false);
+
+  // ===== Getters =====
+
+  const isAuthenticated = computed(() => !!user.value);
+  const isManager = computed(() => role.value === 'manager');
+  const isCustomer = computed(() => role.value === 'customer');
 
   // ===== Actions =====
 
@@ -111,6 +117,9 @@ export const useAuthStore = defineStore('auth', () => {
       role,
       name,
       ready,
+      isAuthenticated,
+      isManager,
+      isCustomer,
       login,
       logout,
       createCustomer,

@@ -28,7 +28,7 @@ const handleIconClick = (name) => {
     router.back();
   }
   if (name === 'settings') {
-    router.push({ name: auth.role === 'manager' ? 'manager-settings' : 'customer-settings' });
+    router.push({ name: auth.isManager ? 'manager-settings' : 'customer-settings' });
   };
 };
 

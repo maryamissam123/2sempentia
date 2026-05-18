@@ -22,7 +22,7 @@ const managerTabs = [
 ];
 
 const tabs = computed(() =>
-  auth.role === 'manager' ? managerTabs : customerTabs
+  auth.isManager ? managerTabs : customerTabs
 );
 
 function isActive(tab) {
