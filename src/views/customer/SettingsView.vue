@@ -3,8 +3,8 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
-import BaseInput from '@/components/base/BaseInput.vue';
-import BaseButton from '@/components/base/BaseButton.vue';
+import BaseInput from '@/components/ui/BaseInput.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 const auth = useAuthStore();
 const router = useRouter();
