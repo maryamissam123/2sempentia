@@ -10,7 +10,7 @@ const auth = useAuthStore();
 const router = useRouter();
 
 const name = ref('');;
-const email = ref('')
+const email = ref('');
 
 onMounted(() => {
   name.value = auth.name || '';
