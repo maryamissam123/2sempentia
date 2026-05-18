@@ -11,7 +11,7 @@ const { projectStore, loadProjects } = useManagerProject();
 onMounted(loadProjects);
 
 function getDestination(projectId) {
-  const goto = route.query.goto
+  const goto = route.query.goto;
   if (goto === 'documents') return { name: 'manager-documents', params: { projectId } };
   if (goto === 'process') return { name: 'manager-process', params: { projectId } };
   return { name: 'manager-project-details', params: { id: projectId } };

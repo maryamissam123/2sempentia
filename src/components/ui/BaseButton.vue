@@ -2,7 +2,7 @@
 <script setup>
 defineProps({
   variant: { type: String, default: 'primary' }
-})
+});
 </script>
 
 <template>

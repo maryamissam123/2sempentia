@@ -23,7 +23,7 @@ export const useDocumentStore = defineStore('document', () => {
 
   // Uploader fil og gemmer metadata i Firestore
   async function uploadDocument(projectId, file) {
-    const path = `documents/${projectId}/${Date.now()}_${file.name}`
+    const path = `documents/${projectId}/${Date.now()}_${file.name}`;
     const fileRef = storageRef(storage, path);
 
     await uploadBytes(fileRef, file);
@@ -51,5 +51,5 @@ export const useDocumentStore = defineStore('document', () => {
     fetchDocuments,
     uploadDocument,
     deleteDocument,
-  }
+  };
 });

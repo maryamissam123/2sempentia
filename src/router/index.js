@@ -92,7 +92,7 @@ const router = createRouter({
         {
           path: '',
           name: 'manager-dashboard',
-          meta: { title: 'Manager Dashboard' },
+          meta: { title: 'BYGGELEDER' },
           component: () => import('@/views/manager/ManagerDashboardView.vue')
         },
         {
@@ -128,7 +128,7 @@ const router = createRouter({
         {
           path: 'chat-options',
           name: 'manager-chat-options',
-          meta: { title: 'Chat Muligheder' },
+          meta: { title: 'Chat' },
           component: () => import('@/views/manager/ChatOptionsView.vue')
         },
         {
