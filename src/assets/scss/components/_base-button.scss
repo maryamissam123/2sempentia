@@ -2,18 +2,21 @@
 @use '../abstracts/variables' as v;
 
 .base-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$spacing-sm;
   width: 100%;
-  padding: 16px;
+  padding: v.$spacing-md;
   border: none;
-  border-radius: 8px;
+  border-radius: v.$radius-md;
   font-family: v.$font-main;
   font-size: v.$font-size-subtitle;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: filter 0.1s ease;
+  transition: filter v.$transition-fast;
 
   &:active {
     filter: brightness(0.95);
