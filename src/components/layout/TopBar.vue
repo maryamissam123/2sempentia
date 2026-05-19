@@ -2,9 +2,10 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import { ArrowLeft, Settings, Search, Bell, Check } from '@lucide/vue';
-import NotificationBadge from '@/components/ui/NotificationBadge.vue';
 import { computed } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
+import { getPhaseIcon } from '@/utils/PhaseIcons';
+import NotificationBadge from '@/components/ui/NotificationBadge.vue';
 
 defineProps({
   leftIcons: { type: Array, default: () => [] },
@@ -32,18 +33,10 @@ const handleIconClick = (name) => {
   };
 };
 
-// Finder automatisk det rigtige ikon baseret på det nuværende fasenavn
-const dynamicPhaseIcon = computed(() => {
-  const name = phaseStore.phase?.name?.toLowerCase() || '';
-  if (name.includes('fundament')) return 'Foundation.png';
-  if (name.includes('vægge')) return 'Wall.png';
-  if (name.includes('tag')) return 'Roof.png';
-  if (name.includes('vinduer')) return 'Window.png';
-  if (name.includes('dør')) return 'Door.png';
-  if (name.includes('interiør') || name.includes('opbygning')) return 'Indoor.png';
-  if (name.includes('nøgle')) return 'Key.png';
-  return '';
-});
+// Finder automatisk det rigtige ikon fra getPhaseIcon utils
+const dynamicPhaseIcon = computed(() =>
+  getPhaseIcon(phaseStore.phase?.name)
+);
 </script>
 
 <template>
