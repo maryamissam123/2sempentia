@@ -1,23 +1,18 @@
 <script setup>
-import { computed } from 'vue';
-import { Check, Hourglass, Lock } from '@lucide/vue';
+import { computed } from 'vue'
+import { Check, Hourglass, Lock } from '@lucide/vue'
 
 const props = defineProps({
-  phase: {
-    type: Object,
-    required: true
-  }
-});
+  completed: { type: Boolean, default: false }
+})
 
-const status = computed(() => {
-  return props.phase.completed ? 'done' : 'todo';
-});
+const status = computed(() => props.completed ? 'done' : 'todo')
 
 const icons = {
   done: Check,
   active: Hourglass,
   todo: Lock,
-};
+}
 </script>
 
 <template>
