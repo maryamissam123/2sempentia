@@ -2,14 +2,13 @@
 @use '../abstracts/variables' as v;
 
 .top-bar {
-  background-color: #004552; 
-  color: white;
-  padding: 12px 16px;
-  width: 100%;
-  box-sizing: border-box;
   position: sticky;
   top: 0;
   z-index: 10;
+  background: v.$color-primary;
+  color: v.$color-white;
+  padding: v.$spacing-sm v.$spacing-md;
+  width: 100%;
 
   &__row {
     display: flex;
@@ -19,45 +18,20 @@
   }
 
   &__icon-btn {
-    background: none;
-    border: none;
-    color: white;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative; 
-    
+    color: v.$color-white;
+    padding: v.$spacing-sm;
+    position: relative;
+
     svg {
       opacity: 0.9;
-    }
-
-    &.has-notification {
-      .badge {
-        position: absolute;
-        top: 6px;
-        right: 4px;
-        background-color: #F44336; 
-        color: white;
-        font-size: 10px;
-        font-weight: 700;
-        min-width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1.5px solid #004552; 
-      }
     }
   }
 
   &__title {
-    margin: 15px 0 5px 8px;
-    font-size: 1.5rem;
+    margin: v.$spacing-md 0 v.$spacing-xs v.$spacing-sm;
+    font-size: v.$font-size-title;
     font-weight: 500;
-    text-transform: uppercase; 
+    text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 }

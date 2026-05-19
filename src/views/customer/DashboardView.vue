@@ -20,7 +20,7 @@ const dashboardLinks = [
 
 <template>
   <div class="dashboard-page">
-    <section class="dashboard-header">
+    <section class="dashboard-header fullbleed">
       <img
         :src="projectStore.projects[0]?.imageUrl || dashboardImage"
         alt="Mit byggeprojekt"

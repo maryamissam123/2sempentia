@@ -1,0 +1,9 @@
+// src/assets/scss/base/_global.scss
+@use '../abstracts/variables' as v;
+
+.fullbleed {
+  margin-left: -#{v.$spacing-md};
+  margin-right: -#{v.$spacing-md};
+  margin-top: -#{v.$spacing-md};
+  margin-bottom: v.$spacing-md;
+}

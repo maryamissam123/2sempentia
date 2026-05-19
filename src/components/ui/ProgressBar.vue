@@ -9,9 +9,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="progress-bar">
-    <div 
-      class="progress-bar__fill" 
+  <div class="progress-bar fullbleed">
+    <div
+      class="progress-bar__fill"
       :style="{ width: value + '%' }"
     ></div>
     <span class="progress-bar__label">{{ value }}%</span>

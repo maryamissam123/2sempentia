@@ -2,6 +2,7 @@
 @use 'abstracts/variables' as v;
 @use 'abstracts/mixins' as m;
 
+@use 'base/global';
 @use 'base/reset';
 
 @use 'layouts';
