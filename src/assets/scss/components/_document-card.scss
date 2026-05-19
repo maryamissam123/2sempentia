@@ -1,0 +1,33 @@
+// _document-card.scss
+@use '../abstracts/mixins' as m;
+@use '../abstracts/variables' as v;
+
+.document-card {
+  @include m.card-list;
+  justify-content: space-between;
+
+  &__link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$spacing-md;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__name {
+    flex: 1;
+  }
+
+  &__delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: v.$spacing-md;
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+}
