@@ -1,11 +1,9 @@
 <script setup>
 import { watch } from 'vue';
-import BaseList from '@/components/ui/BaseList.vue';
-import BaseCard from '@/components/ui/BaseCard.vue';
-import StatusBadge from '@/components/ui/StatusBadge.vue';
-import ProgressBar from '@/components/ui/ProgressBar.vue';
-import NotificationBadge from '@/components/ui/NotificationBadge.vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
+import BaseList from '@/components/ui/BaseList.vue';
+import PhaseCard from '@/components/phase/PhaseCard.vue';
+import ProgressBar from '@/components/ui/ProgressBar.vue';
 
 const { projectId, phaseStore, loadPhases } = useCustomerProject();
 

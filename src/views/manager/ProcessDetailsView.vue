@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
-import PhotoUpload from '@/components/PhotoUpload.vue';
+import PhotoUpload from '@/components/project/PhotoUpload.vue';
 
 const { projectId, phaseStore, loadPhase } = useManagerProject();
 

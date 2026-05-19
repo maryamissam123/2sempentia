@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import { usePhaseStore } from '@/stores/phase';
 import { useProjectStore } from '@/stores/project';
 import { useRouter } from 'vue-router';
-import PhotoUpload from '@/components/PhotoUpload.vue';
+import PhotoUpload from '@/components/project/PhotoUpload.vue';
 import BaseInput from '@/components/ui/BaseInput.vue';
 
 const phaseStore = usePhaseStore();
