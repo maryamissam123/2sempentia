@@ -1,6 +1,7 @@
 <script setup>
 import { watch } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
+import { customerDashboardLinks } from '@/config/navigation';
 import BaseList from '@/components/ui/BaseList.vue';
 import NavCard from '@/components/ui/NavCard.vue';
 import ProgressBar from '@/components/ui/ProgressBar.vue';
@@ -10,12 +11,6 @@ import dashboardImage from '/images/ProcessHouse.jpg';
 const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();
 
 watch(projectId, loadPhases);
-
-const dashboardLinks = [
-  { label: 'SE BYGGEFORLØB', route: '/customer/process', icon: 'Process.png' },
-  { label: 'CHAT', route: '/customer/chat-options', icon: 'Chat.png' },
-  { label: 'FILER', route: '/customer/documents', icon: 'Files.png' }
-];
 </script>
 
 <template>
@@ -46,7 +41,7 @@ const dashboardLinks = [
       </RouterLink>
     </div>
 
-    <BaseList :items="dashboardLinks" class="dashboard-list">
+    <BaseList :items="customerDashboardLinks" class="dashboard-list">
       <template #item="{ item }">
         <RouterLink :to="item.route" class="no-underline">
           <NavCard :label="item.label" :icon="item.icon" />
