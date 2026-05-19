@@ -1,35 +1,19 @@
 <script setup>
-import BaseCard from '@/components/ui/BaseCard.vue';
-import BaseList from '@/components/ui/BaseList.vue';
-import TabBar from '@/components/layout/TabBar.vue';
+import NavCard from '@/components/ui/NavCard.vue'
 
 const dashboardLinks = [
-  { label: 'AKTIVE PROJEKTER', icon: 'ActiveProject.png' },
-  { label: 'OPRET PROJEKT', icon: 'ActiveProject.png' },
-  { label: 'BYGGEFORLØB', route: '/customer/process', icon: 'Process.png' },
-  { label: 'CHAT', route: '/customer/chat-options', icon: 'Chat.png' },
-  { label: 'FILER', route: '/customer/documents', icon: 'Files.png' }
-];
+  { label: 'AKTIVE PROJEKTER', route: '/manager/projects', icon: 'ActiveProject.png' },
+  { label: 'OPRET PROJEKT', route: '/manager/create-project', icon: 'ActiveProject.png' },
+  { label: 'BYGGEFORLØB', route: { name: 'manager-projects', query: { goto: 'process' } }, icon: 'Process.png' },
+  { label: 'CHAT', route: { name: 'manager-chat-list' }, icon: 'Chat.png' },
+  { label: 'FILER', route: { name: 'manager-projects', query: { goto: 'documents' } }, icon: 'Files.png' },
+]
 </script>
 
 <template>
-<div class="dashboard-page manager-dashboard-modifier">
-      <div class="dashboard-content">
-
-      <BaseList :items="dashboardLinks" class="dashboard-list">
-        <template #item="{ item }">
-          <RouterLink :to="item.route" class="no-underline">
-            <BaseCard :title="item.label">
-              <template #icon>
-                <img :src="`/icons/${item.icon}`" :alt="item.label" />
-              </template>
-            </BaseCard>
-          </RouterLink>
-        </template>
-      </BaseList>
-
-    </div>
-  </div>
-
-  <TabBar />
+<div class="dashboard-grid">
+  <RouterLink v-for="item in dashboardLinks" :key="item.label" :to="item.route">
+    <NavCard :label="item.label" :icon="item.icon" />
+  </RouterLink>
+</div>
 </template>

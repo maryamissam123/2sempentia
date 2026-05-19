@@ -1,0 +1,23 @@
+// _phase-summary-card.scss
+@use '../abstracts/mixins' as m;
+
+.phase-summary-card {
+  @include m.card-big;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  &__name {
+    font-size: 14px;
+  }
+}

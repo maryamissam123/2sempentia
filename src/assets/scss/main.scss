@@ -1,6 +1,9 @@
 // src/assets/scss/main.scss
 @use 'abstracts/variables' as v;
+@use 'abstracts/mixins' as m;
+
 @use 'base/reset';
+
 @use 'layouts';
 @use 'components';
 @use 'pages';

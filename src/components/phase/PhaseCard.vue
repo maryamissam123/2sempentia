@@ -1,20 +1,17 @@
+<!-- src/components/phase/PhaseCard.vue -->
 <script setup>
-import BaseCard from '@/components/ui/BaseCard.vue';
-import PhaseIcon from '@/components/phase/PhaseIcon.vue';
-import StatusBadge from '@/components/ui/StatusBadge.vue';
+import PhaseIcon from './PhaseIcon.vue'
+import StatusBadge from './StatusBadge.vue'
 
 defineProps({
   phase: { type: Object, required: true }
-});
+})
 </script>
 
 <template>
-  <BaseCard :title="phase.name">
-    <template #icon>
-      <PhaseIcon :name="phase.name" />
-    </template>
-    <template #action>
-      <StatusBadge :phase="phase" />
-    </template>
-  </BaseCard>
+  <div class="phase-card">
+    <PhaseIcon :name="phase.name" class="phase-card__icon" />
+    <span class="phase-card__name">{{ phase.name }}</span>
+    <StatusBadge :completed="phase.completed" class="phase-card__status" />
+  </div>
 </template>

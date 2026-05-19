@@ -1,0 +1,18 @@
+// _nav-card.scss
+@use '../abstracts/mixins' as m;
+
+.nav-card {
+  @include m.card-big;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}

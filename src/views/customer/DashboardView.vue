@@ -1,10 +1,10 @@
 <script setup>
 import { watch } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
-import BaseCard from '@/components/ui/BaseCard.vue';
 import BaseList from '@/components/ui/BaseList.vue';
+import NavCard from '@/components/ui/NavCard.vue';
 import ProgressBar from '@/components/ui/ProgressBar.vue';
-import PhaseStackCard from '@/components/phase/PhaseStackCard.vue';
+import PhaseSummaryCard from '@/components/phase/PhaseSummaryCard.vue'
 import dashboardImage from '/images/ProcessHouse.jpg';
 
 const { projectId, projectStore, phaseStore, loadPhases } = useCustomerProject();
@@ -21,54 +21,37 @@ const dashboardLinks = [
 <template>
   <div class="dashboard-page">
     <section class="dashboard-header">
-      <div class="dashboard-header__image-container">
-        <img
-          v-if="projectStore.projects[0]?.imageUrl"
-          :src="projectStore.projects[0].imageUrl"
-          alt="Mit byggeprojekt"
-          class="dashboard-header__image"
-        />
-        <img
-          v-else
-          :src="dashboardImage"
-          alt="Byggeprojekt"
-          class="dashboard-header__image"
-        />
-      </div>
+      <img
+        :src="projectStore.projects[0]?.imageUrl || dashboardImage"
+        alt="Mit byggeprojekt"
+        class="dashboard-header__image"
+      />
     </section>
 
     <ProgressBar :value="phaseStore.progress" />
 
-    <div class="dashboard-content">
-      <div class="dashboard-grid">
-      <RouterLink 
+    <div class="dashboard-grid">
+      <RouterLink
         v-if="phaseStore.currentPhase"
         :to="{ name: 'customer-process-details', params: { id: phaseStore.currentPhase.id } }"
-        class="dashboard-card"
       >
-        <PhaseStackCard title="NUVÆRENDE FASE" :phase="phaseStore.currentPhase" />
+        <PhaseSummaryCard label="NUVÆRENDE FASE" :phase="phaseStore.currentPhase" />
       </RouterLink>
 
-      <RouterLink 
+      <RouterLink
         v-if="phaseStore.nextPhase"
         :to="{ name: 'customer-process-details', params: { id: phaseStore.nextPhase.id } }"
-        class="dashboard-card"
       >
-        <PhaseStackCard title="NÆSTE FASE" :phase="phaseStore.nextPhase" />
+        <PhaseSummaryCard label="NÆSTE FASE" :phase="phaseStore.nextPhase" />
       </RouterLink>
-      </div>
-
-      <BaseList :items="dashboardLinks" class="dashboard-list">
-        <template #item="{ item }">
-          <RouterLink :to="item.route" class="no-underline">
-            <BaseCard :title="item.label">
-              <template #icon>
-                <img :src="`/icons/${item.icon}`" :alt="item.label" />
-              </template>
-            </BaseCard>
-          </RouterLink>
-        </template>
-      </BaseList>
     </div>
+
+    <BaseList :items="dashboardLinks" class="dashboard-list">
+      <template #item="{ item }">
+        <RouterLink :to="item.route" class="no-underline">
+          <NavCard :label="item.label" :icon="item.icon" />
+        </RouterLink>
+      </template>
+    </BaseList>
   </div>
 </template>

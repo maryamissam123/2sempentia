@@ -1,0 +1,23 @@
+// _phase-card.scss
+@use '../abstracts/mixins' as m;
+
+.phase-card {
+  @include m.card-list;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__status {
+    flex-shrink: 0;
+  }
+}
