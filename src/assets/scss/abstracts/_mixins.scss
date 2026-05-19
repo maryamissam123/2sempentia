@@ -21,3 +21,13 @@
   align-items: center;
   gap: 16px;
 }
+
+@mixin card-with-image {
+  background: v.$color-white;
+  color: v.$color-primary;
+  border-radius: v.$radius-md;
+  padding: v.$spacing-md;
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-md;
+}
