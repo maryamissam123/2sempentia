@@ -2,7 +2,7 @@ const iconMap = {
   fundament: 'Foundation.png',
   vægge: 'Wall.png',
   tag: 'Roof.png',
-  vindue: 'Window.png',
+  vinduer: 'Window.png',
   dør: 'Door.png',
   interiør: 'Indoor.png',
   nøgle: 'Key.png',
