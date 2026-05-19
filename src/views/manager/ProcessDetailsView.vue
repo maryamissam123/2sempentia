@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
 import PhotoUpload from '@/components/project/PhotoUpload.vue';
 
@@ -30,6 +30,10 @@ async function handleAddComment() {
 async function handleComplete() {
   await phaseStore.completePhase(projectId.value, phaseStore.phase.id, phaseStore.phase.completed);
 };
+
+onUnmounted(() => {
+  phaseStore.clearPhase();
+});
 </script>
 
 <template>

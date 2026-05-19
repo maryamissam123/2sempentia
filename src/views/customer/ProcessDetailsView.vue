@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, watch, computed } from 'vue';
+import { onMounted, onUnmounted, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useCustomerProject } from '@/composables/useCustomerProject';
-import CommentCard from '@/components/phase/CommentCard.vue';
+import CommentCard from '@/components/phase/PhaseComment.vue';
 
 const route = useRoute();
 const { projectId, phaseStore } = useCustomerProject();
@@ -27,6 +27,10 @@ const currentPhaseIcon = computed(() => {
   if (name.includes('interiør') || name.includes('opbygning')) return 'Indoor.png';
   if (name.includes('nøgle')) return 'Key.png';
   return '';
+});
+
+onUnmounted(() => {
+  phaseStore.clearPhase();
 });
 </script>
 

@@ -81,6 +81,11 @@ export const usePhaseStore = defineStore('phase', () => {
     await fetchPhase(projectId, phaseId);
   };
 
+  function clearPhase() {
+    phase.value = null;
+    comments.value = [];
+  };
+
   return { 
     standardPhases,
     phases, 
@@ -94,7 +99,8 @@ export const usePhaseStore = defineStore('phase', () => {
     fetchPhase, 
     fetchComments, 
     addComment,
-    completePhase
+    completePhase,
+    clearPhase
   };
 });
 
