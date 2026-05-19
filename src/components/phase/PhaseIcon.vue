@@ -8,5 +8,9 @@ defineProps({
 </script>
 
 <template>
-  <img v-if="name" :src="`/icons/${getPhaseIcon(name)}`" :alt="name" />
+  <img v-if="name" 
+  :src="`/icons/${getPhaseIcon(name)}`" 
+  :alt="name"
+  class="phase-icon"
+  />
 </template>
