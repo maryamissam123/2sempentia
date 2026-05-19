@@ -35,3 +35,19 @@
     letter-spacing: 0.05em;
   }
 }
+
+.top-bar-phase {
+  display: flex;
+  align-items: center;
+  gap: v.$spacing-sm;
+
+    &__icon {
+    min-width: 50px;
+    min-height: 50px;
+    object-fit: contain;
+  }
+
+  &__status {
+    margin-left: auto;
+  }
+}

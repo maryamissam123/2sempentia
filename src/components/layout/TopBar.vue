@@ -6,6 +6,7 @@ import { computed } from 'vue';
 import { useCustomerProject } from '@/composables/useCustomerProject';
 import { getPhaseIcon } from '@/utils/PhaseIcons';
 import NotificationBadge from '@/components/ui/NotificationBadge.vue';
+import StatusBadge from '@/components/ui/StatusBadge.vue'
 
 defineProps({
   leftIcons: { type: Array, default: () => [] },
@@ -56,10 +57,6 @@ const dynamicPhaseIcon = computed(() =>
       <div class="top-bar__spacer"></div>
 
       <div class="top-bar__right">
-        <div v-if="phaseStore.phase?.completed" class="top-bar-status">
-          <Check :size="16" stroke-width="3" />
-        </div>
-
         <button
           v-for="name in rightIcons"
           :key="name"
@@ -82,6 +79,11 @@ const dynamicPhaseIcon = computed(() =>
       <h1 class="top-bar__title">
         {{ phaseStore.phase?.name || route.meta.title }}
       </h1>
+      <StatusBadge
+        v-if="phaseStore.phase"
+        :completed="phaseStore.phase.completed"
+        class="top-bar-phase__status"
+      />
     </div>
   </header>
 </template>
