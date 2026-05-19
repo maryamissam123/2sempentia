@@ -1,22 +1,16 @@
 <script setup>
 import { computed } from 'vue'
-import { Check, Hourglass, Lock } from '@lucide/vue'
+import { getStatusIcon } from '@/utils/PhaseIcons'
 
 const props = defineProps({
   completed: { type: Boolean, default: false }
-})
-
-const status = computed(() => props.completed ? 'done' : 'todo')
-
-const icons = {
-  done: Check,
-  active: Hourglass,
-  todo: Lock,
-}
+});
 </script>
 
 <template>
-  <span :class="['status-badge', `status-badge--${status}`]">
-    <component :is="icons[status]" />
-  </span>
+  <img
+    :src="`/icons/${getStatusIcon(completed)}`"
+    :alt="completed ? 'Færdig' : 'I gang'"
+    class="status-badge"
+  />
 </template>

@@ -16,3 +16,7 @@ export function getPhaseIcon(name) {
   }
   return ''
 };
+
+export function getStatusIcon(completed) {
+  return completed ? 'Done.png' : 'OnGoing.png'
+}
