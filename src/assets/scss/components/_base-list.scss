@@ -4,14 +4,10 @@
 .base-list {
   display: flex;
   flex-direction: column;
-  gap: 12px; 
+  gap: v.$spacing-sm;
   width: 100%;
-  padding-bottom: 12px;
-  padding-top: 12px;
-
 
   &__item {
     width: 100%;
-    
   }
 }

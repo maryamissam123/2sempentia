@@ -8,6 +8,9 @@
 
   &__content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-md;
     padding: v.$spacing-md;
     padding-bottom: 100px;
   }

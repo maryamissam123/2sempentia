@@ -4,6 +4,7 @@ import { useManagerProject } from '@/composables/useManagerProject';
 import CommentCard from '@/components/phase/PhaseComment.vue';
 import CommentForm from '@/components/phase/PhaseCommentForm.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
+import BaseList from '@/components/ui/BaseList.vue';
 
 const { projectId, phaseStore, loadPhase } = useManagerProject();
 
@@ -26,18 +27,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="phaseStore.phase">
+  <template v-if="phaseStore.phase">
     <BaseButton variant="secondary" @click="showForm = !showForm">
       Tilføj kommentar
     </BaseButton>
 
     <CommentForm v-if="showForm" @submit="handleSubmit" />
 
-    <CommentCard
-      v-for="comment in phaseStore.comments"
-      :key="comment.id"
-      :comment="comment"
-    />
+    <BaseList :items="phaseStore.comments">
+      <template #item="{ item }">
+        <CommentCard :comment="item" />
+      </template>
+    </BaseList>
 
     <p v-if="phaseStore.comments.length === 0">
       Der er endnu ikke tilføjet opdateringer eller billeder til denne fase.
@@ -46,5 +47,5 @@ onUnmounted(() => {
     <BaseButton variant="primary" @click="handleComplete">
       Afslut fase
     </BaseButton>
-  </div>
+  </template>
 </template>
