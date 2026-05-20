@@ -1,16 +1,12 @@
 <script setup>
+import { formatDate } from '@/utils/date';
+
 defineProps({
   comment: {
     type: Object,
     required: true
   }
 });
-
-const formatDate = (timestamp) => {
-  if (!timestamp) return '';
-  const date = timestamp.toDate();
-  return date.toLocaleDateString('da-DK');
-};
 </script>
 
 <template>
