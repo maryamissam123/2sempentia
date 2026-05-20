@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useManagerProject } from '@/composables/useManagerProject';
 import CommentCard from '@/components/phase/PhaseComment.vue';
 import CommentForm from '@/components/phase/PhaseCommentForm.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 const { projectId, phaseStore, loadPhase } = useManagerProject();
 
@@ -26,7 +27,9 @@ onUnmounted(() => {
 
 <template>
   <div v-if="phaseStore.phase">
-    <button @click="showForm = !showForm">TILFØJ KOMMENTAR</button>
+    <BaseButton variant="secondary" @click="showForm = !showForm">
+      Tilføj kommentar
+    </BaseButton>
 
     <CommentForm v-if="showForm" @submit="handleSubmit" />
 
@@ -40,6 +43,8 @@ onUnmounted(() => {
       Der er endnu ikke tilføjet opdateringer eller billeder til denne fase.
     </p>
 
-    <button @click="handleComplete">AFSLUT FASE</button>
+    <BaseButton variant="primary" @click="handleComplete">
+      Afslut fase
+    </BaseButton>
   </div>
 </template>
