@@ -12,6 +12,16 @@
     flex-shrink: 0;
   }
 
+  &__content {
+    flex: 1;
+  }
+
+  &__author {
+    font-size: v.$font-size-subtitle;
+    text-transform: uppercase;
+    margin: 0 0 v.$spacing-xs;
+  }
+
   &__title {
     font-size: v.$font-size-subtitle;
     text-transform: uppercase;
@@ -21,5 +31,10 @@
   &__date {
     font-size: v.$font-size-body;
     margin: 0;
+  }
+
+  &__text {
+    font-size: v.$font-size-body;
+    margin: v.$spacing-xs 0 0;
   }
 }

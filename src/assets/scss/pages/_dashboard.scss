@@ -1,14 +1,8 @@
 @use '../abstracts/variables' as v;
 
-.dashboard-page {
-  background-color: v.$color-bg-neutral; 
-  min-height: 100vh;
-  padding-bottom: 100px; 
-}
-
 .dashboard-header {
   background-color: v.$color-primary;
-  padding: 20px 20px 20px;
+  padding: 20px;
 
   &__image-container {
     width: 100%;
@@ -23,23 +17,9 @@
   }
 }
 
-.dashboard-content {
-  padding: 20px 16px;
-}
-
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 16px;
-}
-
-.dashboard-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.no-underline {
-  text-decoration: none;
 }
