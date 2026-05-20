@@ -44,7 +44,7 @@ onUnmounted(() => {
       Der er endnu ikke tilføjet opdateringer eller billeder til denne fase.
     </p>
 
-    <BaseButton variant="primary" @click="handleComplete">
+    <BaseButton variant="primary" fixed @click="handleComplete">
       Afslut fase
     </BaseButton>
   </template>

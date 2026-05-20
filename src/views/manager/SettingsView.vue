@@ -32,5 +32,5 @@ async function handleLogout() {
   <BaseInput v-model="email" placeholder="Email" disabled />
 
   <BaseButton @click="handleSave">Gem</BaseButton>
-  <BaseButton variant="secondary" @click="handleLogout">Log ud</BaseButton>
+  <BaseButton variant="secondary" fixed @click="handleLogout">Log ud</BaseButton>
 </template>

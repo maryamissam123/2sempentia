@@ -31,4 +31,13 @@
     background: v.$color-accent;
     color: v.$color-primary;
   }
+
+  &--fixed {
+    position: fixed;
+    bottom: v.$spacing-md;
+    left: v.$spacing-md;
+    right: v.$spacing-md;
+    width: auto;
+    z-index: 10;
+  }
 }
