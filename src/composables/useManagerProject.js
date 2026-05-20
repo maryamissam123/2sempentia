@@ -52,6 +52,7 @@ export function useManagerProject() {
   function loadPhase() {
     if (projectId.value && route.params.id) {
       phaseStore.fetchPhase(projectId.value, route.params.id);
+      phaseStore.fetchComments(projectId.value, route.params.id);
     };
   };
 
