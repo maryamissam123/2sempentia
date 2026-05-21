@@ -1,12 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { usePhaseStore } from '@/stores/phase';
 import { useProjectStore } from '@/stores/project';
 import { useRouter } from 'vue-router';
 import PhotoUpload from '@/components/project/PhotoUpload.vue';
 import BaseInput from '@/components/ui/BaseInput.vue';
+import PhaseSelector from '@/components/phase/PhaseSelector.vue';
 
-const phaseStore = usePhaseStore();
 const projectStore = useProjectStore();
 const router = useRouter();
 
@@ -17,33 +16,9 @@ const name = ref('');
 const address = ref('');
 const imageUrl = ref('');
 
-onMounted(() => {
-  phaseStore.fetchStandardPhases();
-});
-
-function togglePhase(phase) {
-	const index = selectedPhases.value.findIndex(p => p.id === phase.id);
-	if(index === -1) {
-		selectedPhases.value.push({
-			...phase,
-			order: selectedPhases.value.length + 1
-		});
-	} else {
-		selectedPhases.value.splice(index, 1);
-		selectedPhases.value.forEach((p, i) => p.order = i + 1);
-	}
-};
-
-function getOrder(phase) {
-  return selectedPhases.value.find(p => p.id === phase.id)?.order;
-};
 
 function handleUploaded(url) {
   imageUrl.value = url;
-};
-
-function isSelected(phase) {
-	return selectedPhases.value.some(p => p.id === phase.id);
 };
 
 function handleCreate() {
@@ -65,19 +40,7 @@ function handleCreate() {
 
 	<PhotoUpload @uploaded="handleUploaded" />
 
-	<h3>Vælg faser</h3>
-	<div 
-		v-for="phase in phaseStore.standardPhases"
-		:key="phase.id"
-		class="test"
-		:style="{ background: isSelected(phase) ? 'lightgreen' : 'white' }"
-		@click="togglePhase(phase)"
-	>
-	<span class="phase-option__name">{{ phase.name }}</span>
-  <span v-if="getOrder(phase)" class="phase-option__number">
-    {{ getOrder(phase) }}
-  </span>
-	</div>
+  <PhaseSelector v-model="selectedPhases" />
 
 	<button @click="handleCreate">Opret Projekt</button>
 </template>
