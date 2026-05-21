@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { formatDate } from './date'
+import { formatDate } from '../utils/date'
 
 /**
  * Tests for formatDate utility.
