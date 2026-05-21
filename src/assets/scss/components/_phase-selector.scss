@@ -1,0 +1,52 @@
+// src/assets/scss/components/_phase-selector.scss
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.phase-selector {
+  background: v.$color-white;
+  border-radius: v.$radius-md;
+  padding: v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+}
+
+.phase-option {
+  @include m.card-list;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: filter v.$transition-fast;
+
+  &:active {
+    filter: brightness(0.97);
+  }
+
+  &--selected {
+    background: v.$color-complementary;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: v.$radius-full;
+    background: v.$color-primary;
+    color: v.$color-white;
+    font-size: v.$font-size-caption;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .phase-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

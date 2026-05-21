@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { usePhaseStore } from '@/stores/phase';
+import PhaseIcon from './PhaseIcon.vue';
 
 const phaseStore = usePhaseStore();
 
@@ -30,17 +31,23 @@ function isSelected(phase) {
 </script>
 
 <template>
-  <h3>Vælg faser</h3>
-  <div
-    v-for="phase in phaseStore.standardPhases"
-    :key="phase.id"
-    class="phase-option"
-    :class="{ 'phase-option--selected': isSelected(phase) }"
-    @click="togglePhase(phase)"
-  >
-    <span class="phase-option__name">{{ phase.name }}</span>
-    <span v-if="getOrder(phase)" class="phase-option__number">
-      {{ getOrder(phase) }}
-    </span>
+  <div class="phase-selector">
+    <h3>Vælg faser</h3>
+
+    <div
+      v-for="phase in phaseStore.standardPhases"
+      :key="phase.id"
+      class="phase-option"
+      :class="{ 'phase-option--selected': isSelected(phase) }"
+      @click="togglePhase(phase)"
+    >
+      <div class="phase-option__info">
+        <PhaseIcon :name="phase.name" />
+        <span class="phase-option__name">{{ phase.name }}</span>
+      </div>
+      <span v-if="getOrder(phase)" class="phase-option__number">
+        {{ getOrder(phase) }}
+      </span>
+    </div>
   </div>
 </template>
